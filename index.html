@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>(function(){var r=document.documentElement,t=null;try{t=localStorage.getItem("nx-theme")}catch(e){}r.setAttribute("data-theme",t==="light"?"light":"dark");r.classList.add("js")})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NEXORIA — Plusieurs projets. Plusieurs univers. Une seule vision.</title>
+<meta name="description" content="NEXORIA, structure indépendante fondée par MRkevin et cofondée par ODB : Black Clover RP, Dino App, Solo Leveling RP, Fido, la Gazette de Clover et d’autres projets.">
+<meta property="og:title" content="NEXORIA">
+<meta property="og:description" content="Plusieurs projets. Plusieurs univers. Une seule vision.">
+<meta property="og:image" content="assets/projects/black-clover/banner.webp">
+<meta name="theme-color" content="#07070a">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="loader" aria-hidden="true"><span>NEX<i>ORIA</i></span></div>
+<div class="prog" id="pg"></div>
+<a class="skip" href="#app">Aller au contenu</a>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#/" aria-label="NEXORIA, accueil">NEX<i>ORIA</i></a>
+  <nav aria-label="Navigation principale"><ul id="menu">
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#medias">Vidéos</a></li>
+    <li><a href="#actualites">Actualités</a></li>
+    <li><a href="#equipe">Équipe</a></li>
+    <li class="menu-cta"><a class="btn sm main" data-discord href="#communaute">Discord</a></li>
+  </ul></nav>
+  <div class="tools">
+    <button class="tt" id="tt" type="button" aria-label="Passer en mode clair" title="Changer de thème"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  </div>
+</div></header>
+
+<main id="app">
+  <!-- ===================== ACCUEIL ===================== -->
+  <div id="view-home">
+    <section class="hero">
+      <div class="layer grid" data-p=".15"></div>
+      <div class="layer" data-p=".35" style="top:-25%;right:-12%"><i class="orb"></i></div>
+      <div class="layer" data-p=".55" style="bottom:-35%;left:-18%"><i class="orb o2"></i></div>
+      <div class="layer fog"></div>
+      <canvas id="pc" aria-hidden="true"></canvas>
+
+      <div class="universe" id="universe" aria-label="Les univers NEXORIA">
+        <div class="u-halo"></div>
+        <div class="u-ring r1"></div><div class="u-ring r2"></div><div class="u-ring r3"></div>
+        <div class="u-core"><span class="u-shine"></span><span class="u-mark">N</span></div>
+        <div class="u-planets" id="planets"></div>
+        <p class="u-label" id="u-label" aria-live="polite"></p>
+      </div>
+
+      <div class="wrap hero-txt">
+        <h1>NEXORIA</h1>
+        <p class="slogan">Plusieurs projets. Plusieurs univers. Une seule vision.</p>
+        <p class="lead">Fondée par MRkevin et cofondée par ODB, NEXORIA rassemble des serveurs de jeu, des applications, des bots Discord et des sites — chacun avec son univers et sa couleur.</p>
+        <div class="btns">
+          <a class="btn main" href="#projets">Explorer les projets</a>
+          <a class="btn" data-discord href="#communaute">Rejoindre le Discord</a>
+        </div>
+        <dl class="stats" id="stats">
+          <div><dt>Projets</dt><dd id="st-projects">—</dd></div>
+          <div><dt>Membres Discord</dt><dd id="st-members">—</dd></div>
+          <div><dt>En ligne</dt><dd id="st-online"><span class="dot"></span>—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="projets"><div class="wrap">
+      <h2>Les projets</h2>
+      <p class="lead">Chaque projet a sa propre identité. Clique sur une carte pour tout voir : vidéos, images, boss, avancement.</p>
+      <div class="filters" id="cat-filters" role="tablist" aria-label="Filtrer les projets"></div>
+      <div class="posters" id="posters"></div>
+    </div></section>
+
+    <section id="medias"><div class="wrap">
+      <h2>Vidéos</h2>
+      <p class="lead">Toutes les vidéos dévoilées sur les projets NEXORIA.</p>
+      <div class="media-row" id="media-row"></div>
+    </div></section>
+
+    <section id="actualites"><div class="wrap">
+      <h2>Actualités</h2>
+      <p class="lead">Les annonces publiées sur le Discord NEXORIA apparaissent ici automatiquement.</p>
+      <div class="filters" id="news-filters" role="tablist" aria-label="Filtrer les actualités"></div>
+      <div class="news" id="news"></div>
+    </div></section>
+
+    <section id="equipe"><div class="wrap">
+      <h2>L’équipe fondatrice</h2>
+      <p class="lead">Deux fondateurs, une seule vision.</p>
+      <div class="team" id="team"></div>
+    </div></section>
+
+    <section id="communaute"><div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Rejoins la communauté</h2>
+          <p class="lead">Annonces, avant-premières, tests des projets et échanges avec l’équipe : tout se passe sur le Discord NEXORIA.</p>
+          <div class="btns"><a class="btn main" data-discord href="#communaute">Rejoindre le Discord</a></div>
+        </div>
+        <div class="live-card" id="live-card">
+          <div class="live-head"><span class="dot"></span><b>Serveur Discord NEXORIA</b></div>
+          <p id="lc-text">Les statistiques en direct s’afficheront dès que le bot NEXORIA sera connecté.</p>
+        </div>
+      </div>
+    </div></section>
+  </div>
+
+  <!-- ===================== PAGE PROJET ===================== -->
+  <div id="view-project" hidden></div>
+</main>
+
+<footer><div class="wrap">
+  <span><b>NEXORIA</b> — structure indépendante. Fondateur : MRkevin · Cofondateur : ODB (Junior).</span>
+  <span id="updated"></span>
+</div></footer>
+
+<dialog class="viewer" id="viewer" aria-label="Visionneuse">
+  <button class="v-close" type="button" aria-label="Fermer">✕</button>
+  <button class="v-nav v-prev" type="button" aria-label="Précédent">‹</button>
+  <div class="v-stage" id="v-stage"></div>
+  <button class="v-nav v-next" type="button" aria-label="Suivant">›</button>
+  <p class="v-cap" id="v-cap"></p>
+</dialog>
+
+<noscript><p class="noscript">Active JavaScript pour afficher les projets NEXORIA.</p></noscript>
+
+<script src="config.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/fx.js"></script>
+</body>
+</html>

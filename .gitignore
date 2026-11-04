@@ -1,0 +1,13 @@
+# Fichiers à ne jamais publier
+bot/.env
+.env
+bot/node_modules/
+node_modules/
+
+# Anciennes versions (9 Mo chacune, inutiles en ligne)
+_ancien/
+
+# Réglages locaux
+.claude/
+Thumbs.db
+desktop.ini

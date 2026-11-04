@@ -1,0 +1,385 @@
+{
+  "_info": "Contenu principal du site. Modifie ce fichier pour ajouter un projet, une vidéo, une image ou un boss. Les infos qui bougent souvent (actus, boss, avancement) peuvent aussi être changées depuis Discord avec le bot : elles vont alors dans data/live.json et passent par-dessus ce fichier.",
+
+  "categories": [
+    { "id": "jeux", "name": "Jeux & serveurs" },
+    { "id": "applis", "name": "Applications" },
+    { "id": "bots", "name": "Bots & sites" }
+  ],
+
+  "team": [
+    {
+      "name": "MRkevin",
+      "alias": "Kevin · Rudeus",
+      "role": "Fondateur",
+      "bio": "Fondateur originel de NEXORIA. Développe les serveurs Garry’s Mod, les applications et les bots de la structure.",
+      "photo": "assets/img/kevin.webp"
+    },
+    {
+      "name": "ODB",
+      "alias": "Junior",
+      "role": "Cofondateur",
+      "bio": "Cofondateur de NEXORIA. Fait évoluer la structure et ses projets aux côtés de MRkevin.",
+      "photo": "assets/img/odb.webp"
+    }
+  ],
+
+  "projects": [
+    {
+      "id": "black-clover",
+      "name": "Black Clover RP",
+      "category": "jeux",
+      "tag": "Serveur Garry’s Mod · Roleplay",
+      "accent": "#e3a73b",
+      "bg": "linear-gradient(160deg,#2a0a0a,#120606 55%,#2d1a0c)",
+      "logo": "assets/img/clover-mascot.webp",
+      "banner": "assets/projects/black-clover/banner.webp",
+      "status": "En développement",
+      "version": "",
+      "progress": 19,
+      "progressNote": "Calculé sur les 115 étapes de la feuille de route officielle du serveur.",
+      "short": "Un grand serveur RP de mages pensé pour accueillir plus de 100 joueurs.",
+      "description": "Le serveur Garry’s Mod phare de NEXORIA : un royaume de Clover où chaque joueur crée son mage, reçoit son grimoire, rejoint une compagnie de Chevaliers-Mages et affronte des démons venus de l’Abysse. Objectif : un serveur capable d’accueillir plus de 100 joueurs, où chaque contenu est poussé à fond.",
+      "server": { "game": "Garry’s Mod", "address": "", "showLiveStatus": true },
+      "features": [
+        { "title": "Arrivée du joueur", "text": "Une entrée en jeu soignée, du chargement à la création du mage.", "items": ["Écran de chargement NEXORIA", "Accueil cinématique et règlement", "Création de personnage en 8 phases", "3 emplacements de personnage"] },
+        { "title": "Magies et grimoires", "text": "Chaque mage reçoit un grimoire et une magie, avec des rangs à décrocher.", "items": ["Mercure, Lumière, Ténèbres, Céleste, Plantes, Temps…", "Rangs de magie E, C, A, S et SS+", "Reroll animé", "Contrats magiques, orbes, runes et reliques"] },
+        { "title": "Progression et économie", "text": "Un personnage qui évolue sur la durée.", "items": ["Niveaux, XP et statistiques RPG", "Équipement : runes, bijoux, capes (E à SS)", "Coffres animés", "Monnaies Yul et Gemmes"] },
+        { "title": "Staff et justice", "text": "Des outils de modération complets, pensés pour un gros serveur.", "items": ["Staff Hub F8 (modération, joueurs, logs)", "Prison plein écran et salle des bannis", "Prise de service de 30 minutes minimum", "Anti-dox, ferme AFK, sauvegardes automatiques"] }
+      ],
+      "bossesIntro": "Le moteur de boss maison de NEXORIA : attaques annoncées, combos, phases et barre de vie. Les deux démons de l’Abysse ont déjà leur modèle 3D ; les autres utilisent un modèle provisoire en attendant le leur.",
+      "bosses": [
+        { "name": "Démon de l’Abysse", "title": "Venu du Monde Souterrain", "description": "Boss d’ouverture. Il arrive entouré de serviteurs et protégé par l’orbe de l’Abysse. Trois phases : Arrivée, Voile des Enfers, Colère de l’Abysse.", "image": "assets/projects/black-clover/boss-demon-abysse.webp", "status": "developpement", "difficulty": 5 },
+        { "name": "Démon de l’Abysse supérieur", "title": "Dévoreur de Malrik", "description": "La forme supérieure du démon, plus massive et plus résistante. Un rituel de quatre sceaux à briser.", "image": "assets/projects/black-clover/boss-demon-abysse-superieur.webp", "status": "developpement", "difficulty": 5 },
+        { "name": "Gardien de pierre", "title": "Sentinelle du donjon oublié", "description": "Trois phases : Éveil, Carapace, puis Cœur exposé.", "status": "developpement", "difficulty": 3 },
+        { "name": "Golem de Granit", "title": "Gardien de la mine", "description": "Frappes lourdes, séismes et pluie de pierres. Sa carapace de granit s’endurcit à mi-vie.", "status": "developpement", "difficulty": 3 },
+        { "name": "Rask le Balafré", "title": "Chef des bandits de la frontière", "description": "« Votre bourse ou votre vie ! Enfin… les deux, plutôt. » Toujours accompagné de ses bandits.", "status": "developpement", "difficulty": 3 },
+        { "name": "Sanglier des Ronces", "title": "Fléau de la forêt", "description": "Charges et frappes enchaînées, puis une furie de plus en plus rapide.", "status": "developpement", "difficulty": 2 },
+        { "name": "Crabe-Roi des Récifs", "title": "Terreur des plages", "description": "Pinces levées, bonds et marée haute.", "status": "developpement", "difficulty": 2 },
+        { "name": "Esprit Sylvestre", "title": "Âme de la prairie", "description": "Invoque des esprits de la prairie et déclenche une tempête de pollen.", "status": "developpement", "difficulty": 2 }
+      ],
+      "videos": [],
+      "galleryTitle": "Magies, grimoires et objets",
+      "gallery": [
+        { "src": "assets/projects/black-clover/autel.webp", "alt": "Autel des orbes magiques" },
+        { "src": "assets/projects/black-clover/mercure-domain.webp", "alt": "Magie de Mercure : domaine", "icon": true },
+        { "src": "assets/projects/black-clover/mercure-prison.webp", "alt": "Magie de Mercure : prison", "icon": true },
+        { "src": "assets/projects/black-clover/mercure-rain.webp", "alt": "Magie de Mercure : pluie", "icon": true },
+        { "src": "assets/projects/black-clover/mercure-whip.webp", "alt": "Magie de Mercure : fouet", "icon": true },
+        { "src": "assets/projects/black-clover/grimoire_astral.webp", "alt": "Grimoire astral", "icon": true },
+        { "src": "assets/projects/black-clover/grimoire_royal.webp", "alt": "Grimoire royal", "icon": true },
+        { "src": "assets/projects/black-clover/grimoire_interdit.webp", "alt": "Grimoire interdit", "icon": true },
+        { "src": "assets/projects/black-clover/orb_legendaire.webp", "alt": "Orbe légendaire", "icon": true },
+        { "src": "assets/projects/black-clover/orb_mystique.webp", "alt": "Orbe mystique", "icon": true },
+        { "src": "assets/projects/black-clover/orb_maudit.webp", "alt": "Orbe maudit", "icon": true },
+        { "src": "assets/projects/black-clover/relique_phenix.webp", "alt": "Relique du phénix", "icon": true },
+        { "src": "assets/projects/black-clover/coeur_legendaire.webp", "alt": "Cœur légendaire", "icon": true },
+        { "src": "assets/projects/black-clover/sceau_celeste.webp", "alt": "Sceau céleste", "icon": true },
+        { "src": "assets/projects/black-clover/rune_gardien.webp", "alt": "Rune du gardien", "icon": true }
+      ],
+      "roadmap": [
+        { "name": "Phase A — Fondations pour 100 joueurs", "status": "en-cours", "progress": 32 },
+        { "name": "Phase B — La carte de Clover", "status": "a-venir" },
+        { "name": "Phase C — Arrivée du joueur et personnage", "status": "en-cours", "progress": 40 },
+        { "name": "Phase D — Interface", "status": "en-cours", "progress": 42 },
+        { "name": "Phase E — Magies et combat", "status": "en-cours", "progress": 10 },
+        { "name": "Phase F — Progression", "status": "en-cours", "progress": 15 },
+        { "name": "Phase G — Équipement et économie", "status": "en-cours", "progress": 9 },
+        { "name": "Phase H — Vie sociale et RP", "status": "en-cours", "progress": 10 },
+        { "name": "Phase I — Monde vivant", "status": "a-venir" },
+        { "name": "Phase J — Events et boss", "status": "en-cours" },
+        { "name": "Phase K — Staff et sécurité", "status": "en-cours", "progress": 62 },
+        { "name": "Phase L — Communauté et boutique", "status": "en-cours", "progress": 26 },
+        { "name": "Phase M — Contenu 3D et pack NEXORIA", "status": "a-venir" },
+        { "name": "Phase N — Lancement (bêta puis ouverture)", "status": "a-venir" }
+      ],
+      "related": ["gazette", "devarchive"],
+      "links": [],
+      "note": "Black Clover RP est un projet communautaire de fans, sans affiliation officielle avec les créateurs de Black Clover."
+    },
+
+    {
+      "id": "dino-app",
+      "name": "Dino App",
+      "category": "applis",
+      "tag": "Application · Windows",
+      "accent": "#22d97f",
+      "bg": "linear-gradient(160deg,#0b1f4a,#071238 60%,#0a2a3a)",
+      "logo": "assets/img/dino-logo.webp",
+      "logoRounded": true,
+      "banner": "assets/projects/dino-app/banner.webp",
+      "status": "Test restreint en préparation",
+      "version": "1.6",
+      "short": "Organisation, création et un assistant Jarvis dans une seule application.",
+      "description": "Dino App réunit trois espaces, les « opus », dans une application de bureau Windows : un espace personnel pour organiser son quotidien, un espace créateurs pour gérer ses projets et ses annonces, et Jarvis, un assistant qui se réveille d’un double clap.",
+      "features": [
+        { "title": "Opus 1 — Votre espace personnel", "text": "Pour organiser votre quotidien.", "items": ["Notes et journal", "Tâches et rappels", "Agenda et habitudes", "Budget", "Coffre à mots de passe et clé de secours"] },
+        { "title": "Opus 2 — L’espace des créateurs", "text": "Gérez vos projets depuis un espace centralisé.", "items": ["Suivi d’avancement des projets", "Notes de version", "Annonces Discord et webhooks", "Brouillons Markdown pour GitHub"] },
+        { "title": "Opus 3 — Jarvis", "text": "Un assistant local, comme dans les films.", "items": ["Réveil par double clap, détection locale", "Lance vos applications sur l’écran choisi", "Voix ElevenLabs ou voix Windows gratuite", "Aucun son enregistré"] },
+        { "title": "Protection et mises à jour", "text": "Dino App surveille et évolue avec vous.", "items": ["Analyse des téléchargements et des clés USB", "Protection anti-ransomware", "Mises à jour vérifiées depuis l’application", "Historique des versions depuis la V1"] }
+      ],
+      "videos": [
+        { "title": "Publicité officielle Dino App (90 s)", "type": "file", "src": "assets/projects/dino-app/pub-dino-app.mp4", "poster": "assets/projects/dino-app/miniature.webp" },
+        { "title": "Format réseaux sociaux (vertical)", "type": "file", "src": "assets/projects/dino-app/pub-dino-app-vertical.mp4", "poster": "assets/projects/dino-app/pub-vertical-poster.webp", "vertical": true },
+        { "title": "Présentation de Dino App 1.6", "type": "file", "src": "assets/projects/dino-app/presentation-1.6.mp4", "poster": "assets/projects/dino-app/presentation-poster.jpg" }
+      ],
+      "galleryTitle": "Captures de l’application",
+      "gallery": [
+        { "src": "assets/projects/dino-app/accueil.webp", "alt": "Accueil de Dino App" },
+        { "src": "assets/projects/dino-app/opus1-outils.webp", "alt": "Opus 1 : outils personnels" },
+        { "src": "assets/projects/dino-app/opus1-outils-2.webp", "alt": "Opus 1 : catégories" },
+        { "src": "assets/projects/dino-app/opus2-discord.webp", "alt": "Opus 2 : annonces Discord" },
+        { "src": "assets/projects/dino-app/opus2-patchnotes.webp", "alt": "Opus 2 : notes de version" },
+        { "src": "assets/projects/dino-app/boite-a-idees.webp", "alt": "Boîte à idées" },
+        { "src": "assets/projects/dino-app/notifications.webp", "alt": "Centre de notifications" },
+        { "src": "assets/projects/dino-app/connexion.webp", "alt": "Écran de connexion" },
+        { "src": "assets/projects/dino-app/contact.webp", "alt": "Page de contact" },
+        { "src": "assets/projects/dino-app/affiche.webp", "alt": "Affiche officielle Dino App" }
+      ],
+      "roadmap": [
+        { "name": "Version 1", "status": "termine" },
+        { "name": "Version 1.6 — Opus 1, Opus 2, protection, mises à jour", "status": "termine" },
+        { "name": "Opus 3 — Jarvis", "status": "termine" },
+        { "name": "Publicité officielle (4K, 1080p, vertical)", "status": "termine" },
+        { "name": "Test restreint avec des testeurs invités", "status": "en-cours" },
+        { "name": "Lien de téléchargement officiel", "status": "a-venir" }
+      ],
+      "related": ["gh-publish"],
+      "links": [],
+      "note": "Aucun lien de téléchargement n’est affiché tant qu’un lien officiel n’a pas été vérifié. Les captures montrent la vraie application, avec un profil de démonstration."
+    },
+
+    {
+      "id": "solo-leveling",
+      "name": "NEXORIA Solo Leveling RP",
+      "category": "jeux",
+      "tag": "Serveur Garry’s Mod · Roleplay",
+      "accent": "#22d3ee",
+      "bg": "linear-gradient(160deg,#071a2e,#050914 60%,#140a2e)",
+      "logo": "assets/projects/solo-leveling/logo.webp",
+      "logoRounded": true,
+      "banner": "assets/projects/solo-leveling/banner.webp",
+      "status": "",
+      "version": "5.0",
+      "short": "Le premier serveur NEXORIA : chasseurs, portails, donjons et armée de l’ombre.",
+      "description": "Le premier serveur Garry’s Mod de NEXORIA, inspiré de l’univers de Solo Leveling. Les joueurs deviennent des chasseurs, franchissent des portails de rang E à S, affrontent les monstres des donjons et lèvent leur armée de l’ombre.",
+      "features": [
+        { "title": "Chasseurs et rangs", "text": "Chaque joueur est un chasseur classé de E à S.", "items": ["Personnage sur 3 emplacements", "Personnalisation 3D", "Alignement : héros de l’Association ou chasseur renégat", "Classes, compétences et licence de chasseur"] },
+        { "title": "Portails et donjons", "text": "Des brèches apparaissent : à vous d’y entrer.", "items": ["Portails de rang E à S", "Monstres avec IA tactique", "Butin physique à ramasser", "Extraction d’ombres : « ARISE »"] },
+        { "title": "Économie des donjons", "text": "Quatre devises et un vrai marché entre joueurs.", "items": ["Dollars, Jetons de chasse, Nexoria Coins, Essence d’ombre", "Hôtel des ventes avec taxe de 5 %", "Boîte aux lettres hors ligne"] },
+        { "title": "Interface Système", "text": "Des menus inspirés des manhwas.", "items": ["HUD tactique : niveau, rang, Combat Power", "Touche C : actions RP et support", "F4 : hub du Monarque", "F5 : quêtes et inventaire · F8 : staff"] }
+      ],
+      "bossesTitle": "Bestiaire",
+      "bossesIntro": "Les monstres des donjons, du gobelin de rang E jusqu’au boss de rang S.",
+      "bosses": [
+        { "name": "Igris", "title": "Commandant rouge · Boss mondial", "description": "Dash d’éclair rouge et onde de choc sismique. Barre de boss sur tout l’écran.", "rank": "S", "status": "disponible", "difficulty": 5 },
+        { "name": "Chevalier d’Élite Sanglant", "title": "Rang B", "description": "Blocage et estoc.", "rank": "B", "status": "disponible", "difficulty": 4 },
+        { "name": "Guerrier Orc Sanguinaire", "title": "Rang C", "description": "Balayage lourd et grande résistance.", "rank": "C", "status": "disponible", "difficulty": 3 },
+        { "name": "Loup des Ténèbres", "title": "Rang D", "description": "Bonds et ralentissement.", "rank": "D", "status": "disponible", "difficulty": 2 },
+        { "name": "Gobelin des Grottes", "title": "Rang E", "description": "Rapide et agressif.", "rank": "E", "status": "disponible", "difficulty": 1 }
+      ],
+      "videos": [],
+      "galleryTitle": "Quêtes, objets et interfaces",
+      "gallery": [
+        { "src": "assets/projects/solo-leveling/quest_boss.webp", "alt": "Quête : vaincre le seigneur de guerre abyssal" },
+        { "src": "assets/projects/solo-leveling/quest_redgate.webp", "alt": "Quête : le portail rouge" },
+        { "src": "assets/projects/solo-leveling/quest_goblin.webp", "alt": "Quête : les gobelins" },
+        { "src": "assets/projects/solo-leveling/quest_workout.webp", "alt": "Quête quotidienne : entraînement" },
+        { "src": "assets/projects/solo-leveling/shadow_soldier.webp", "alt": "Soldat de l’ombre" },
+        { "src": "assets/projects/solo-leveling/rasaka_dagger.webp", "alt": "Dague de Rasaka" },
+        { "src": "assets/projects/solo-leveling/mana_orb.webp", "alt": "Orbe de mana" },
+        { "src": "assets/projects/solo-leveling/awakening_stone.webp", "alt": "Pierre d’éveil" },
+        { "src": "assets/projects/solo-leveling/dungeon_key.webp", "alt": "Clé de donjon" },
+        { "src": "assets/projects/solo-leveling/mana_potion.webp", "alt": "Potion de mana" },
+        { "src": "assets/projects/solo-leveling/hub_bg.webp", "alt": "Fond du hub F4" },
+        { "src": "assets/projects/solo-leveling/tickets_bg.webp", "alt": "Fond des tickets" }
+      ],
+      "roadmap": [
+        { "name": "2.0 — Refonte du Monarque et staff unifié", "status": "termine" },
+        { "name": "2.0.1 / 2.0.2 — Stabilité du serveur et Staff Hub v4", "status": "termine" },
+        { "name": "3.0 — Refonte graphique et interface complète", "status": "termine" },
+        { "name": "4.0 — Cœur NEXORIA, base de données, 3 emplacements", "status": "termine" },
+        { "name": "5.0 — Armée des monstres et économie des donjons", "status": "termine" }
+      ],
+      "related": ["black-clover", "devarchive"],
+      "links": [],
+      "note": "Projet communautaire de fans inspiré de Solo Leveling, sans affiliation officielle avec ses auteurs."
+    },
+
+    {
+      "id": "gazette",
+      "name": "La Gazette de Clover",
+      "category": "bots",
+      "tag": "Site web · Journal RP",
+      "accent": "#4caf6a",
+      "bg": "linear-gradient(160deg,#0f2416,#0a120c 60%,#2a2414)",
+      "logo": "assets/projects/gazette/logo.webp",
+      "banner": "",
+      "status": "Version 2",
+      "version": "2.0",
+      "short": "Le grand quotidien du royaume de Clover, écrit par les joueurs.",
+      "description": "Une plateforme web qui fait vivre le journalisme du royaume de Clover : chroniques royales, missions des compagnies, rumeurs et décrets. Un portail public pour lire, et une rédaction complète pour écrire, relire et publier.",
+      "features": [
+        { "title": "Portail public", "text": "Ouvert à tous, sans inscription.", "items": ["Édition du jour et archives", "Filtres par catégorie et par compagnie", "Top 3 en cartes holographiques", "Likes anonymes et commentaires modérés"] },
+        { "title": "La rédaction", "text": "Un vrai cycle de publication en 4 étapes.", "items": ["Rôles : admin, rédacteur en chef, journaliste, stagiaire", "Grades personnalisés par étage du palais", "XP des rédacteurs", "Verrouillage d’édition en temps réel"] },
+        { "title": "Connectée à Discord", "text": "Une API pour les bots.", "items": ["Publication automatique d’éditions", "Articles affichés en embeds Discord", "Jetons sécurisés, limite de débit"] },
+        { "title": "Nero, la mascotte", "text": "Un guide animé pour les nouveaux lecteurs.", "items": ["Conseils et citations immersives", "Interface mobile d’abord", "Audit de sécurité : 17 tests sur 17"] }
+      ],
+      "videos": [],
+      "galleryTitle": "Éditions de la Gazette",
+      "gallery": [
+        { "src": "assets/projects/gazette/edition-1.webp", "alt": "Édition de la Gazette de Clover", "tall": true },
+        { "src": "assets/projects/gazette/edition-2.webp", "alt": "Édition de la Gazette de Clover", "tall": true },
+        { "src": "assets/projects/gazette/edition-3.webp", "alt": "Édition de la Gazette de Clover", "tall": true },
+        { "src": "assets/projects/gazette/edition-4.webp", "alt": "Édition de la Gazette de Clover", "tall": true },
+        { "src": "assets/projects/gazette/edition-5.webp", "alt": "Édition de la Gazette de Clover", "tall": true }
+      ],
+      "roadmap": [
+        { "name": "Version 1", "status": "termine" },
+        { "name": "Version 2 — rédaction, grades, API bots", "status": "termine" }
+      ],
+      "related": ["black-clover"],
+      "links": [],
+      "note": "Projet de fans inspiré de Black Clover, sans affiliation officielle."
+    },
+
+    {
+      "id": "gh-publish",
+      "name": "GitHub + Discord Publish",
+      "category": "applis",
+      "tag": "Application · Windows",
+      "accent": "#8b5cf6",
+      "bg": "linear-gradient(160deg,#160d33,#070a13 60%,#2b0f2a)",
+      "logo": "assets/projects/gh-publish/logo.webp",
+      "banner": "assets/projects/gh-publish/banner.webp",
+      "status": "",
+      "version": "V2",
+      "short": "Publier sur GitHub et annoncer sur Discord, depuis une seule application.",
+      "description": "Une application de bureau Windows pour orchestrer ses mises en ligne sur GitHub et diffuser annonces et notes de version sur Discord, avec une direction artistique de launcher de jeu vidéo.",
+      "features": [
+        { "title": "GitHub", "text": "Suivre et préparer ses publications.", "items": ["Projets et dépôts", "Préparation des releases", "Notes de version"] },
+        { "title": "Discord", "text": "Annoncer au bon endroit, avec style.", "items": ["Annonces et patch notes", "Gestion des webhooks", "Calendrier des publications"] },
+        { "title": "14 catégories", "text": "Tout est rangé.", "items": ["Accueil, projets, annonces, documents", "Règlements et documentation", "Bibliothèque multimédia", "Une illustration par section"] },
+        { "title": "Sécurité", "text": "Vos jetons restent à vous.", "items": ["Chiffrement matériel Windows (DPAPI)", "Base SQLite avec migrations", "Sauvegarde avant restauration", "34 tests automatisés"] }
+      ],
+      "videos": [],
+      "galleryTitle": "Aperçu",
+      "gallery": [
+        { "src": "assets/projects/gh-publish/apercu.webp", "alt": "Aperçu de l’application" },
+        { "src": "assets/projects/gh-publish/commit.webp", "alt": "Bannière Commit" },
+        { "src": "assets/projects/gh-publish/bg-onboarding.webp", "alt": "Illustration de bienvenue" },
+        { "src": "assets/projects/gh-publish/bg-documents.webp", "alt": "Illustration Documents" },
+        { "src": "assets/projects/gh-publish/bg-calendar.webp", "alt": "Illustration Calendrier" }
+      ],
+      "roadmap": [
+        { "name": "Version 1", "status": "termine" },
+        { "name": "V2 — Édition cinématique", "status": "termine" }
+      ],
+      "related": ["dino-app"],
+      "links": []
+    },
+
+    {
+      "id": "fido",
+      "name": "Fido",
+      "category": "bots",
+      "tag": "Bot Discord · Créateurs de contenu",
+      "accent": "#f43f5e",
+      "bg": "linear-gradient(160deg,#2a0610,#0d0507 60%,#1f0a1a)",
+      "logo": "",
+      "monogram": "F",
+      "banner": "assets/projects/fido/banner.webp",
+      "status": "",
+      "version": "",
+      "short": "Le bot Discord des YouTubers et TikTokers : tickets, niveaux, alertes.",
+      "description": "Fido est un bot Discord complet pour les communautés de créateurs de contenu : accueil des membres, tickets, niveaux et classements, alertes YouTube et TikTok, modération et économie. Avec des bannières soignées pour chaque situation.",
+      "features": [
+        { "title": "Accueil", "text": "Chaque arrivée compte.", "items": ["Message de bienvenue avec bannière", "Compteur de membres", "Rôle attribué automatiquement", "Message d’au revoir"] },
+        { "title": "Tickets", "text": "Un support propre.", "items": ["Support, partenariat, recrutement, bug, plainte", "Salons privés", "Fermer, prendre en charge, transcript"] },
+        { "title": "Niveaux", "text": "Récompenser l’activité.", "items": ["XP à l’écrit et en vocal", "Carte de niveau (/rank)", "Classement (/leaderboard)", "Rangs de Bronze à Légende"] },
+        { "title": "Alertes et modération", "text": "Ne rien rater.", "items": ["Nouvelles vidéos YouTube et TikTok", "Modération et utilitaires", "Économie complète", "TypeScript, discord.js v14"] }
+      ],
+      "videos": [],
+      "galleryTitle": "Bannières et rangs",
+      "gallery": [
+        { "src": "assets/projects/fido/ticket-support.webp", "alt": "Bannière ticket support" },
+        { "src": "assets/projects/fido/classement-niveaux.webp", "alt": "Bannière classement des niveaux" },
+        { "src": "assets/projects/fido/giveaway.webp", "alt": "Bannière giveaway" },
+        { "src": "assets/projects/fido/annonce-serveur.webp", "alt": "Bannière annonce" },
+        { "src": "assets/projects/fido/reglement-serveur.webp", "alt": "Bannière règlement" },
+        { "src": "assets/projects/fido/ticket-recrutement.webp", "alt": "Bannière recrutement" },
+        { "src": "assets/projects/fido/au-revoir.webp", "alt": "Bannière au revoir" },
+        { "src": "assets/projects/fido/boost-serveur.webp", "alt": "Bannière boost" },
+        { "src": "assets/projects/fido/rang-bronze_1.webp", "alt": "Rang Bronze", "icon": true },
+        { "src": "assets/projects/fido/rang-gold_1.webp", "alt": "Rang Or", "icon": true },
+        { "src": "assets/projects/fido/rang-diamond_1.webp", "alt": "Rang Diamant", "icon": true },
+        { "src": "assets/projects/fido/rang-master.webp", "alt": "Rang Maître", "icon": true },
+        { "src": "assets/projects/fido/rang-legend.webp", "alt": "Rang Légende", "icon": true }
+      ],
+      "roadmap": [],
+      "related": ["kobrabot"],
+      "links": []
+    },
+
+    {
+      "id": "kobrabot",
+      "name": "KobraBot & Atelier Kobralost",
+      "category": "bots",
+      "tag": "Bot Discord · Outil web",
+      "accent": "#f59e0b",
+      "bg": "linear-gradient(160deg,#2a1a05,#0d0905 60%,#1d1405)",
+      "logo": "",
+      "monogram": "K",
+      "banner": "",
+      "status": "",
+      "version": "V2",
+      "short": "Relier Discord aux familles Kobralost, et planifier leurs améliorations.",
+      "description": "Deux outils autour de l’API Kobralost : KobraBot V2, un bot Discord qui affiche les familles et les relie aux membres du serveur, et l’Atelier des améliorations, une interface web locale pour importer et étudier l’arbre d’améliorations d’une famille.",
+      "features": [
+        { "title": "KobraBot V2", "text": "Le bot Discord.", "items": ["Commandes Familles issues de l’API officielle", "/setup pour configurer chaque serveur", "Association membre Discord ↔ famille", "TypeScript, Bun et discord.js"] },
+        { "title": "Sécurité", "text": "Les jetons sont protégés.", "items": ["Jetons API chiffrés en base", "Un jeton par serveur Discord", "Clé de chiffrement locale"] },
+        { "title": "Atelier des améliorations", "text": "Une interface web locale.", "items": ["Recherche des familles", "Import de l’arbre d’améliorations", "Aperçu avant confirmation", "Lecture seule, limites d’API respectées"] }
+      ],
+      "videos": [],
+      "gallery": [],
+      "roadmap": [
+        { "name": "KobraBot V1", "status": "termine" },
+        { "name": "KobraBot V2", "status": "termine" },
+        { "name": "Atelier des améliorations — version finale", "status": "termine" }
+      ],
+      "related": ["fido"],
+      "links": []
+    },
+
+    {
+      "id": "devarchive",
+      "name": "GMod DevArchive",
+      "category": "jeux",
+      "tag": "Outil de développement · Garry’s Mod",
+      "accent": "#3b82f6",
+      "bg": "linear-gradient(160deg,#0a1a3a,#050914 60%,#0a2440)",
+      "logo": "",
+      "monogram": "DA",
+      "banner": "assets/projects/devarchive/banner.webp",
+      "status": "",
+      "version": "1.0",
+      "short": "La bibliothèque de tous les addons et scripts Garry’s Mod de NEXORIA.",
+      "description": "Le dépôt central où sont rangés tous les addons et scripts Garry’s Mod développés pour les serveurs NEXORIA, classés par état d’avancement et par domaine. C’est la base de travail commune de Black Clover RP et du serveur Solo Leveling.",
+      "features": [
+        { "title": "11 états de développement", "text": "Chaque addon suit un parcours clair.", "items": ["Boîte de réception → à analyser → à tester", "Fonctionnel, à corriger, à optimiser", "En développement → terminé", "Archives des anciennes versions"] },
+        { "title": "12 domaines", "text": "Tout est rangé par usage.", "items": ["Administration et modération", "HUD et interfaces", "Quêtes, économie, combat", "Utilitaires, roleplay, divers"] },
+        { "title": "Écosystème Black Clover", "text": "Les systèmes du serveur RP.", "items": ["Suite de modération (F8, tickets F3)", "Menu principal et compagnies", "Scripts autonomes prêts à l’emploi"] }
+      ],
+      "videos": [],
+      "galleryTitle": "Aperçu",
+      "gallery": [
+        { "src": "assets/projects/devarchive/menu.webp", "alt": "Fond du menu principal NEXORIA" }
+      ],
+      "roadmap": [
+        { "name": "Version 1.0 — restructuration complète", "status": "termine" }
+      ],
+      "related": ["black-clover", "solo-leveling"],
+      "links": []
+    }
+  ]
+}

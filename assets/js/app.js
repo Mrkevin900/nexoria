@@ -1,590 +1,422 @@
-/* NEXORIA — données, pages et interactions.
-   Sources (par priorité) :
-   1. API du bot Discord (config.js → botApi) : données en direct
-   2. data/live.json : dernière sauvegarde écrite par le bot sur GitHub
-   3. data/projects.json : contenu de base
-   Pages : accueil (#/ ou #section) et une page par projet (#/id-du-projet). */
+/* NEXORIA — rendu du site à partir de data/projects.json (accueil + pages projet). */
 (function () {
   'use strict';
+  var d = document, r = d.documentElement;
   var CFG = window.NEXORIA_CONFIG || {};
-  var d = document, root = d.documentElement;
-  var $ = function (id) { return d.getElementById(id); };
-  var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-  var STEP_LABEL = { 'termine': 'Terminé', 'en-cours': 'En cours', 'a-venir': 'À venir' };
-  var BOSS_LABEL = { conception: 'En conception', developpement: 'En développement', disponible: 'Disponible', vaincu: 'Vaincu' };
+  var DATA = null, BY = {}, TEAM = {};
+  var STATE = {
+    dev: { label: 'En développement', color: 'var(--dev)' },
+    done: { label: 'Terminé', color: 'var(--done)' },
+    pause: { label: 'En pause', color: 'var(--pause)' }
+  };
+  var RM = { termine: 'Terminé', 'en-cours': 'En cours', 'a-venir': 'À venir', pause: 'En pause' };
 
   /* ---------- outils ---------- */
-  function esc(s) {
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-    });
+  function el(tag, cls, txt) { var n = d.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; }
+  function img(src, alt, cls) { var i = el('img', cls); i.src = src; i.alt = alt || ''; i.loading = 'lazy'; i.decoding = 'async'; return i; }
+  function link(p) { return '#/projet/' + p.id; }
+  function okUrl(u) { return typeof u === 'string' && /^https:\/\//.test(u); }
+  function paint(n, p) { n.style.setProperty('--acc', p.accent); n.style.setProperty('--pbg', p.bg); }
+
+  /* cadenas : identifiants uniques par instance (sinon les dégradés disparaissent quand une copie est masquée) */
+  var lockN = 0;
+  function lockSvg() {
+    var k = 'lk' + (++lockN);
+    return '<svg class="lock" viewBox="0 0 84 100" aria-hidden="true"><defs>' +
+      '<linearGradient id="' + k + 'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6ff"/><stop offset=".45" stop-color="#b9c2ea"/><stop offset="1" stop-color="#5b648f"/></linearGradient>' +
+      '<linearGradient id="' + k + 's" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8e97c2"/><stop offset=".5" stop-color="#f4f6ff"/><stop offset="1" stop-color="#7a83ad"/></linearGradient>' +
+      '<clipPath id="' + k + 'c"><rect x="6" y="42" width="72" height="54" rx="14"/></clipPath></defs>' +
+      '<path class="shackle" d="M22 46V30a20 20 0 0 1 40 0v16" fill="none" stroke="url(#' + k + 's)" stroke-width="9" stroke-linecap="round"/>' +
+      '<rect x="6" y="42" width="72" height="54" rx="14" fill="url(#' + k + 'b)"/>' +
+      '<rect x="6" y="42" width="72" height="54" rx="14" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>' +
+      '<g clip-path="url(#' + k + 'c)"><rect class="glint" x="20" y="36" width="14" height="70" fill="#fff" opacity="0" transform="skewX(-20)"/></g>' +
+      '<circle cx="42" cy="64" r="7" fill="#1e2340"/><path d="M39 66h6l-1 14h-4z" fill="#1e2340"/></svg>';
   }
-  // N'accepte que les liens http(s) et les chemins relatifs du site.
-  function safeUrl(u) {
-    u = String(u || '').trim();
-    if (!u) return '';
-    if (/^https?:\/\//i.test(u)) return u;
-    if (/^[\w\-./]+$/.test(u) && u.indexOf('..') === -1) return u;
-    return '';
+  var MINI_LOCK = '<svg class="r-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+
+  function stateBadge(p) {
+    var s = el('span', 'state ' + p.state);
+    if (p.state === 'pause') s.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+    s.appendChild(d.createTextNode(STATE[p.state].label));
+    return s;
   }
-  function color(c) { return /^#[0-9a-f]{3,8}$/i.test(c || '') ? c : '#e8e6ef'; }
-  function pct(n) { if (n == null || n === '') return null; n = Number(n); return isFinite(n) ? Math.max(0, Math.min(100, Math.round(n))) : null; }
-  function fmtDate(iso) { var t = new Date(iso); return isNaN(t) ? '' : t.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }); }
-  function fetchJson(url, ms) {
-    var ctl = 'AbortController' in window ? new AbortController() : null;
-    var timer = ctl && setTimeout(function () { ctl.abort(); }, ms || 6000);
-    return fetch(url, { cache: 'no-store', signal: ctl && ctl.signal })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-      .finally(function () { if (timer) clearTimeout(timer); });
+  function byLine(p) {
+    var w = el('div', 'by');
+    (p.authors || []).forEach(function (a) { var t = TEAM[a]; if (t) w.appendChild(img(t.photo, '')); });
+    var names = (p.authors || []).map(function (a) { return TEAM[a] ? TEAM[a].name : a; });
+    w.appendChild(el('span', '', 'Par ' + names.join(' & ')));
+    return w;
   }
-  function youtubeId(u) { var m = String(u || '').match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/); return m ? m[1] : null; }
-  function same(a, b) { return String(a).toLowerCase() === String(b).toLowerCase(); }
-  function logoHtml(p, cls) {
-    var u = safeUrl(p.logo);
-    if (u) return '<img class="' + cls + (p.logoRounded ? ' r' : '') + '" src="' + esc(u) + '" alt="" width="300" height="300" loading="lazy">';
-    return '<span class="' + cls + ' mono" aria-hidden="true">' + esc(p.monogram || p.name.charAt(0)) + '</span>';
+  function art(p, cls) {
+    if (p.holo) { var h = el('div', 'holo ' + (cls || '')); h.setAttribute('aria-hidden', 'true'); h.innerHTML = '<i></i><i></i><i></i><i></i>'; return h; }
+    if (p.logo) return img(p.logo, 'Logo ' + p.name, (cls || 'p-art') + (p.logoRounded ? ' round' : ''));
+    var m = el('div', 'mono ' + (cls || ''), p.monogram || p.name.charAt(0)); m.setAttribute('aria-hidden', 'true'); return m;
   }
 
-  /* ---------- couleur active ---------- */
-  function setAccent(c) {
-    if (c) { root.classList.remove('neutral'); root.style.setProperty('--acc', color(c)); }
-    else { root.classList.add('neutral'); root.style.removeProperty('--acc'); }
-    d.dispatchEvent(new CustomEvent('nx:accent', { detail: c || null }));
-  }
-
-  /* ---------- chargement ---------- */
-  var state = null;
-  var base = fetchJson('data/projects.json?v=' + Date.now());
-  var staticLive = fetchJson('data/live.json?v=' + Date.now()).catch(function () { return {}; });
-  var api = CFG.botApi
-    ? fetchJson(CFG.botApi.replace(/\/$/, '') + '/api/live', 7000).catch(function () { return null; })
-    : Promise.resolve(null);
-  // On attend le bot 1,5 s au plus (il peut dormir chez l'hébergeur gratuit), puis on complète quand il répond.
-  var quickApi = Promise.race([api, new Promise(function (ok) { setTimeout(function () { ok(undefined); }, 1500); })]);
-
-  Promise.all([base, staticLive, quickApi]).then(function (r) {
-    state = { base: r[0], live: r[1] || {}, api: null };
-    if (r[2]) useApi(r[2]);
-    build();
-    route(true);
-    if (r[2] === undefined) api.then(function (a) {
-      if (!a) return;
-      useApi(a); build();
-      if (current) renderProject(current, true); // rafraîchit la page projet sans la recharger
-    });
-  }).catch(function (e) {
-    console.error(e);
-    $('posters').innerHTML = '<div class="empty">Impossible de charger les projets. En local, lance le petit serveur (voir README).</div>';
-  });
-
-  function useApi(a) {
-    state.api = a;
-    if (a.live && (!state.live.updatedAt || (a.live.updatedAt && new Date(a.live.updatedAt) >= new Date(state.live.updatedAt)))) state.live = a.live;
-  }
-
-  /* ---------- fusion des données ---------- */
-  var projects = [], byId = {};
-  function build() {
-    var live = state.live || {};
-    projects = (state.base.projects || []).map(function (p) {
-      var o = (live.projects || {})[p.id] || {};
-      var q = Object.assign({}, p);
-      ['status', 'version', 'progress', 'banner'].forEach(function (k) { if (o[k] != null && o[k] !== '') q[k] = o[k]; });
-      if (o.address && q.server) q.server = Object.assign({}, q.server, { address: o.address });
-      // Étapes : celles du bot remplacent celles du même nom, les nouvelles s'ajoutent.
-      var road = (p.roadmap || []).map(function (s) { return Object.assign({}, s); });
-      (o.roadmap || []).forEach(function (s) {
-        var hit = road.filter(function (x) { return same(x.name, s.name); })[0];
-        if (hit) Object.assign(hit, s); else road.push(s);
-      });
-      q.roadmap = road;
-      // Boss : ceux du fichier + ceux du bot (même nom = mise à jour, removed = retiré).
-      var bosses = (Array.isArray(p.bosses) ? p.bosses : []).map(function (b) { return Object.assign({}, b); });
-      ((live.bosses || {})[p.id] || []).forEach(function (b) {
-        var hit = bosses.filter(function (x) { return same(x.name, b.name) || (b.baseName && same(x.name, b.baseName)); })[0];
-        if (hit) Object.assign(hit, b); else bosses.push(b);
-      });
-      q.bossList = bosses.filter(function (b) { return !b.removed; });
-      q.videos = (p.videos || []).concat(o.videos || []);
-      q.gallery = (p.gallery || []).concat(o.gallery || []);
-      q.liveServer = state.api && state.api.servers ? state.api.servers[p.id] : null;
-      q.pc = color(p.accent);
-      return q;
-    });
-    byId = {};
-    projects.forEach(function (p) { byId[p.id] = p; });
-
-    renderHome();
-    if (state.live.updatedAt) $('updated').textContent = 'Dernière mise à jour via Discord : ' + fmtDate(state.live.updatedAt);
-  }
-
-  /* ================================================================= */
-  /* ACCUEIL                                                            */
-  /* ================================================================= */
-  var catFilter = 'all';
-  function renderHome() {
-    $('st-projects').textContent = projects.length;
-    renderPlanets();
-    renderCats();
-    renderPosters();
-    renderMedia();
-    renderNews();
-    renderTeam();
-    renderLive();
-    d.dispatchEvent(new Event('nx:rendered'));
-  }
-
-  function posterHtml(p) {
-    var prog = pct(p.progress);
-    var meta = [];
-    if (p.version) meta.push('v' + String(p.version).replace(/^v/i, ''));
-    if (p.bossList.length) meta.push(p.bossList.length + ' ' + (p.bossesTitle === 'Bestiaire' ? 'monstres' : 'boss'));
-    if (p.videos.length) meta.push(p.videos.length + ' vidéo' + (p.videos.length > 1 ? 's' : ''));
-    if (p.gallery.length) meta.push(p.gallery.length + ' images');
-    return '<a class="poster" href="#/' + esc(p.id) + '" data-acc="' + esc(p.pc) + '" style="--pc:' + esc(p.pc) + ';background:' + esc(p.bg || '#111') + '">' +
-      (safeUrl(p.banner) ? '<img class="pban" src="' + esc(safeUrl(p.banner)) + '" alt="" loading="lazy">' : '') +
-      logoHtml(p, 'pimg') +
-      '<span class="tag">' + esc(p.tag) + '</span>' +
-      '<h3>' + esc(p.name) + '</h3><p>' + esc(p.short) + '</p>' +
-      (meta.length ? '<div class="meta">' + meta.map(function (m) { return '<span>' + esc(m) + '</span>'; }).join('') + '</div>' : '') +
-      (prog != null ? '<div class="bar" title="Avancement ' + prog + ' %"><i style="width:' + prog + '%"></i></div>' : '') +
-      '<span class="go">Voir le projet</span></a>';
-  }
-
-  function renderCats() {
-    var cats = [{ id: 'all', name: 'Tous' }].concat(state.base.categories || []);
-    $('cat-filters').innerHTML = cats.map(function (c) {
-      var n = c.id === 'all' ? projects.length : projects.filter(function (p) { return p.category === c.id; }).length;
-      return n ? '<button type="button" role="tab" data-c="' + esc(c.id) + '" aria-selected="' + (catFilter === c.id) + '">' + esc(c.name) + ' <small>' + n + '</small></button>' : '';
-    }).join('');
-    $('cat-filters').onclick = function (e) {
-      var b = e.target.closest('button[data-c]'); if (!b) return;
-      catFilter = b.getAttribute('data-c'); renderCats(); renderPosters(); d.dispatchEvent(new Event('nx:rendered'));
-    };
-  }
-  function renderPosters() {
-    var list = projects.filter(function (p) { return catFilter === 'all' || p.category === catFilter; });
-    $('posters').innerHTML = list.map(posterHtml).join('');
-  }
-
-  /* --- univers 3D : les projets en orbite autour du noyau --- */
-  var orbit = { items: [], t: 0, raf: 0, hover: false };
-  function renderPlanets() {
-    var box = $('planets');
-    box.innerHTML = projects.map(function (p) {
-      var u = safeUrl(p.logo);
-      return '<a class="planet" href="#/' + esc(p.id) + '" data-acc="' + esc(p.pc) + '" data-name="' + esc(p.name) + '" style="--pc:' + esc(p.pc) + '" aria-label="' + esc(p.name) + '">' +
-        (u ? '<img src="' + esc(u) + '" alt="">' : esc(p.monogram || p.name.charAt(0))) + '</a>';
-    }).join('');
-    orbit.items = [].slice.call(box.children);
-    if (!orbit.raf) spin();
-  }
-  function spin() {
-    var uni = $('universe');
-    function frame() {
-      orbit.raf = requestAnimationFrame(frame);
-      if ($('view-home').hidden) return;
-      var w = uni.clientWidth; if (!w) return;
-      if (!orbit.hover && !reduced) orbit.t += 0.0022;
-      var n = orbit.items.length, R = w * 0.44, s = Math.max(40, w * 0.12);
-      orbit.items.forEach(function (el, i) {
-        var a = orbit.t + i / n * Math.PI * 2;
-        var x = Math.cos(a) * R, y = Math.sin(a) * R * 0.3;
-        var depth = (Math.sin(a) + 1) / 2;                 // 0 = derrière, 1 = devant
-        var k = 0.58 + depth * 0.52;
-        el.style.setProperty('--s', s + 'px');
-        el.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0) scale(' + k.toFixed(3) + ')';
-        el.style.zIndex = depth > 0.5 ? 5 : 1;
-        el.style.opacity = (0.45 + depth * 0.55).toFixed(2);
-        el.style.filter = depth < 0.35 ? 'blur(1px)' : '';
-      });
+  /* ---------- affiche projet ---------- */
+  function poster(p, big) {
+    var a = el('a', 'poster' + (big ? ' big' : '') + (p.state === 'pause' ? ' locked' : ''));
+    a.href = link(p); paint(a, p);
+    a.setAttribute('aria-label', p.name + ' — ' + STATE[p.state].label);
+    if (p.banner) a.appendChild(img(p.banner, '', 'p-ban'));
+    var ar = art(p, p.logo ? 'p-art' : ''); a.appendChild(ar);
+    var top = el('div', 'p-top'); top.appendChild(stateBadge(p)); a.appendChild(top);
+    if (p.state === 'pause') {
+      var lb = el('div', 'lockbox'); lb.innerHTML = '<span style="position:relative;display:block"><i class="lock-ring"></i>' + lockSvg() + '</span>';
+      lb.appendChild(el('small', '', 'Bientôt de retour')); a.appendChild(lb);
     }
-    frame();
-    uni.addEventListener('pointerover', function (e) {
-      var pl = e.target.closest('.planet'); if (!pl) return;
-      orbit.hover = true; $('u-label').textContent = pl.getAttribute('data-name');
-    });
-    uni.addEventListener('pointerout', function (e) {
-      if (e.target.closest('.planet') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('.planet'))) { orbit.hover = false; $('u-label').textContent = ''; }
-    });
+    a.appendChild(el('span', 'tag', p.tag));
+    a.appendChild(el('h3', '', p.name));
+    a.appendChild(el('p', '', p.short));
+    var f = el('div', 'p-foot');
+    f.appendChild(el('span', 'go', p.state === 'pause' ? 'Voir le projet' : 'Découvrir →'));
+    f.appendChild(byLine(p));
+    a.appendChild(f);
+    return a;
   }
 
-  /* --- vidéos de tous les projets --- */
-  var allMedia = [];
-  function renderMedia() {
-    allMedia = [];
-    projects.forEach(function (p) {
-      p.videos.forEach(function (v) { allMedia.push({ p: p, v: v }); });
+  /* ---------- accueil ---------- */
+  function renderHome() {
+    var P = DATA.projects;
+    // raccourcis
+    var hc = d.getElementById('hero-chips');
+    P.filter(function (p) { return p.state === 'dev'; }).forEach(function (p) {
+      var c = el('a', 'chip'); c.href = link(p); c.style.setProperty('--c', p.accent);
+      c.appendChild(el('i')); c.appendChild(d.createTextNode(p.name)); hc.appendChild(c);
     });
-    if (!allMedia.length) { $('medias').hidden = true; return; }
-    $('medias').hidden = false;
-    $('media-row').innerHTML = allMedia.map(function (m, i) {
-      var yt = youtubeId(m.v.src), poster = safeUrl(m.v.poster) || (yt ? 'https://i.ytimg.com/vi/' + yt + '/hqdefault.jpg' : '');
-      return '<button type="button" class="mcard" data-media="' + i + '" data-acc="' + esc(m.p.pc) + '" style="--pc:' + esc(m.p.pc) + '">' +
-        '<span class="thumb">' + (poster ? '<img src="' + esc(poster) + '" alt="" loading="lazy">' : '') + '<span class="play" aria-hidden="true"></span></span>' +
-        '<span class="bd"><span class="ptag">' + esc(m.p.name) + '</span><b>' + esc(m.v.title || 'Vidéo') + '</b></span></button>';
-    }).join('');
-    $('media-row').onclick = function (e) {
-      var b = e.target.closest('[data-media]'); if (!b) return;
-      var i = +b.getAttribute('data-media');
-      openViewer(allMedia.map(function (m) { return videoItem(m.v, m.p.name); }), i);
-    };
+    // chiffres
+    var n = { dev: 0, done: 0, pause: 0 }; P.forEach(function (p) { n[p.state]++; });
+    var st = d.getElementById('stats');
+    [['', P.length, 'Projets'], ['s-dev', n.dev, 'En développement'], ['s-done', n.done, 'Terminés'], ['s-pause', n.pause, 'En pause']].forEach(function (x) {
+      var w = el('div', x[0]); var dd = el('dd', '', '0'); dd.dataset.count = x[1];
+      w.appendChild(dd); w.appendChild(el('dt', '', x[2])); st.appendChild(w);
+    });
+    // projets + filtres
+    var filters = [['all', 'Tous'], ['dev', 'En développement'], ['done', 'Terminés'], ['pause', 'En pause']]
+      .concat(DATA.categories.map(function (c) { return ['cat:' + c.id, c.name]; }));
+    var box = d.getElementById('posters');
+    function show(f) {
+      box.innerHTML = '';
+      var L = P.filter(function (p) { return f === 'all' || p.state === f || 'cat:' + p.category === f; });
+      L.forEach(function (p, i) { box.appendChild(poster(p, f === 'all' && i === 0)); });
+      d.dispatchEvent(new Event('nx:rendered'));
+    }
+    chips(d.getElementById('proj-filters'), filters.map(function (f) {
+      var count = P.filter(function (p) { return f[0] === 'all' || p.state === f[0] || 'cat:' + p.category === f[0]; }).length;
+      return [f[0], f[1], count];
+    }), show);
+    show('all');
+    renderTeam(); renderBoard(); renderGallery(); renderFaq();
   }
 
-  /* --- actualités --- */
-  var newsFilter = 'all', newsShown = 6;
-  function renderNews() {
-    var news = (state.live.news || []).slice().sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-    var used = {};
-    news.forEach(function (n) { if (n.project && byId[n.project]) used[n.project] = 1; });
-    var tabs = [['all', 'Tout']].concat(Object.keys(used).map(function (id) { return [id, byId[id].name]; }));
-    $('news-filters').innerHTML = tabs.length > 1 ? tabs.map(function (t) {
-      return '<button type="button" role="tab" data-f="' + esc(t[0]) + '" aria-selected="' + (newsFilter === t[0]) + '">' + esc(t[1]) + '</button>';
-    }).join('') : '';
-    var list = news.filter(function (n) { return newsFilter === 'all' || n.project === newsFilter; });
-    $('news').innerHTML = list.length ? newsHtml(list.slice(0, newsShown)) + (list.length > newsShown ? '<div class="more"><button class="btn sm" type="button" id="news-more">Voir plus</button></div>' : '')
-      : '<div class="empty">Aucune actualité pour le moment. Les annonces publiées sur le Discord NEXORIA apparaîtront ici automatiquement.</div>';
-    var more = $('news-more');
-    if (more) more.onclick = function () { newsShown += 6; renderNews(); };
-    $('news-filters').onclick = function (e) {
-      var b = e.target.closest('button[data-f]'); if (!b) return;
-      newsFilter = b.getAttribute('data-f'); newsShown = 6; renderNews();
-    };
-  }
-  function newsHtml(list) {
-    return list.map(function (n) {
-      var p = byId[n.project], img = safeUrl(n.image);
-      return '<article class="post"' + (p ? ' style="--pc:' + esc(p.pc) + '"' : '') + '>' +
-        (img ? '<img src="' + esc(img) + '" alt="" loading="lazy">' : '') +
-        '<div class="bd"><div class="meta"><span class="ptag">' + esc(p ? p.name : 'NEXORIA') + '</span><time datetime="' + esc(n.date) + '">' + fmtDate(n.date) + '</time>' +
-        (n.author ? '<span>par ' + esc(n.author) + '</span>' : '') + '</div>' +
-        '<h3>' + esc(n.title) + '</h3><p>' + esc(n.text) + '</p></div></article>';
-    }).join('');
+  function chips(box, list, cb) {
+    list.forEach(function (c, i) {
+      var b = el('button', 'chip' + (i ? '' : ' on')); b.type = 'button';
+      b.setAttribute('aria-pressed', i ? 'false' : 'true');
+      if (c[3]) { b.style.setProperty('--c', c[3]); b.appendChild(el('i')); }
+      b.appendChild(d.createTextNode(c[1]));
+      if (c[2] != null) b.appendChild(el('span', 'n', String(c[2])));
+      b.onclick = function () {
+        [].forEach.call(box.children, function (y) { y.classList.remove('on'); y.setAttribute('aria-pressed', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); cb(c[0]);
+      };
+      box.appendChild(b);
+    });
   }
 
   function renderTeam() {
-    $('team').innerHTML = (state.base.team || []).map(function (m, i) {
-      return '<article class="person"><div class="ring"><img src="' + esc(safeUrl(m.photo)) + '" alt="Photo de ' + esc(m.name) + '" width="150" height="150" loading="lazy"></div>' +
-        '<h3>' + esc(m.name) + (m.alias ? '<span class="alias">' + esc(m.alias) + '</span>' : '') + '</h3>' +
-        '<span class="role' + (i ? ' co' : '') + '">' + esc(m.role) + '</span>' +
-        (m.bio ? '<p>' + esc(m.bio) + '</p>' : '') + '</article>';
-    }).join('');
-  }
-
-  function renderLive() {
-    var a = state.api, dc = a && a.discord;
-    var invite = safeUrl((dc && dc.invite) || CFG.discordInvite);
-    d.querySelectorAll('[data-discord]').forEach(function (el) {
-      if (invite) { el.href = invite; el.target = '_blank'; el.rel = 'noopener'; }
+    var box = d.getElementById('team');
+    DATA.team.forEach(function (t) {
+      var own = DATA.projects.filter(function (p) { return (p.authors || []).indexOf(t.id) > -1; });
+      var a = el('article', 'person' + (t.id === 'kevin' ? ' founder' : ''));
+      var ring = el('div', 'ring'); ring.appendChild(img(t.photo, 'Avatar de ' + t.name)); a.appendChild(ring);
+      var h = el('h3', '', t.name); if (t.alias) h.appendChild(el('span', 'alias', ' · ' + t.alias)); a.appendChild(h);
+      a.appendChild(el('span', 'role', t.role));
+      a.appendChild(el('p', '', t.bio));
+      var c = el('span', 'count', String(own.length)); c.appendChild(el('small', '', own.length > 1 ? 'projets' : 'projet')); a.appendChild(c);
+      var m = el('div', 'mini');
+      own.forEach(function (p) { var l = el('a', '', p.name); l.href = link(p); l.style.setProperty('--c', p.accent); m.appendChild(l); });
+      a.appendChild(m);
+      box.appendChild(a);
     });
-    if (!dc) {
-      if (invite) $('lc-text').textContent = 'Le serveur est ouvert : rejoins-nous ! Les statistiques en direct apparaîtront quand le bot NEXORIA sera en ligne.';
-      return;
-    }
-    var mem = Number(dc.members || 0).toLocaleString('fr-FR'), onl = Number(dc.online || 0).toLocaleString('fr-FR');
-    $('st-members').textContent = mem;
-    $('st-online').innerHTML = '<span class="dot on"></span>' + onl;
-    $('live-card').innerHTML = '<div class="live-head">' + (safeUrl(dc.icon) ? '<img src="' + esc(safeUrl(dc.icon)) + '" alt="">' : '<span class="dot on"></span>') + '<b>' + esc(dc.name || 'NEXORIA') + '</b></div>' +
-      '<p>Connecté en direct au Discord via le bot NEXORIA.</p>' +
-      '<div class="live-nums"><div><b>' + mem + '</b><small>membres</small></div><div><b>' + onl + '</b><small>en ligne</small></div></div>';
   }
 
-  /* ================================================================= */
-  /* PAGE PROJET                                                        */
-  /* ================================================================= */
-  var current = null;
-  function renderProject(id, keepScroll) {
-    var p = byId[id]; if (!p) return false;
-    current = id;
-    var y = window.scrollY;
-    var tabs = [['apercu', 'Aperçu']];
-    var s = '';
-
-    // --- en-tête ---
-    var prog = progressOf(p);
-    var kpis = '';
-    if (prog != null) kpis += '<div class="kpi"><span class="ring-p" style="--p:' + prog + '"></span><span><b>' + prog + ' %</b><small>avancement</small></span></div>';
-    if (p.version) kpis += '<div class="kpi"><span class="ic">v</span><span><b>' + esc(String(p.version).replace(/^v/i, '')) + '</b><small>version</small></span></div>';
-    if (p.bossList.length) kpis += '<div class="kpi"><span class="ic">☠</span><span><b>' + p.bossList.length + '</b><small>' + (p.bossesTitle === 'Bestiaire' ? 'monstres' : 'boss') + '</small></span></div>';
-    if (p.videos.length + p.gallery.length) kpis += '<div class="kpi"><span class="ic">▶</span><span><b>' + (p.videos.length + p.gallery.length) + '</b><small>médias</small></span></div>';
-
-    var head = '<section class="phero">' +
-      (safeUrl(p.banner) ? '<img class="phero-bg" src="' + esc(safeUrl(p.banner)) + '" alt="">' : '') +
-      '<div class="wrap"><a class="back" href="#projets">← Tous les projets</a>' +
-      '<div class="phead"><div><div class="badges"><span class="badge">' + esc(p.tag) + '</span>' +
-      (p.status ? '<span class="badge">' + esc(p.status) + '</span>' : '') + '</div>' +
-      '<h1>' + esc(p.name) + '</h1><p class="lead">' + esc(p.description) + '</p>' +
-      linksHtml(p.links) + (kpis ? '<div class="kpis">' + kpis + '</div>' : '') + '</div>' +
-      logoHtml(p, 'plogo') + '</div></div></section>';
-
-    // --- aperçu ---
-    s += '<section class="psec" id="p-apercu"><div class="wrap"><h2>Aperçu</h2>';
-    if (p.server) s += serverHtml(p);
-    if (p.features && p.features.length) {
-      s += '<div class="feat">' + p.features.map(function (f) {
-        return '<div class="box"><h3>' + esc(f.title) + '</h3><p>' + esc(f.text) + '</p>' +
-          (f.items && f.items.length ? '<ul>' + f.items.map(function (i) { return '<li>' + esc(i) + '</li>'; }).join('') + '</ul>' : '') + '</div>';
-      }).join('') + '</div>';
-    }
-    if (p.note) s += '<p class="note">' + esc(p.note) + '</p>';
-    s += '</div></section>';
-
-    // --- boss ---
-    if (p.bossList.length || Array.isArray(p.bosses)) {
-      tabs.push(['boss', p.bossesTitle || 'Boss']);
-      s += '<section class="psec" id="p-boss"><div class="wrap"><h2>' + esc(p.bossesTitle || 'Boss') + '</h2>' +
-        (p.bossesIntro ? '<p class="lead">' + esc(p.bossesIntro) + '</p>' : '') + bossesHtml(p) + '</div></section>';
-    }
-
-    // --- avancement ---
-    if (p.roadmap.length || prog != null) {
-      tabs.push(['avancement', 'Avancement']);
-      s += '<section class="psec" id="p-avancement"><div class="wrap"><h2>Avancement</h2>' + roadmapHtml(p, prog) + '</div></section>';
-    }
-
-    // --- vidéos ---
-    if (p.videos.length) {
-      tabs.push(['videos', 'Vidéos']);
-      s += '<section class="psec" id="p-videos"><div class="wrap"><h2>Vidéos</h2><div class="videos">' + p.videos.map(videoHtml).join('') + '</div></div></section>';
-    }
-
-    // --- galerie ---
-    if (p.gallery.length) {
-      tabs.push(['galerie', 'Galerie']);
-      var big = p.gallery.filter(function (g) { return !g.icon; }), icons = p.gallery.filter(function (g) { return g.icon; });
-      s += '<section class="psec" id="p-galerie"><div class="wrap"><h2>' + esc(p.galleryTitle || 'Galerie') + '</h2>' +
-        (big.length ? '<div class="gallery">' + big.map(galleryItem).join('') + '</div>' : '') +
-        (icons.length ? (big.length ? '<p class="sub-h">Icônes</p>' : '') + '<div class="gallery icons">' + icons.map(galleryItem).join('') + '</div>' : '') +
-        '</div></section>';
-    }
-
-    // --- actualités du projet ---
-    var pnews = (state.live.news || []).filter(function (n) { return n.project === p.id; }).sort(function (a, b) { return new Date(b.date) - new Date(a.date); });
-    if (pnews.length) {
-      tabs.push(['actus', 'Actualités']);
-      s += '<section class="psec" id="p-actus"><div class="wrap"><h2>Actualités</h2><div class="news">' + newsHtml(pnews.slice(0, 6)) + '</div></div></section>';
-    }
-
-    // --- projets liés + navigation ---
-    var rel = (p.related || []).map(function (r) { return byId[r]; }).filter(Boolean);
-    var idx = projects.indexOf(p), prev = projects[(idx - 1 + projects.length) % projects.length], next = projects[(idx + 1) % projects.length];
-    s += '<section class="psec"><div class="wrap">' +
-      (rel.length ? '<h2>Projets liés</h2><div class="related">' + rel.map(posterHtml).join('') + '</div><div style="height:2.5rem"></div>' : '') +
-      '<div class="pnav"><a href="#/' + esc(prev.id) + '" style="--pc:' + esc(prev.pc) + '"><small>← Projet précédent</small><b>' + esc(prev.name) + '</b></a>' +
-      '<a class="next" href="#/' + esc(next.id) + '" style="--pc:' + esc(next.pc) + '"><small>Projet suivant →</small><b>' + esc(next.name) + '</b></a></div></div></section>';
-
-    var nav = tabs.length > 1 ? '<nav class="ptabs" aria-label="Sections du projet"><div class="wrap">' + tabs.map(function (t) {
-      return '<a href="#p-' + t[0] + '" data-sec="p-' + t[0] + '">' + esc(t[1]) + '</a>';
-    }).join('') + '</div></nav>' : '';
-
-    var view = $('view-project');
-    view.innerHTML = head + nav + s;
-    view.className = keepScroll ? '' : 'view-in';
-    view.gallery = p.gallery.map(function (g) { return { type: 'img', src: safeUrl(g.src || g), caption: g.alt || p.name }; });
-    view.videos = p.videos.map(function (v) { return videoItem(v, p.name); });
-    d.title = p.name + ' — NEXORIA';
-    if (keepScroll) window.scrollTo(0, y);
-    spyTabs();
-    d.dispatchEvent(new Event('nx:rendered'));
-    return true;
-  }
-
-  function progressOf(p) {
-    var g = pct(p.progress);
-    if (g != null || !p.roadmap.length) return g;
-    var sum = p.roadmap.reduce(function (a, s) { return a + (s.status === 'termine' ? 100 : (pct(s.progress) || 0)); }, 0);
-    return Math.round(sum / p.roadmap.length);
-  }
-
-  function linksHtml(links) {
-    if (!links || !links.length) return '';
-    return '<div class="btns">' + links.map(function (l, i) {
-      var u = safeUrl(l.url);
-      return u ? '<a class="btn' + (i ? '' : ' main') + '" href="' + esc(u) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a>' : '';
-    }).join('') + '</div>';
-  }
-
-  function serverHtml(p) {
-    var sv = p.server, ls = p.liveServer;
-    var addr = (ls && ls.address) || sv.address || '';
-    var status = ls ? (ls.online ? '<span class="dot on"></span>En ligne' : '<span class="dot off"></span>Hors ligne')
-      : '<span class="dot"></span>' + (addr ? 'Statut indisponible' : 'Ouverture à venir');
-    var h = '<div class="server">' +
-      '<div><small>Serveur ' + esc(sv.game) + '</small><b>' + status + '</b></div>' +
-      '<div><small>Joueurs</small><b>' + (ls && ls.online ? esc(ls.players) + ' / ' + esc(ls.maxPlayers) : '—') + '</b></div>' +
-      '<div><small>Carte</small><b>' + (ls && ls.online && ls.map ? esc(ls.map) : '—') + '</b></div>' +
-      '<div><small>Adresse de connexion</small><b>' + (addr ? esc(addr) + '<button class="copy" type="button" data-copy="' + esc(addr) + '">Copier</button>' : 'Annoncée sur le Discord') + '</b></div></div>';
-    if (addr && ls && ls.online) h += '<div class="btns"><a class="btn main" href="steam://connect/' + esc(addr) + '">Rejoindre le serveur</a></div>';
-    return h;
-  }
-
-  function bossesHtml(p) {
-    var list = p.bossList;
-    if (!list.length) return '<div class="empty">Les boss de ' + esc(p.name) + ' n’ont pas encore été révélés. Ils apparaîtront ici dès leur annonce sur le Discord.</div>';
-    return '<div class="bosses">' + list.map(function (b) {
-      var st = BOSS_LABEL[b.status] ? b.status : 'conception';
-      var prog = pct(b.progress);
-      var diff = Math.max(0, Math.min(5, Number(b.difficulty) || 0));
-      var img = safeUrl(b.image);
-      var visual = img ? '<img src="' + esc(img) + '" alt="' + (b.hidden ? 'Boss mystère' : esc(b.name)) + '" loading="lazy">'
-        : (b.rank ? '<span class="rank">' + esc(b.rank) + '</span>' : '<span class="qmark">?</span>');
-      return '<article class="boss' + (b.hidden ? ' hidden-boss' : '') + (img && !b.hidden && diff >= 5 ? ' featured' : '') + '">' +
-        (img ? '<button type="button" class="bimg" data-zoom="' + esc(img) + '" data-cap="' + esc(b.hidden ? '???' : b.name) + '" style="border:0;padding:0;cursor:zoom-in;width:100%">' + visual + '</button>' : '<div class="bimg">' + visual + '</div>') +
-        '<div class="bd"><div class="row"><span class="bstat ' + st + '">' + BOSS_LABEL[st] + '</span>' +
-        (diff ? '<span class="pips" title="Difficulté ' + diff + ' sur 5"><span class="sr">Difficulté ' + diff + ' sur 5</span>' + [1, 2, 3, 4, 5].map(function (k) { return '<i' + (k <= diff ? ' class="on"' : '') + '></i>'; }).join('') + '</span>' : '') + '</div>' +
-        '<h3>' + (b.hidden ? '???' : esc(b.name)) + '</h3>' +
-        (b.title && !b.hidden ? '<span class="btitle">' + esc(b.title) + '</span>' : '') +
-        (b.description && !b.hidden ? '<p>' + esc(b.description) + '</p>' : '') +
-        (prog != null && st !== 'disponible' && st !== 'vaincu' ? '<div class="row"><span>Développement</span><span>' + prog + ' %</span></div><div class="hpbar"><i style="width:' + prog + '%"></i></div>' : '') +
-        '</div></article>';
-    }).join('') + '</div>';
-  }
-
-  function roadmapHtml(p, glob) {
-    var h = '';
-    if (glob != null) h += '<div class="global"><div class="pbar"><i style="width:' + glob + '%"></i></div><b>' + glob + ' %</b></div>';
-    if (p.progressNote) h += '<p class="pnote">' + esc(p.progressNote) + '</p>';
-    h += '<div class="road">' + p.roadmap.map(function (s, i) {
-      var st = STEP_LABEL[s.status] ? s.status : 'a-venir';
-      var pr = pct(s.progress);
-      return '<div class="step ' + st + '"><span class="ic">' + (st === 'termine' ? '✓' : i + 1) + '</span><b>' + esc(s.name) + '</b>' +
-        '<span class="st">' + STEP_LABEL[st] + (st === 'en-cours' && pr != null ? ' · ' + pr + ' %' : '') + '</span>' +
-        (st === 'en-cours' && pr != null ? '<div class="pbar"><i style="width:' + pr + '%"></i></div>' : '') + '</div>';
-    }).join('') + '</div>';
-    return h;
-  }
-
-  function videoItem(v, pname) {
-    var yt = youtubeId(v.src);
-    return yt ? { type: 'youtube', src: yt, caption: (pname ? pname + ' — ' : '') + (v.title || '') }
-      : { type: 'video', src: safeUrl(v.src), poster: safeUrl(v.poster), caption: (pname ? pname + ' — ' : '') + (v.title || '') };
-  }
-  function videoHtml(v) {
-    var yt = youtubeId(v.src);
-    var cap = v.title ? '<figcaption>' + esc(v.title) + '</figcaption>' : '';
-    if (yt) return '<figure><iframe src="https://www.youtube-nocookie.com/embed/' + yt + '" title="' + esc(v.title || 'Vidéo') + '" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>' + cap + '</figure>';
-    var src = safeUrl(v.src); if (!src) return '';
-    return '<figure' + (v.vertical ? ' class="vertical"' : '') + '><video controls preload="none" playsinline' + (safeUrl(v.poster) ? ' poster="' + esc(safeUrl(v.poster)) + '"' : '') + ' src="' + esc(src) + '">Ton navigateur ne peut pas lire cette vidéo.</video>' + cap + '</figure>';
-  }
-  function galleryItem(g) {
-    var u = safeUrl(g.src || g); if (!u) return '';
-    return '<button type="button" class="' + (g.icon ? 'ic' : g.tall ? 'tall' : '') + '" data-gal="' + esc(u) + '"><img src="' + esc(u) + '" alt="' + esc(g.alt || '') + '" loading="lazy">' +
-      (g.alt ? '<span class="gcap">' + esc(g.alt) + '</span>' : '') + '</button>';
-  }
-
-  /* --- onglets de la page projet --- */
-  var tabObs = null;
-  function spyTabs() {
-    if (tabObs) tabObs.disconnect();
-    var links = d.querySelectorAll('.ptabs a');
-    if (!links.length || !('IntersectionObserver' in window)) return;
-    tabObs = new IntersectionObserver(function (es) {
-      es.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) { a.classList.toggle('act', a.getAttribute('data-sec') === e.target.id); });
+  function renderBoard() {
+    var box = d.getElementById('board');
+    ['dev', 'done', 'pause'].forEach(function (s) {
+      var L = DATA.projects.filter(function (p) { return p.state === s; });
+      var col = el('div', 'col ' + s);
+      var h = el('h3'); h.appendChild(el('span', 'dot')); h.appendChild(d.createTextNode(STATE[s].label)); h.appendChild(el('b', '', String(L.length)));
+      col.appendChild(h);
+      L.forEach(function (p) {
+        var a = el('a', 'row'); a.href = link(p); paint(a, p);
+        var ic = el('span', 'r-ico');
+        if (p.logo) ic.appendChild(img(p.logo, '')); else ic.textContent = p.monogram || p.name.charAt(0);
+        a.appendChild(ic);
+        var t = el('span', 'r-txt'); t.appendChild(el('b', '', p.name));
+        var sub = p.statusNote || p.tag; if (p.version) sub = 'v' + p.version.replace(/^v/i, '') + ' · ' + sub;
+        t.appendChild(el('small', '', sub));
+        if (typeof p.progress === 'number') { var bar = el('div', 'bar'); var i = el('i'); i.dataset.w = p.progress; bar.appendChild(i); t.appendChild(bar); }
+        a.appendChild(t);
+        if (s === 'pause') a.insertAdjacentHTML('beforeend', MINI_LOCK);
+        else if (typeof p.progress === 'number') a.appendChild(el('small', '', p.progress + ' %'));
+        col.appendChild(a);
       });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    d.querySelectorAll('#view-project .psec[id]').forEach(function (s) { tabObs.observe(s); });
+      box.appendChild(col);
+    });
   }
 
-  /* ================================================================= */
-  /* NAVIGATION                                                         */
-  /* ================================================================= */
-  function route(first) {
-    if (!state) return;
-    var h = decodeURIComponent(location.hash || '');
-    var m = h.match(/^#\/([\w-]+)/);
-    var home = $('view-home'), proj = $('view-project');
-    if (m && byId[m[1]]) {
-      home.hidden = true; proj.hidden = false;
-      setAccent(byId[m[1]].pc);
-      renderProject(m[1]);
-      window.scrollTo(0, 0);
-      return;
+  /* ---------- galerie ---------- */
+  var MEDIA = [];
+  function renderGallery() {
+    DATA.projects.forEach(function (p) {
+      (p.videos || []).forEach(function (v) { MEDIA.push({ p: p, k: 'vid', src: v.src, poster: v.poster, t: v.title }); });
+      (p.gallery || []).forEach(function (g) { MEDIA.push({ p: p, k: 'img', src: g.src, t: g.alt, icon: g.icon, ex: g.example }); });
+    });
+    var grid = d.getElementById('mg'), more = d.getElementById('gal-more'), cur = [], shown = 0, STEP = 16;
+    function draw(f) {
+      grid.innerHTML = ''; shown = 0;
+      cur = MEDIA.filter(function (m) { return f === 'all' || m.p.id === f; });
+      if (f === 'all') cur = cur.filter(function (m) { return !m.icon; });
+      page();
     }
-    current = null;
-    var wasProject = !proj.hidden;
-    proj.hidden = true; proj.innerHTML = ''; home.hidden = false;
-    d.title = 'NEXORIA — Plusieurs projets. Plusieurs univers. Une seule vision.';
-    setAccent(null);
-    if (wasProject) { home.classList.remove('view-in'); void home.offsetWidth; home.classList.add('view-in'); }
-    var target = h.length > 1 && h.charAt(1) !== '/' ? d.getElementById(h.slice(1)) : null;
-    if (target) target.scrollIntoView({ behavior: first || wasProject ? 'auto' : 'smooth' });
-    else if (!first) window.scrollTo(0, 0);
+    function page() {
+      cur.slice(shown, shown + STEP).forEach(function (m, j) { grid.appendChild(tile(m, cur, shown + j)); });
+      shown = Math.min(shown + STEP, cur.length);
+      more.hidden = shown >= cur.length;
+      d.dispatchEvent(new Event('nx:rendered'));
+    }
+    more.onclick = page;
+    var list = [['all', 'Tout', null]].concat(DATA.projects.filter(function (p) { return (p.gallery || []).length || (p.videos || []).length; })
+      .map(function (p) { return [p.id, p.name, null, p.accent]; }));
+    chips(d.getElementById('gal-filters'), list, draw);
+    draw('all');
   }
-  window.addEventListener('hashchange', function (e) {
-    // Les onglets d'une page projet sont des ancres internes : on ne quitte pas la page.
-    var h = location.hash;
-    if (/^#p-/.test(h) && current) {
-      var el = d.getElementById(h.slice(1));
-      if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
-      history.replaceState(null, '', '#/' + current);
-      return;
-    }
-    route(false);
-  });
+  function tile(m, list, i, small) {
+    var b = el('button', 'box mt' + (m.k === 'vid' ? ' vd' : '') + (m.tall ? ' tall' : '')); b.type = 'button'; paint(b, m.p);
+    var w = el('span', 'm-img');
+    w.appendChild(img(m.k === 'vid' ? m.poster : m.src, m.t, m.icon ? 'icon' : ''));
+    if (m.ex) w.appendChild(el('span', 'ex', 'Exemple'));
+    b.appendChild(w);
+    var c = el('span', 'm-cap', m.t); if (!small) c.appendChild(el('small', '', m.p.name)); b.appendChild(c);
+    b.onclick = function () { openViewer(list, i); };
+    return b;
+  }
 
-  // Survol d'une carte de l'accueil : la page prend la couleur du projet.
-  d.addEventListener('pointerover', function (e) {
-    if ($('view-home').hidden) return;
-    var el = e.target.closest && e.target.closest('[data-acc]');
-    if (el) setAccent(el.getAttribute('data-acc'));
-  });
-  d.addEventListener('pointerout', function (e) {
-    if ($('view-home').hidden) return;
-    var el = e.target.closest && e.target.closest('[data-acc]');
-    if (el && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('[data-acc]'))) setAccent(null);
-  });
-
-  /* ================================================================= */
-  /* VISIONNEUSE (images et vidéos)                                     */
-  /* ================================================================= */
-  var viewer = $('viewer'), vList = [], vIdx = 0;
+  /* ---------- visionneuse ---------- */
+  var V = d.getElementById('viewer'), VS = d.getElementById('v-stage'), VC = d.getElementById('v-cap'), VL = [], VI = 0;
   function openViewer(list, i) {
-    if (!list.length) return;
-    vList = list; vIdx = i || 0;
-    showItem();
-    if (typeof viewer.showModal === 'function') viewer.showModal(); else viewer.setAttribute('open', '');
+    VL = list; VI = i; vshow();
+    if (V.showModal) { if (!V.open) V.showModal(); } else V.setAttribute('open', '');
   }
-  function showItem() {
-    var it = vList[vIdx], st = $('v-stage');
-    if (it.type === 'img') st.innerHTML = '<img src="' + esc(it.src) + '" alt="' + esc(it.caption || '') + '">';
-    else if (it.type === 'youtube') st.innerHTML = '<iframe style="width:min(100%,1100px);aspect-ratio:16/9;border:0;border-radius:12px" src="https://www.youtube-nocookie.com/embed/' + esc(it.src) + '?autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen title="' + esc(it.caption) + '"></iframe>';
-    else st.innerHTML = '<video controls autoplay playsinline' + (it.poster ? ' poster="' + esc(it.poster) + '"' : '') + ' src="' + esc(it.src) + '"></video>';
-    $('v-cap').textContent = (it.caption || '') + (vList.length > 1 ? '  ·  ' + (vIdx + 1) + ' / ' + vList.length : '');
-    viewer.querySelector('.v-prev').hidden = viewer.querySelector('.v-next').hidden = vList.length < 2;
+  function vshow() {
+    VI = (VI + VL.length) % VL.length; var m = VL[VI]; VS.innerHTML = '';
+    var n;
+    if (m.k === 'vid') { n = el('video'); n.controls = true; n.playsInline = true; n.preload = 'metadata'; n.poster = m.poster; n.src = m.src; }
+    else { n = el('img'); n.src = m.src; n.alt = m.t; }
+    VS.appendChild(n);
+    VC.textContent = m.t + ' — ' + m.p.name + (m.ex ? ' (image d’exemple)' : '') + '   ·   ' + (VI + 1) + ' / ' + VL.length;
+    V.querySelectorAll('.v-nav').forEach(function (b) { b.hidden = VL.length < 2; });
   }
-  function step(n) { vIdx = (vIdx + n + vList.length) % vList.length; showItem(); }
-  function closeViewer() { $('v-stage').innerHTML = ''; if (viewer.open) viewer.close(); }
-  viewer.querySelector('.v-close').onclick = closeViewer;
-  viewer.querySelector('.v-prev').onclick = function () { step(-1); };
-  viewer.querySelector('.v-next').onclick = function () { step(1); };
-  viewer.addEventListener('close', function () { $('v-stage').innerHTML = ''; });
-  viewer.addEventListener('click', function (e) { if (e.target === viewer || e.target.id === 'v-stage') closeViewer(); });
-  viewer.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') step(-1);
-    if (e.key === 'ArrowRight') step(1);
+  function vclose() { VS.innerHTML = ''; if (V.close) V.close(); else V.removeAttribute('open'); }
+  V.querySelector('.v-close').onclick = vclose;
+  V.querySelector('.v-prev').onclick = function () { VI--; vshow(); };
+  V.querySelector('.v-next').onclick = function () { VI++; vshow(); };
+  V.addEventListener('click', function (e) { if (e.target === V || e.target === VS) vclose(); });
+  V.addEventListener('close', function () { VS.innerHTML = ''; });
+  d.addEventListener('keydown', function (e) {
+    if (!V.open) return;
+    if (e.key === 'ArrowLeft') { VI--; vshow(); } if (e.key === 'ArrowRight') { VI++; vshow(); }
   });
 
-  d.addEventListener('click', function (e) {
-    var g = e.target.closest('[data-gal]');
-    if (g) {
-      var list = $('view-project').gallery || [];
-      var i = list.map(function (x) { return x.src; }).indexOf(g.getAttribute('data-gal'));
-      openViewer(list, Math.max(0, i));
-      return;
-    }
-    var z = e.target.closest('[data-zoom]');
-    if (z) { openViewer([{ type: 'img', src: z.getAttribute('data-zoom'), caption: z.getAttribute('data-cap') || '' }], 0); return; }
-    var c = e.target.closest('[data-copy]');
-    if (c) {
-      var v = c.getAttribute('data-copy');
-      (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(function () {
-        c.textContent = 'Copié !'; setTimeout(function () { c.textContent = 'Copier'; }, 1500);
-      }).catch(function () { window.prompt('Adresse du serveur :', v); });
-    }
-  });
+  /* ---------- FAQ ---------- */
+  var FAQ = [
+    ['NEXORIA', 'Qu’est-ce que NEXORIA ?', 'Une structure indépendante qui rassemble des projets numériques : serveurs Garry’s Mod, applications Windows, bots Discord, sites et outils.'],
+    ['NEXORIA', 'Qui a fondé NEXORIA ?', 'MRkevin est le fondateur de NEXORIA. Junior est le cofondateur. MRkevin développe la plupart des projets ; Junior a créé le Panel HG et travaille avec MRkevin sur Black Clover RP et Solo Leveling RP.'],
+    ['Projets', 'Quels projets sont en développement ?', '__DEV__'],
+    ['Projets', 'Pourquoi Solo Leveling RP est-il en pause ?', 'C’était le premier serveur de NEXORIA. Il est mis en pause pour que l’équipe se concentre sur Black Clover RP ; il reviendra plus tard.'],
+    ['Black Clover', 'Qu’est-ce que Black Clover RP ?', 'Le grand serveur roleplay de mages de NEXORIA sur Garry’s Mod, pensé pour plus de 100 joueurs. C’est un projet de fans, sans affiliation officielle avec les ayants droit de Black Clover.'],
+    ['Panel HG', 'À quoi sert le Panel HG ?', 'À gérer et coordonner les hauts gradés du serveur Black Clover : effectifs, grades, compagnies, candidatures, combats, événements, décisions, planning et promotions.'],
+    ['Panel HG', 'Qui peut accéder au Panel HG ?', 'Les hauts gradés autorisés : Grand Chevalier-Mage, Vice-Capitaine, Capitaine, Responsable serveur et Fondateur. Les permissions sont vérifiées par le panel lui-même, pas par ce site.'],
+    ['Dino App', 'Où télécharger Dino App ?', 'Dino App est en test restreint. Aucun lien de téléchargement n’est publié tant que le lien officiel n’a pas été vérifié.'],
+    ['Communauté', 'Comment rejoindre la communauté ?', 'Rejoins le Discord NEXORIA avec le bouton en bas de la page : annonces, avant-premières et tests des projets s’y passent.']
+  ];
+  function renderFaq() {
+    var dev = DATA.projects.filter(function (p) { return p.state === 'dev'; }).map(function (p) { return p.name; });
+    var box = d.getElementById('faq-list'), items = [];
+    FAQ.forEach(function (q) {
+      var det = el('details', 'faq'); det.dataset.c = q[0];
+      var s = el('summary'); var sp = el('span'); sp.appendChild(el('em', 'fc', q[0])); sp.appendChild(d.createTextNode(q[1])); s.appendChild(sp); det.appendChild(s);
+      var done = DATA.projects.filter(function (p) { return p.state === 'done'; }).map(function (p) { return p.name; });
+      var pause = DATA.projects.filter(function (p) { return p.state === 'pause'; }).map(function (p) { return p.name; });
+      det.appendChild(el('p', '', q[2] === '__DEV__' ? 'Presque tout : ' + dev.join(', ') + '. Terminé : ' + (done.join(', ') || 'aucun') + '. En pause : ' + (pause.join(', ') || 'aucun') + '.' : q[2]));
+      box.appendChild(det); items.push(det);
+    });
+    var cats = ['Tout'].concat(FAQ.map(function (q) { return q[0]; }).filter(function (c, i, a) { return a.indexOf(c) === i; }));
+    chips(d.getElementById('faq-filters'), cats.map(function (c) { return [c, c]; }), function (c) {
+      items.forEach(function (x) { x.hidden = !(c === 'Tout' || x.dataset.c === c); });
+    });
+  }
 
-  setAccent(null);
+  /* ---------- page projet ---------- */
+  var VP = d.getElementById('view-project'), VH = d.getElementById('view-home');
+  function section(title, lead) {
+    var s = el('section', 'psec'), w = el('div', 'wrap');
+    w.appendChild(el('h2', '', title)); if (lead) w.appendChild(el('p', 'lead', lead));
+    s.appendChild(w); return { s: s, w: w };
+  }
+  function renderProject(p) {
+    VP.innerHTML = ''; paint(VP, p);
+    VP.className = p.state === 'pause' ? 'is-paused' : '';
+    d.dispatchEvent(new CustomEvent('nx:accent', { detail: p.accent }));
+    // en-tête
+    var hero = el('header', 'phero'); paint(hero, p);
+    if (p.banner) { var bi = img(p.banner, '', 'ph-ban' + (p.bannerIsCapture ? ' shot' : '')); bi.loading = 'eager'; hero.appendChild(bi); }
+    var w = el('div', 'wrap'), L = el('div');
+    var bk = el('a', 'back', '← Tous les projets'); bk.href = '#projets'; L.appendChild(bk);
+    var bd = el('div', 'ph-badges'); bd.appendChild(stateBadge(p)); bd.appendChild(el('span', 'badge-solid', p.tag));
+    if (p.version) bd.appendChild(el('span', 'badge-solid', 'Version ' + p.version)); L.appendChild(bd);
+    L.appendChild(el('h1', '', p.name));
+    L.appendChild(el('p', 'lead', p.description));
+    L.appendChild(byLine(p));
+    if (p.authorsNote) L.appendChild(el('p', 'lead', p.authorsNote)).style.fontSize = '.92rem';
+    w.appendChild(L);
+    w.appendChild(art(p, 'ph-art'));
+    hero.appendChild(w); VP.appendChild(hero);
+
+    // chiffres clés + avancement
+    var top = el('div', 'wrap');
+    if (p.facts && p.facts.length) {
+      var fx = el('div', 'facts');
+      p.facts.forEach(function (f) { var x = el('div'); x.appendChild(el('small', '', f.label)); x.appendChild(el('b', '', f.value)); fx.appendChild(x); });
+      top.appendChild(fx);
+    }
+    if (typeof p.progress === 'number') {
+      var pc = el('div', 'progress-card'), pt = el('div', 'pc-top');
+      pt.appendChild(el('span', '', 'Avancement global')); pt.appendChild(el('b', '', p.progress + ' %')); pc.appendChild(pt);
+      var bar = el('div', 'bar'), bi2 = el('i'); bi2.dataset.w = p.progress; bar.appendChild(bi2); pc.appendChild(bar);
+      if (p.progressNote) pc.appendChild(el('small', '', p.progressNote));
+      top.appendChild(pc);
+    }
+    if (p.state === 'pause') {
+      var lp = el('div', 'lockpanel');
+      lp.innerHTML = '<div class="lp-lock"><i class="lock-ring"></i>' + lockSvg() + '</div>';
+      var lt = el('div'); lt.appendChild(el('h3', '', 'Projet en pause')); lt.appendChild(el('p', '', p.pauseNote || 'Ce projet est en pause. Il reviendra plus tard.'));
+      lp.appendChild(lt); top.appendChild(lp);
+    }
+    if (p.restricted) {
+      var rs = el('div', 'restricted');
+      rs.innerHTML = '<svg viewBox="0 0 34 40" aria-hidden="true"><path d="M17 1 L33 7 V19 C33 29 26 36 17 39 C8 36 1 29 1 19 V7 Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 20l4 4 8-8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>';
+      var rt = el('div'); rt.appendChild(el('h3', '', 'Espace HG — accès réservé')); rt.appendChild(el('p', '', p.restricted));
+      var rb = el('button', 'btn acc', okUrl(CFG.panelHgUrl) ? 'Accéder à l’espace HG' : 'Lien bientôt disponible'); rb.type = 'button';
+      if (okUrl(CFG.panelHgUrl)) rb.onclick = function () { window.open(CFG.panelHgUrl, '_blank', 'noopener'); }; else rb.disabled = true;
+      rt.appendChild(rb); rs.appendChild(rt); top.appendChild(rs);
+    }
+    VP.appendChild(top);
+
+    // fonctionnalités
+    if (p.features && p.features.length) {
+      var F = section(p.state === 'pause' ? 'Ce qui a déjà été construit' : 'Ce que propose ' + p.name);
+      var g = el('div', 'feat');
+      p.features.forEach(function (f, i) {
+        var b = el('div', 'box'); b.appendChild(el('span', 'num', String(i + 1).padStart(2, '0')));
+        b.appendChild(el('h3', '', f.title)); if (f.text) b.appendChild(el('p', '', f.text));
+        if (f.items && f.items.length) { var u = el('ul'); f.items.forEach(function (t) { u.appendChild(el('li', '', t)); }); b.appendChild(u); }
+        g.appendChild(b);
+      });
+      F.w.appendChild(g); VP.appendChild(F.s);
+    }
+    // boss
+    if (p.bosses && p.bosses.length) {
+      var B = section(p.bossesTitle || 'Les boss', p.bossesIntro);
+      var bg = el('div', 'bosses');
+      p.bosses.forEach(function (x) {
+        var c = el('article', 'boss'), im = el('div', 'b-img');
+        if (x.image) im.appendChild(img(x.image, x.name)); else im.appendChild(el('span', 'b-sil', x.rank || x.name.charAt(0)));
+        if (x.rank) im.appendChild(el('span', 'rank', x.rank));
+        c.appendChild(im);
+        var body = el('div', 'b-body'); body.appendChild(el('small', '', x.title)); body.appendChild(el('h3', '', x.name)); body.appendChild(el('p', '', x.description));
+        var sk = el('div', 'skulls'); sk.setAttribute('aria-label', 'Difficulté ' + (x.difficulty || 0) + ' sur 5');
+        for (var i = 1; i <= 5; i++) sk.appendChild(el('i', i <= (x.difficulty || 0) ? 'on' : ''));
+        sk.appendChild(el('span', '', 'Difficulté')); body.appendChild(sk);
+        c.appendChild(body); bg.appendChild(c);
+      });
+      B.w.appendChild(bg); VP.appendChild(B.s);
+    }
+    // vidéos
+    if (p.videos && p.videos.length) {
+      var Vd = section('Vidéos');
+      var vg = el('div', 'videos');
+      p.videos.forEach(function (v) {
+        var f = el('figure', v.vertical ? 'vertical' : ''), vi = el('video');
+        vi.controls = true; vi.preload = 'none'; vi.playsInline = true; vi.poster = v.poster || ''; vi.src = v.src;
+        f.appendChild(vi); f.appendChild(el('figcaption', '', v.title)); vg.appendChild(f);
+      });
+      Vd.w.appendChild(vg); VP.appendChild(Vd.s);
+    }
+    // galerie
+    if (p.gallery && p.gallery.length) {
+      var hasEx = p.gallery.some(function (g) { return g.example; });
+      var G = section(p.galleryTitle || 'Galerie', hasEx ? 'Images d’exemple en attendant les vraies captures.' : '');
+      var gg = el('div', 'pgal');
+      var list = p.gallery.map(function (g) { return { p: p, k: 'img', src: g.src, t: g.alt, icon: g.icon, ex: g.example, tall: g.tall }; });
+      list.forEach(function (m, i) { gg.appendChild(tile(m, list, i, true)); });
+      G.w.appendChild(gg); VP.appendChild(G.s);
+    }
+    // feuille de route
+    if (p.roadmap && p.roadmap.length) {
+      var R = section('Feuille de route');
+      var tl = el('div', 'tl');
+      p.roadmap.forEach(function (x) {
+        var it = el('div', 'tli ' + x.status); it.appendChild(el('b', '', x.name)); it.appendChild(el('span', 'st', RM[x.status] || x.status));
+        if (typeof x.progress === 'number') { var br = el('div', 'bar'), bi3 = el('i'); bi3.dataset.w = x.progress; br.appendChild(bi3); it.appendChild(br); }
+        tl.appendChild(it);
+      });
+      R.w.appendChild(tl); VP.appendChild(R.s);
+    }
+    // projets liés
+    var rel = (p.related || []).map(function (id) { return BY[id]; }).filter(Boolean);
+    if (rel.length) {
+      var Rl = section('Projets liés'); var rg = el('div', 'related');
+      rel.forEach(function (q) { rg.appendChild(poster(q)); }); Rl.w.appendChild(rg); VP.appendChild(Rl.s);
+    }
+    if (p.note) { var nw = el('div', 'wrap'); nw.appendChild(el('p', 'note', p.note)); nw.style.paddingBottom = '3rem'; VP.appendChild(nw); }
+    d.title = p.name + ' — NEXORIA';
+  }
+
+  /* ---------- routeur ---------- */
+  function route() {
+    var h = location.hash, m = h.match(/^#\/projet\/([\w-]+)/);
+    if (m && BY[m[1]]) {
+      VH.hidden = true; VP.hidden = false; renderProject(BY[m[1]]);
+      d.querySelectorAll('.nav ul a.act').forEach(function (a) { a.classList.remove('act'); });
+      window.scrollTo(0, 0);
+    } else {
+      var wasProject = !VP.hidden;
+      VP.hidden = true; VH.hidden = false; VP.innerHTML = '';
+      d.title = 'NEXORIA — Plusieurs projets. Plusieurs univers. Une seule vision.';
+      d.dispatchEvent(new CustomEvent('nx:accent', { detail: null }));
+      var t = h.length > 1 ? d.getElementById(h.slice(1)) : null;
+      if (t) setTimeout(function () { t.scrollIntoView({ behavior: wasProject ? 'auto' : 'smooth' }); }, wasProject ? 30 : 0);
+      else if (wasProject) window.scrollTo(0, 0);
+    }
+    d.dispatchEvent(new Event('nx:rendered'));
+  }
+
+  /* ---------- démarrage ---------- */
+  d.querySelectorAll('[data-discord]').forEach(function (a) {
+    if (okUrl(CFG.discordInvite)) { a.href = CFG.discordInvite; a.target = '_blank'; a.rel = 'noopener'; }
+  });
+  fetch('data/projects.json', { cache: 'no-cache' }).then(function (res) {
+    if (!res.ok) throw new Error(res.status); return res.json();
+  }).then(function (json) {
+    DATA = json;
+    DATA.team.forEach(function (t) { TEAM[t.id] = t; });
+    DATA.projects.forEach(function (p) { BY[p.id] = p; });
+    renderHome();
+    window.addEventListener('hashchange', route);
+    route();
+  }).catch(function (e) {
+    d.getElementById('posters').innerHTML = '<p class="note">Impossible de charger les projets (' + e.message + '). Ouvre le site via un serveur web, pas en double-cliquant sur le fichier.</p>';
+  });
 })();

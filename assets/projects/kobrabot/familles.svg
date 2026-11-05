@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <rect width="1280" height="800" fill="#313338"/>
+  <rect width="72" height="800" fill="#1e1f22"/><g fill="#2b2d31"><circle cx="36" cy="40" r="24"/><circle cx="36" cy="104" r="24"/></g>
+  <text x="104" y="40" font-size="16" font-weight="700" fill="#f2f3f5"># familles</text>
+  <rect x="72" y="60" width="1208" height="1" fill="#1f2023"/>
+  <g transform="translate(104 96)">
+    <circle cx="22" cy="22" r="22" fill="#f59e0b"/><text x="22" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#1d1405">K</text>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">KobraBot</text>
+    <rect x="148" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="168" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="200" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 18:22</text>
+    <text x="60" y="44" font-size="14" fill="#949ba4">a utilisé <tspan fill="#c9cdfb">/famille infos</tspan></text>
+    <g transform="translate(60 62)">
+      <rect width="640" height="540" rx="6" fill="#2b2d31"/><rect width="4" height="540" rx="2" fill="#f59e0b"/>
+      <circle cx="580" cy="56" r="38" fill="#3a2a10" stroke="#f59e0b" stroke-width="3"/><text x="580" y="68" text-anchor="middle" font-size="32" font-weight="900" fill="#fcd34d">S</text>
+      <text x="22" y="40" font-size="20" font-weight="800" fill="#f2f3f5">Famille Serpentis</text>
+      <text x="22" y="66" font-size="14" fill="#dbdee1">Niveau 42 · Classement #7 · 18 membres</text>
+      <g font-size="13">
+        <text x="22" y="120" font-weight="700" fill="#f2f3f5">Chef</text><text x="22" y="142" fill="#dbdee1">Viperion</text>
+        <text x="220" y="120" font-weight="700" fill="#f2f3f5">Puissance</text><text x="220" y="142" fill="#dbdee1">1 284 500</text>
+        <text x="420" y="120" font-weight="700" fill="#f2f3f5">Trésor</text><text x="420" y="142" fill="#dbdee1">92 300 ✦</text>
+        <text x="22" y="196" font-weight="700" fill="#f2f3f5">Améliorations</text>
+      </g>
+      <g font-size="13" fill="#dbdee1">
+        <text x="22" y="226">Écailles d’acier</text><rect x="200" y="215" width="300" height="12" rx="6" fill="#1e1f22"/><rect x="200" y="215" width="270" height="12" rx="6" fill="#f59e0b"/><text x="516" y="226">9 / 10</text>
+        <text x="22" y="258">Venin royal</text><rect x="200" y="247" width="300" height="12" rx="6" fill="#1e1f22"/><rect x="200" y="247" width="180" height="12" rx="6" fill="#f59e0b"/><text x="516" y="258">6 / 10</text>
+        <text x="22" y="290">Mue rapide</text><rect x="200" y="279" width="300" height="12" rx="6" fill="#1e1f22"/><rect x="200" y="279" width="120" height="12" rx="6" fill="#f59e0b"/><text x="516" y="290">4 / 10</text>
+        <text x="22" y="322">Nid fortifié</text><rect x="200" y="311" width="300" height="12" rx="6" fill="#1e1f22"/><rect x="200" y="311" width="60" height="12" rx="6" fill="#f59e0b"/><text x="516" y="322">2 / 10</text>
+      </g>
+      <text x="22" y="376" font-size="13" font-weight="700" fill="#f2f3f5">Membres liés sur ce serveur</text>
+      <g font-size="13" fill="#dbdee1">
+        <rect x="22" y="390" width="140" height="30" rx="15" fill="#1e1f22"/><text x="92" y="410" text-anchor="middle">@Viperion</text>
+        <rect x="172" y="390" width="140" height="30" rx="15" fill="#1e1f22"/><text x="242" y="410" text-anchor="middle">@Naga</text>
+        <rect x="322" y="390" width="140" height="30" rx="15" fill="#1e1f22"/><text x="392" y="410" text-anchor="middle">@Cobra_77</text>
+        <rect x="472" y="390" width="80" height="30" rx="15" fill="#1e1f22"/><text x="512" y="410" text-anchor="middle">+15</text>
+      </g>
+      <rect x="0" y="460" width="640" height="1" fill="#1f2023"/>
+      <text x="22" y="500" font-size="12" fill="#949ba4">Données issues de l’API Kobralost · jeton chiffré</text>
+    </g>
+    <g transform="translate(60 618)" font-size="14" font-weight="600">
+      <rect width="150" height="36" rx="4" fill="#f59e0b"/><text x="75" y="23" text-anchor="middle" fill="#1d1405">Voir les membres</text>
+      <rect x="160" width="170" height="36" rx="4" fill="#4e5058"/><text x="245" y="23" text-anchor="middle" fill="#fff">Améliorations</text>
+    </g>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

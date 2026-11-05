@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a1a21"/><stop offset=".6" stop-color="#0a0a0e"/><stop offset="1" stop-color="#121218"/></linearGradient>
+    <radialGradient id="g1" cx=".75" cy=".35" r=".55"><stop offset="0" stop-color="#ffffff" stop-opacity=".22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="pn" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#ffffff" stop-opacity=".03"/></linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity=".06"/></pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#07070a"/><stop offset=".45" stop-color="#07070a" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/>
+  <rect width="1600" height="700" fill="url(#grid)"/>
+  <rect width="1600" height="700" fill="url(#g1)"/>
+  <g transform="translate(860 110) skewY(-6)">
+    <rect width="620" height="430" rx="26" fill="url(#pn)" stroke="#ffffff" stroke-opacity=".35"/>
+    <rect x="24" y="24" width="130" height="382" rx="16" fill="#ffffff" opacity=".07"/>
+    <g fill="#ffffff"><rect x="44" y="52" width="90" height="10" rx="5" opacity=".6"/><rect x="44" y="88" width="70" height="8" rx="4" opacity=".3"/><rect x="44" y="116" width="80" height="8" rx="4" opacity=".3"/><rect x="44" y="144" width="60" height="8" rx="4" opacity=".3"/><rect x="44" y="172" width="76" height="8" rx="4" opacity=".3"/><rect x="44" y="200" width="66" height="8" rx="4" opacity=".3"/></g>
+    <g fill="#ffffff"><rect x="176" y="24" width="130" height="90" rx="14" opacity=".1"/><rect x="322" y="24" width="130" height="90" rx="14" opacity=".1"/><rect x="468" y="24" width="128" height="90" rx="14" opacity=".1"/>
+    <rect x="194" y="74" width="60" height="22" rx="4" opacity=".7"/><rect x="340" y="74" width="40" height="22" rx="4" opacity=".7"/><rect x="486" y="74" width="50" height="22" rx="4" opacity=".7"/></g>
+    <polyline points="186,330 236,300 286,312 336,258 386,270 436,214 486,236 536,180 586,196" fill="none" stroke="#ffffff" stroke-width="3" opacity=".75"/>
+    <g fill="#ffffff" opacity=".1"><rect x="176" y="140" width="420" height="266" rx="16"/></g>
+  </g>
+  <g transform="translate(1120 470)" opacity=".9">
+    <path d="M60 0 L120 22 V70 C120 108 94 134 60 150 C26 134 0 108 0 70 V22 Z" fill="#0b0b0e" stroke="#fff" stroke-width="3"/>
+    <text x="60" y="94" text-anchor="middle" font-family="Segoe UI,Arial" font-size="42" font-weight="800" fill="#fff">HG</text>
+  </g>
+  <rect width="1600" height="700" fill="url(#fade)"/>
+</svg>

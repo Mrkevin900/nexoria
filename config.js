@@ -1,11 +1,11 @@
 /*
   CONFIGURATION DU SITE NEXORIA
   -----------------------------
-  botApi        : adresse publique de ton bot Discord (ex: "https://nexoria-bot.onrender.com").
-                  Laisse vide tant que le bot n'est pas en ligne : le site fonctionne quand même.
-  discordInvite : lien d'invitation permanent de ton serveur Discord (ex: "https://discord.gg/xxxx").
+  discordInvite : lien d'invitation permanent du serveur Discord.
+  panelHgUrl    : adresse https:// de l'application Panel HG (laisser vide tant qu'elle n'est pas publique).
+  Ne jamais mettre de mot de passe ni de jeton ici : ce fichier est public.
 */
 window.NEXORIA_CONFIG = {
-  botApi: "",
-  discordInvite: "https://discord.gg/NjzVdDvWS2"
+  discordInvite: "https://discord.gg/NjzVdDvWS2",
+  panelHgUrl: ""
 };

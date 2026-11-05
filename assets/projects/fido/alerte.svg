@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <defs>
+    <linearGradient id="th" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b0a18"/><stop offset=".5" stop-color="#7f1d1d"/><stop offset="1" stop-color="#1e1b4b"/></linearGradient>
+    <linearGradient id="tk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f172a"/><stop offset=".6" stop-color="#155e75"/><stop offset="1" stop-color="#831843"/></linearGradient>
+  </defs>
+  <rect width="1280" height="800" fill="#313338"/>
+  <rect width="72" height="800" fill="#1e1f22"/><g fill="#2b2d31"><circle cx="36" cy="40" r="24"/><circle cx="36" cy="104" r="24"/></g>
+  <text x="104" y="40" font-size="16" font-weight="700" fill="#f2f3f5"># nouvelles-vidéos</text>
+  <rect x="72" y="60" width="1208" height="1" fill="#1f2023"/>
+  <g transform="translate(104 90)">
+    <circle cx="22" cy="22" r="22" fill="#f43f5e"/><text x="22" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">F</text>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">Fido</text>
+    <rect x="102" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="122" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="154" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 18:00</text>
+    <text x="60" y="46" font-size="15" fill="#dbdee1"><tspan fill="#c9cdfb">@Notifications</tspan> Nouvelle vidéo en ligne ! 🔴</text>
+    <g transform="translate(60 62)">
+      <rect width="520" height="440" rx="6" fill="#2b2d31"/><rect width="4" height="440" rx="2" fill="#ff0033"/>
+      <rect x="22" y="18" width="20" height="14" rx="3" fill="#ff0033"/><path d="M29 21v8l6-4z" fill="#fff"/>
+      <text x="52" y="30" font-size="13" font-weight="700" fill="#f2f3f5">YouTube · Chaîne du créateur</text>
+      <text x="22" y="64" font-size="17" font-weight="700" fill="#00a8fc">J’ai testé 24 h sans écran (vraiment)</text>
+      <text x="22" y="90" font-size="13" fill="#dbdee1">La vidéo est en ligne, viens réagir en commentaire !</text>
+      <rect x="22" y="108" width="476" height="268" rx="8" fill="url(#th)"/>
+      <circle cx="260" cy="242" r="36" fill="#000" opacity=".55"/><path d="M250 224v36l30-18z" fill="#fff"/>
+      <rect x="430" y="348" width="56" height="20" rx="4" fill="#000" opacity=".75"/><text x="458" y="363" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">14:32</text>
+      <text x="22" y="412" font-size="12" fill="#949ba4">Fido · Alertes YouTube</text>
+    </g>
+  </g>
+  <g transform="translate(720 90)">
+    <circle cx="22" cy="22" r="22" fill="#f43f5e"/><text x="22" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">F</text>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">Fido</text>
+    <rect x="102" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="122" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="154" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 19:12</text>
+    <g transform="translate(60 62)">
+      <rect width="420" height="440" rx="6" fill="#2b2d31"/><rect width="4" height="440" rx="2" fill="#25f4ee"/>
+      <text x="22" y="30" font-size="13" font-weight="700" fill="#f2f3f5">♪ TikTok · @createur</text>
+      <text x="22" y="62" font-size="16" font-weight="700" fill="#00a8fc">Nouveau TikTok publié</text>
+      <rect x="22" y="80" width="200" height="320" rx="10" fill="url(#tk)"/>
+      <circle cx="122" cy="240" r="28" fill="#000" opacity=".5"/><path d="M114 226v28l22-14z" fill="#fff"/>
+      <g font-size="13" fill="#dbdee1"><text x="240" y="110">❤️ 12,4 k</text><text x="240" y="140">💬 318</text><text x="240" y="170">↗ 96</text></g>
+      <text x="22" y="424" font-size="12" fill="#949ba4">Fido · Alertes TikTok</text>
+    </g>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

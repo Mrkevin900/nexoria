@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <rect width="1280" height="800" fill="#313338"/>
+  <rect width="72" height="800" fill="#1e1f22"/>
+  <g fill="#2b2d31"><circle cx="36" cy="40" r="24"/><circle cx="36" cy="104" r="24"/><circle cx="36" cy="164" r="24"/></g>
+  <rect x="72" width="240" height="800" fill="#2b2d31"/>
+  <text x="92" y="38" font-size="16" font-weight="700" fill="#f2f3f5">NEXORIA · Dev</text>
+  <g font-size="15" fill="#949ba4"><text x="100" y="92"># annonces</text><text x="100" y="124"># général</text><rect x="84" y="140" width="216" height="32" rx="6" fill="#404249"/><text x="100" y="162" fill="#f2f3f5"># addonforge-logs</text><text x="100" y="196"># tests</text></g>
+  <text x="340" y="40" font-size="16" font-weight="700" fill="#f2f3f5"># addonforge-logs</text>
+  <rect x="312" y="60" width="968" height="1" fill="#1f2023"/>
+  <g transform="translate(340 100)">
+    <circle cx="22" cy="22" r="22" fill="#f97316"/><path d="M10 26h20l4-6h-8v-4h-12z" fill="#1a0c04"/>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">AddonForge</text>
+    <rect x="160" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="180" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="212" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 21:04</text>
+    <g transform="translate(60 34)">
+      <rect width="620" height="560" rx="6" fill="#2b2d31"/><rect width="4" height="560" rx="2" fill="#f97316"/>
+      <text x="22" y="38" font-size="17" font-weight="700" fill="#f2f3f5">Serveur de test démarré</text>
+      <text x="22" y="66" font-size="14" fill="#dbdee1">Rapport automatique de l’atelier AddonForge.</text>
+      <g font-size="13">
+        <text x="22" y="108" font-weight="700" fill="#f2f3f5">Addon en cours de création</text><text x="22" y="130" fill="#dbdee1">nexoria_bossengine</text>
+        <text x="330" y="108" font-weight="700" fill="#f2f3f5">Permissions</text><text x="330" y="130" fill="#dbdee1">Superadmin confirmé</text>
+        <text x="22" y="176" font-weight="700" fill="#f2f3f5">Scripts autonomes actifs</text>
+        <rect x="22" y="188" width="576" height="70" rx="4" fill="#1e1f22"/><text x="36" y="214" font-family="Consolas,monospace" fill="#dbdee1">scoreboard/cl_scoreboard.lua</text><text x="36" y="240" font-family="Consolas,monospace" fill="#dbdee1">scoreboard/sv_scoreboard.lua</text>
+        <text x="22" y="292" font-weight="700" fill="#f2f3f5">Fichiers modifiés récemment</text>
+        <rect x="22" y="304" width="576" height="96" rx="4" fill="#1e1f22"/><text x="36" y="330" font-family="Consolas,monospace" fill="#86efac">+ lua/autorun/sh_boss_phases.lua</text><text x="36" y="356" font-family="Consolas,monospace" fill="#fde68a">~ lua/entities/boss_abysse/init.lua</text><text x="36" y="382" font-family="Consolas,monospace" fill="#fde68a">~ materials/nexoria/hud_boss.png</text>
+        <text x="22" y="434" font-weight="700" fill="#f2f3f5">Addons chargés</text><text x="22" y="456" fill="#dbdee1">27 addons · 0 texture manquante</text>
+        <text x="22" y="500" font-weight="700" fill="#f2f3f5">Connexion rapide</text>
+        <rect x="22" y="512" width="250" height="28" rx="4" fill="#1e1f22"/><text x="34" y="531" font-family="Consolas,monospace" fill="#dbdee1">connect 127.0.0.1:27015</text>
+      </g>
+    </g>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

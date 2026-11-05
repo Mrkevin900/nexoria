@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06122e"/><stop offset=".6" stop-color="#040814"/><stop offset="1" stop-color="#140612"/></linearGradient>
+    <radialGradient id="blue" cx=".68" cy=".3" r=".45"><stop offset="0" stop-color="#3b6cff" stop-opacity=".5"/><stop offset="1" stop-color="#3b6cff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="red" cx=".95" cy=".8" r=".4"><stop offset="0" stop-color="#ff3b4f" stop-opacity=".4"/><stop offset="1" stop-color="#ff3b4f" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#5b8cff" stroke-opacity=".09"/></pattern>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5b8cff" stop-opacity="0"/><stop offset="1" stop-color="#5b8cff" stop-opacity=".55"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#040814"/><stop offset=".45" stop-color="#040814" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/><rect width="1600" height="700" fill="url(#grid)"/>
+  <rect width="1600" height="700" fill="url(#blue)"/><rect width="1600" height="700" fill="url(#red)"/>
+  <g transform="translate(1150 340)" fill="none" stroke="#7aa2ff">
+    <circle r="260" stroke-opacity=".18"/><circle r="190" stroke-opacity=".25"/><circle r="120" stroke-opacity=".32"/><circle r="50" stroke-opacity=".4"/>
+    <path d="M-280 0H280M0-280V280" stroke-opacity=".18"/>
+    <path d="M0 0 L250 -70 A260 260 0 0 1 260 0 Z" fill="url(#sweep)" stroke="none"/>
+  </g>
+  <g fill="#ff4d5a"><circle cx="1250" cy="230" r="7"/><circle cx="1050" cy="430" r="5"/></g>
+  <g fill="#7aa2ff"><circle cx="1320" cy="420" r="5"/><circle cx="980" cy="250" r="4"/><circle cx="1190" cy="520" r="4"/></g>
+  <g transform="translate(1150 340)">
+    <path d="M0 -70 L18 -26 L66 -22 L30 10 L42 58 L0 32 L-42 58 L-30 10 L-66 -22 L-18 -26 Z" fill="#0a1636" stroke="#c7d6ff" stroke-width="3"/>
+  </g>
+  <rect width="1600" height="700" fill="url(#fade)"/>
+</svg>

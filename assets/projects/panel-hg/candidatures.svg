@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#15151b"/><stop offset="1" stop-color="#07070a"/></linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fafafa"/><stop offset="1" stop-color="#9ca3af"/></linearGradient>
+    <radialGradient id="glow" cx=".15" cy=".05" r=".8"><stop offset="0" stop-color="#ffffff" stop-opacity=".1"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/><rect width="1280" height="800" fill="url(#glow)"/>
+  <text x="60" y="80" font-size="32" font-weight="800" fill="#fff">Candidatures</text>
+  <text x="60" y="110" font-size="15" fill="#9a9aa5">Chaque dossier suit le processus de validation des hauts gradés.</text>
+  <g font-size="14" font-weight="600">
+    <rect x="60" y="140" width="110" height="38" rx="19" fill="#fff"/><text x="115" y="164" text-anchor="middle" fill="#07070a">À examiner</text>
+    <rect x="182" y="140" width="110" height="38" rx="19" fill="none" stroke="#ffffff" stroke-opacity=".2"/><text x="237" y="164" text-anchor="middle" fill="#c7c7d1">Entretien</text>
+    <rect x="304" y="140" width="110" height="38" rx="19" fill="none" stroke="#ffffff" stroke-opacity=".2"/><text x="359" y="164" text-anchor="middle" fill="#c7c7d1">Acceptées</text>
+    <rect x="426" y="140" width="110" height="38" rx="19" fill="none" stroke="#ffffff" stroke-opacity=".2"/><text x="481" y="164" text-anchor="middle" fill="#c7c7d1">Refusées</text>
+  </g>
+  <g font-size="15" fill="#e5e5ea">
+    <g transform="translate(60 210)">
+      <rect width="560" height="170" rx="20" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+      <circle cx="54" cy="56" r="28" fill="#2a2a32" stroke="url(#silver)" stroke-width="2"/><text x="54" y="63" text-anchor="middle" font-weight="800" fill="#fff">A</text>
+      <text x="100" y="50" font-size="19" font-weight="700" fill="#fff">Aldric</text><text x="100" y="74" font-size="13" fill="#9a9aa5">Magie de Lumière · rang A · niveau 34</text>
+      <rect x="400" y="30" width="130" height="30" rx="15" fill="#d4a33a" opacity=".18"/><text x="465" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#e8b84a">Aube d’Or</text>
+      <text x="26" y="122" font-size="14" fill="#c7c7d1">« Je veux protéger la frontière et servir la compagnie. »</text>
+      <text x="26" y="150" font-size="12" fill="#9a9aa5">Déposée il y a 2 h · 3 avis HG</text>
+    </g>
+    <g transform="translate(660 210)">
+      <rect width="560" height="170" rx="20" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+      <circle cx="54" cy="56" r="28" fill="#2a2a32" stroke="url(#silver)" stroke-width="2"/><text x="54" y="63" text-anchor="middle" font-weight="800" fill="#fff">S</text>
+      <text x="100" y="50" font-size="19" font-weight="700" fill="#fff">Selena</text><text x="100" y="74" font-size="13" fill="#9a9aa5">Magie de Mercure · rang S · niveau 41</text>
+      <rect x="400" y="30" width="130" height="30" rx="15" fill="#ef4444" opacity=".18"/><text x="465" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#f87171">Lion Écarlate</text>
+      <text x="26" y="122" font-size="14" fill="#c7c7d1">« Prête pour le combat d’évaluation de samedi. »</text>
+      <text x="26" y="150" font-size="12" fill="#9a9aa5">Déposée hier · entretien prévu</text>
+    </g>
+    <g transform="translate(60 410)">
+      <rect width="560" height="170" rx="20" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+      <circle cx="54" cy="56" r="28" fill="#2a2a32" stroke="url(#silver)" stroke-width="2"/><text x="54" y="63" text-anchor="middle" font-weight="800" fill="#fff">K</text>
+      <text x="100" y="50" font-size="19" font-weight="700" fill="#fff">Kael</text><text x="100" y="74" font-size="13" fill="#9a9aa5">Magie des Ténèbres · rang C · niveau 18</text>
+      <rect x="400" y="30" width="130" height="30" rx="15" fill="#ffffff" opacity=".12"/><text x="465" y="50" text-anchor="middle" font-size="13" font-weight="700" fill="#e5e5ea">Taureau Noir</text>
+      <text x="26" y="122" font-size="14" fill="#c7c7d1">« Je m’entraîne tous les soirs, donnez-moi ma chance. »</text>
+      <text x="26" y="150" font-size="12" fill="#9a9aa5">Déposée il y a 3 jours · 1 avis HG</text>
+    </g>
+    <g transform="translate(660 410)">
+      <rect width="560" height="350" rx="20" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/>
+      <text x="28" y="46" font-size="18" font-weight="700" fill="#fff">Validation du dossier</text>
+      <g font-size="14">
+        <circle cx="40" cy="96" r="12" fill="#22d97f"/><path d="M34 96l4 4 8-8" stroke="#07070a" stroke-width="3" fill="none"/><text x="66" y="101">Dossier complet</text>
+        <circle cx="40" cy="146" r="12" fill="#22d97f"/><path d="M34 146l4 4 8-8" stroke="#07070a" stroke-width="3" fill="none"/><text x="66" y="151">Avis du Capitaine</text>
+        <circle cx="40" cy="196" r="12" fill="none" stroke="#fff" stroke-width="2"/><text x="66" y="201">Combat d’évaluation</text>
+        <circle cx="40" cy="246" r="12" fill="none" stroke="#ffffff" stroke-opacity=".35" stroke-width="2"/><text x="66" y="251" fill="#9a9aa5">Décision finale du conseil HG</text>
+      </g>
+      <line x1="40" y1="108" x2="40" y2="234" stroke="#ffffff" stroke-opacity=".15" stroke-width="2"/>
+      <text x="28" y="306" font-size="13" fill="#9a9aa5">Un combat ne déclenche jamais une promotion automatique.</text>
+    </g>
+    <g transform="translate(60 610)">
+      <rect width="560" height="150" rx="20" fill="#ffffff" opacity=".03" stroke="#ffffff" stroke-opacity=".1" stroke-dasharray="6 6"/>
+      <text x="280" y="82" text-anchor="middle" font-size="15" fill="#9a9aa5">3 autres dossiers en attente</text>
+    </g>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

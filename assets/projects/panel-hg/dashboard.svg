@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16161c"/><stop offset="1" stop-color="#07070a"/></linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c24"/><stop offset="1" stop-color="#0e0e13"/></linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fafafa"/><stop offset="1" stop-color="#9ca3af"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4d58d"/><stop offset="1" stop-color="#d4a33a"/></linearGradient>
+    <radialGradient id="glow" cx=".8" cy=".1" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".12"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect width="1280" height="800" fill="url(#glow)"/>
+  <!-- barre latérale -->
+  <rect x="0" y="0" width="250" height="800" fill="url(#side)"/>
+  <rect x="249" y="0" width="1" height="800" fill="#ffffff" opacity=".1"/>
+  <g transform="translate(32 40)">
+    <path d="M22 0 L44 8 V26 C44 40 34 50 22 56 C10 50 0 40 0 26 V8 Z" fill="none" stroke="url(#silver)" stroke-width="3"/>
+    <text x="22" y="35" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">HG</text>
+    <text x="60" y="24" font-size="20" font-weight="800" fill="#fff" letter-spacing="2">PANEL HG</text>
+    <text x="60" y="46" font-size="12" fill="#9a9aa5" letter-spacing="1">BLACK CLOVER</text>
+  </g>
+  <g font-size="15" fill="#c7c7d1">
+    <rect x="16" y="130" width="218" height="40" rx="10" fill="#ffffff" opacity=".1"/>
+    <rect x="16" y="130" width="4" height="40" rx="2" fill="#fff"/>
+    <text x="48" y="156" fill="#fff" font-weight="600">Tableau de bord</text>
+    <text x="48" y="206">Effectifs</text>
+    <text x="48" y="246">Grades</text>
+    <text x="48" y="286">Compagnies</text>
+    <text x="48" y="326">Candidatures</text>
+    <text x="48" y="366">Combats</text>
+    <text x="48" y="406">Événements</text>
+    <text x="48" y="446">Planning</text>
+    <text x="48" y="486">Promotions</text>
+    <text x="48" y="526">Décisions</text>
+  </g>
+  <g fill="#9a9aa5" opacity=".7">
+    <circle cx="30" cy="201" r="4"/><circle cx="30" cy="241" r="4"/><circle cx="30" cy="281" r="4"/><circle cx="30" cy="321" r="4"/><circle cx="30" cy="361" r="4"/><circle cx="30" cy="401" r="4"/><circle cx="30" cy="441" r="4"/><circle cx="30" cy="481" r="4"/><circle cx="30" cy="521" r="4"/>
+  </g>
+  <rect x="210" y="306" width="26" height="20" rx="10" fill="#d4a33a"/><text x="223" y="321" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0e">6</text>
+  <g transform="translate(16 712)">
+    <rect width="218" height="64" rx="14" fill="#ffffff" opacity=".06"/>
+    <circle cx="34" cy="32" r="18" fill="url(#gold)"/>
+    <text x="64" y="28" font-size="14" font-weight="700" fill="#fff">Capitaine</text>
+    <text x="64" y="47" font-size="12" fill="#9a9aa5">Compte HG connecté</text>
+  </g>
+  <!-- en-tête -->
+  <text x="290" y="70" font-size="30" font-weight="800" fill="#fff">Tableau de bord</text>
+  <text x="290" y="98" font-size="15" fill="#9a9aa5">Coordination des hauts gradés du royaume de Clover</text>
+  <rect x="1010" y="48" width="230" height="44" rx="12" fill="#ffffff" opacity=".07" stroke="#ffffff" stroke-opacity=".14"/>
+  <text x="1032" y="76" font-size="14" fill="#9a9aa5">Rechercher un membre…</text>
+  <!-- cartes chiffres -->
+  <g font-weight="800">
+    <g transform="translate(290 130)"><rect width="220" height="120" rx="18" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/><text x="22" y="38" font-size="14" font-weight="500" fill="#9a9aa5">Effectif total</text><text x="22" y="88" font-size="44" fill="#fff">48</text><text x="120" y="88" font-size="14" font-weight="600" fill="#22d97f">+5 ce mois</text></g>
+    <g transform="translate(530 130)"><rect width="220" height="120" rx="18" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/><text x="22" y="38" font-size="14" font-weight="500" fill="#9a9aa5">Candidatures</text><text x="22" y="88" font-size="44" fill="#fff">6</text><text x="80" y="88" font-size="14" font-weight="600" fill="#d4a33a">à examiner</text></g>
+    <g transform="translate(770 130)"><rect width="220" height="120" rx="18" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/><text x="22" y="38" font-size="14" font-weight="500" fill="#9a9aa5">Événements</text><text x="22" y="88" font-size="44" fill="#fff">3</text><text x="80" y="88" font-size="14" font-weight="600" fill="#9a9aa5">cette semaine</text></g>
+    <g transform="translate(1010 130)"><rect width="230" height="120" rx="18" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".14"/><text x="22" y="38" font-size="14" font-weight="500" fill="#9a9aa5">Promotions</text><text x="22" y="88" font-size="44" fill="#fff">2</text><text x="80" y="88" font-size="14" font-weight="600" fill="#9a9aa5">en validation</text></g>
+  </g>
+  <!-- compagnies -->
+  <g transform="translate(290 280)">
+    <rect width="560" height="480" rx="20" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".12"/>
+    <text x="26" y="44" font-size="18" font-weight="700" fill="#fff">Compagnies de Chevaliers-Mages</text>
+    <g font-size="15" fill="#e5e5ea">
+      <g transform="translate(26 80)"><rect width="508" height="62" rx="12" fill="#ffffff" opacity=".04"/><circle cx="32" cy="31" r="16" fill="#d4a33a"/><text x="62" y="27" font-weight="600">Lion Écarlate</text><text x="62" y="47" font-size="13" fill="#9a9aa5">Capitaine · 12 membres</text><rect x="330" y="25" width="150" height="10" rx="5" fill="#ffffff" opacity=".1"/><rect x="330" y="25" width="128" height="10" rx="5" fill="url(#silver)"/></g>
+      <g transform="translate(26 154)"><rect width="508" height="62" rx="12" fill="#ffffff" opacity=".04"/><circle cx="32" cy="31" r="16" fill="#3b82f6"/><text x="62" y="27" font-weight="600">Aube d’Or</text><text x="62" y="47" font-size="13" fill="#9a9aa5">Capitaine · 10 membres</text><rect x="330" y="25" width="150" height="10" rx="5" fill="#ffffff" opacity=".1"/><rect x="330" y="25" width="104" height="10" rx="5" fill="url(#silver)"/></g>
+      <g transform="translate(26 228)"><rect width="508" height="62" rx="12" fill="#ffffff" opacity=".04"/><circle cx="32" cy="31" r="16" fill="#111"/><circle cx="32" cy="31" r="16" fill="none" stroke="#fff" stroke-opacity=".5"/><text x="62" y="27" font-weight="600">Taureau Noir</text><text x="62" y="47" font-size="13" fill="#9a9aa5">Vice-Capitaine · 9 membres</text><rect x="330" y="25" width="150" height="10" rx="5" fill="#ffffff" opacity=".1"/><rect x="330" y="25" width="90" height="10" rx="5" fill="url(#silver)"/></g>
+      <g transform="translate(26 302)"><rect width="508" height="62" rx="12" fill="#ffffff" opacity=".04"/><circle cx="32" cy="31" r="16" fill="#22c55e"/><text x="62" y="27" font-weight="600">Mante Verte</text><text x="62" y="47" font-size="13" fill="#9a9aa5">Capitaine · 8 membres</text><rect x="330" y="25" width="150" height="10" rx="5" fill="#ffffff" opacity=".1"/><rect x="330" y="25" width="76" height="10" rx="5" fill="url(#silver)"/></g>
+      <g transform="translate(26 376)"><rect width="508" height="62" rx="12" fill="#ffffff" opacity=".04"/><circle cx="32" cy="31" r="16" fill="#a855f7"/><text x="62" y="27" font-weight="600">Œil Pourpre</text><text x="62" y="47" font-size="13" fill="#9a9aa5">Capitaine · 9 membres</text><rect x="330" y="25" width="150" height="10" rx="5" fill="#ffffff" opacity=".1"/><rect x="330" y="25" width="92" height="10" rx="5" fill="url(#silver)"/></g>
+    </g>
+  </g>
+  <!-- activité -->
+  <g transform="translate(870 280)">
+    <rect width="370" height="480" rx="20" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".12"/>
+    <text x="26" y="44" font-size="18" font-weight="700" fill="#fff">Activité récente</text>
+    <g font-size="14" fill="#e5e5ea">
+      <circle cx="34" cy="90" r="6" fill="#22d97f"/><text x="52" y="95">Candidature acceptée</text><text x="52" y="115" font-size="12" fill="#9a9aa5">Aube d’Or · il y a 12 min</text>
+      <circle cx="34" cy="160" r="6" fill="#d4a33a"/><text x="52" y="165">Combat de grade programmé</text><text x="52" y="185" font-size="12" fill="#9a9aa5">Samedi 21 h · Arène royale</text>
+      <circle cx="34" cy="230" r="6" fill="#fff"/><text x="52" y="235">Promotion en validation</text><text x="52" y="255" font-size="12" fill="#9a9aa5">Vice-Capitaine → Capitaine</text>
+      <circle cx="34" cy="300" r="6" fill="#3b82f6"/><text x="52" y="305">Événement créé</text><text x="52" y="325" font-size="12" fill="#9a9aa5">Chasse aux démons · vendredi</text>
+      <circle cx="34" cy="370" r="6" fill="#ff4d5a"/><text x="52" y="375">Décision du conseil</text><text x="52" y="395" font-size="12" fill="#9a9aa5">Vote clos · 4 pour, 1 contre</text>
+    </g>
+    <line x1="34" y1="96" x2="34" y2="364" stroke="#ffffff" stroke-opacity=".12" stroke-width="2"/>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

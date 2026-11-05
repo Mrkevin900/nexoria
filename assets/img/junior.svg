@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <radialGradient id="bg" cx=".5" cy=".35" r=".75"><stop offset="0" stop-color="#2a2a33"/><stop offset=".7" stop-color="#0d0d12"/><stop offset="1" stop-color="#07070a"/></radialGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c7c7d1"/><stop offset="1" stop-color="#6b6b76"/></linearGradient>
+    <radialGradient id="halo" cx=".5" cy=".42" r=".4"><stop offset="0" stop-color="#ffffff" stop-opacity=".22"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bg)"/>
+  <rect width="400" height="400" fill="url(#halo)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity=".12"><circle cx="200" cy="170" r="120"/><circle cx="200" cy="170" r="150" stroke-dasharray="4 10"/></g>
+  <path d="M200 92 c-40 0 -62 30 -62 66 c0 30 14 52 30 64 l-6 22 c-56 14 -96 52 -108 156 h292 c-12 -104 -52 -142 -108 -156 l-6 -22 c16 -12 30 -34 30 -64 c0 -36 -22 -66 -62 -66 z" fill="#050507"/>
+  <path d="M200 92 c-40 0 -62 30 -62 66 c0 30 14 52 30 64 l-6 22 c-56 14 -96 52 -108 156 h292 c-12 -104 -52 -142 -108 -156 l-6 -22 c16 -12 30 -34 30 -64 c0 -36 -22 -66 -62 -66 z" fill="none" stroke="url(#silver)" stroke-width="3" opacity=".7"/>
+  <g transform="translate(200 318)">
+    <path d="M0 -40 L34 -26 V4 C34 26 18 40 0 48 C-18 40 -34 26 -34 4 V-26 Z" fill="#0b0b0e" stroke="url(#silver)" stroke-width="3"/>
+    <text y="16" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="40" font-weight="800" fill="#fff">J</text>
+  </g>
+</svg>

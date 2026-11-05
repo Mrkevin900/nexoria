@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2a1a05"/><stop offset=".6" stop-color="#0d0905"/><stop offset="1" stop-color="#1d1405"/></linearGradient>
+    <radialGradient id="g" cx=".72" cy=".45" r=".5"><stop offset="0" stop-color="#f59e0b" stop-opacity=".45"/><stop offset="1" stop-color="#f59e0b" stop-opacity="0"/></radialGradient>
+    <pattern id="hex" width="56" height="97" patternUnits="userSpaceOnUse" patternTransform="scale(.9)"><path d="M28 0 L56 16 V48 L28 64 L0 48 V16 Z M28 64 V97" fill="none" stroke="#f59e0b" stroke-opacity=".1" stroke-width="1.5"/></pattern>
+    <linearGradient id="scale" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fcd34d"/><stop offset="1" stop-color="#b45309"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d0905"/><stop offset=".45" stop-color="#0d0905" stop-opacity="0"/></linearGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/><rect width="1600" height="700" fill="url(#hex)"/><rect width="1600" height="700" fill="url(#g)"/>
+  <path d="M760 560 C900 640 1080 600 1120 500 C1160 400 1000 380 1020 300 C1040 220 1180 200 1260 250 C1330 295 1400 260 1420 200" fill="none" stroke="url(#scale)" stroke-width="46" stroke-linecap="round"/>
+  <path d="M760 560 C900 640 1080 600 1120 500 C1160 400 1000 380 1020 300 C1040 220 1180 200 1260 250 C1330 295 1400 260 1420 200" fill="none" stroke="#0d0905" stroke-opacity=".35" stroke-width="46" stroke-dasharray="6 22" stroke-linecap="round"/>
+  <g transform="translate(1420 196) rotate(-30)">
+    <ellipse cx="34" cy="0" rx="58" ry="40" fill="url(#scale)"/>
+    <circle cx="52" cy="-16" r="7" fill="#0d0905"/><circle cx="54" cy="-18" r="2" fill="#fff"/>
+    <path d="M90 4 L120 0 L132 -10 M120 0 L132 10" stroke="#ef4444" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+  <rect width="1600" height="700" fill="url(#fade)"/>
+</svg>

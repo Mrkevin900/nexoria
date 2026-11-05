@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <rect width="1280" height="800" fill="#313338"/>
+  <rect width="72" height="800" fill="#1e1f22"/><g fill="#2b2d31"><circle cx="36" cy="40" r="24"/><circle cx="36" cy="104" r="24"/><circle cx="36" cy="164" r="24"/></g>
+  <rect x="72" width="232" height="800" fill="#2b2d31"/>
+  <text x="92" y="38" font-size="16" font-weight="700" fill="#f2f3f5">Communauté créateur</text>
+  <g font-size="15" fill="#949ba4"><text x="100" y="92"># annonces</text><text x="100" y="124"># nouvelles-vidéos</text><rect x="84" y="140" width="208" height="32" rx="6" fill="#404249"/><text x="100" y="162" fill="#f2f3f5"># ouvrir-un-ticket</text><text x="100" y="196"># classement</text><text x="88" y="240" font-size="12" font-weight="700">TICKETS</text><text x="100" y="270"># support-lyra</text><text x="100" y="302"># partenariat-nova</text></g>
+  <text x="332" y="40" font-size="16" font-weight="700" fill="#f2f3f5"># ouvrir-un-ticket</text>
+  <rect x="304" y="60" width="976" height="1" fill="#1f2023"/>
+  <g transform="translate(332 96)">
+    <circle cx="22" cy="22" r="22" fill="#f43f5e"/><text x="22" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">F</text>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">Fido</text>
+    <rect x="102" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="122" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="154" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 14:05</text>
+    <g transform="translate(60 34)">
+      <rect width="640" height="330" rx="6" fill="#2b2d31"/><rect width="4" height="330" rx="2" fill="#f43f5e"/>
+      <text x="22" y="40" font-size="20" font-weight="800" fill="#f2f3f5">🎫 Centre d’aide</text>
+      <text x="22" y="72" font-size="14" fill="#dbdee1">Choisis la raison de ta demande : un salon privé s’ouvre</text>
+      <text x="22" y="94" font-size="14" fill="#dbdee1">avec l’équipe. Merci de rester poli et précis.</text>
+      <g font-size="14" fill="#dbdee1">
+        <text x="22" y="140">🛠️  <tspan font-weight="700" fill="#f2f3f5">Support</tspan> — un problème sur le serveur</text>
+        <text x="22" y="170">🤝  <tspan font-weight="700" fill="#f2f3f5">Partenariat</tspan> — proposer une collaboration</text>
+        <text x="22" y="200">📋  <tspan font-weight="700" fill="#f2f3f5">Recrutement</tspan> — rejoindre l’équipe</text>
+        <text x="22" y="230">🐞  <tspan font-weight="700" fill="#f2f3f5">Bug</tspan> — signaler un bug du bot</text>
+        <text x="22" y="260">⚠️  <tspan font-weight="700" fill="#f2f3f5">Plainte</tspan> — signaler un membre</text>
+      </g>
+      <text x="22" y="308" font-size="12" fill="#949ba4">Fido · Tickets</text>
+    </g>
+    <g transform="translate(60 380)" font-size="14" font-weight="600">
+      <rect width="640" height="40" rx="4" fill="#1e1f22" stroke="#4e5058"/><text x="16" y="25" fill="#949ba4">Choisis une catégorie de ticket…</text><path d="M612 16l6 7 6-7" stroke="#b5bac1" stroke-width="2" fill="none"/>
+    </g>
+  </g>
+  <g transform="translate(332 540)">
+    <circle cx="22" cy="22" r="22" fill="#f43f5e"/><text x="22" y="30" text-anchor="middle" font-size="20" font-weight="900" fill="#fff">F</text>
+    <text x="60" y="18" font-size="16" font-weight="700" fill="#f2f3f5">Fido</text>
+    <rect x="102" y="4" width="40" height="18" rx="4" fill="#5865f2"/><text x="122" y="17" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">BOT</text>
+    <text x="154" y="18" font-size="12" fill="#949ba4">Aujourd’hui à 14:07 · # support-lyra</text>
+    <g transform="translate(60 34)">
+      <rect width="640" height="104" rx="6" fill="#2b2d31"/><rect width="4" height="104" rx="2" fill="#22c55e"/>
+      <text x="22" y="36" font-size="16" font-weight="700" fill="#f2f3f5">Ticket Support ouvert</text>
+      <text x="22" y="64" font-size="14" fill="#dbdee1">Bonjour <tspan fill="#c9cdfb">@Lyra</tspan>, un membre du staff va te répondre.</text>
+      <text x="22" y="88" font-size="12" fill="#949ba4">Ticket n° 0142</text>
+    </g>
+    <g transform="translate(60 150)" font-size="14" font-weight="600">
+      <rect width="170" height="36" rx="4" fill="#248046"/><text x="85" y="23" text-anchor="middle" fill="#fff">✋ Prendre en charge</text>
+      <rect x="180" width="120" height="36" rx="4" fill="#4e5058"/><text x="240" y="23" text-anchor="middle" fill="#fff">📄 Transcript</text>
+      <rect x="310" width="110" height="36" rx="4" fill="#da373c"/><text x="365" y="23" text-anchor="middle" fill="#fff">🔒 Fermer</text>
+    </g>
+  </g>
+  <g transform="translate(1100 14)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

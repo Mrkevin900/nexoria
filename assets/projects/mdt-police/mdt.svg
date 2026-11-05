@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1736"/><stop offset="1" stop-color="#050a18"/></linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3b6cff"/><stop offset="1" stop-color="#8fb0ff"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#5b8cff" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/><rect width="1280" height="800" fill="url(#grid)"/>
+  <rect width="1280" height="70" fill="#081230"/><rect y="70" width="1280" height="2" fill="#3b6cff" opacity=".6"/>
+  <path d="M46 18 L56 38 L78 40 L62 54 L66 76 L46 64 L26 76 L30 54 L14 40 L36 38 Z" transform="translate(0 -8) scale(.85)" fill="#0a1636" stroke="#c7d6ff" stroke-width="2.5"/>
+  <text x="84" y="34" font-size="20" font-weight="800" fill="#fff" letter-spacing="2">MDT — RÉSEAU TACTIQUE CENTRAL</text>
+  <text x="84" y="56" font-size="13" fill="#8fa6d6">Terminal opérationnel · Branche Gendarmerie</text>
+  <rect x="1030" y="18" width="220" height="36" rx="18" fill="#22d97f" opacity=".15"/><circle cx="1054" cy="36" r="6" fill="#22d97f"/><text x="1070" y="42" font-size="14" font-weight="700" fill="#86efac">EN SERVICE · 01:42:17</text>
+  <g font-size="14" font-weight="600">
+    <rect x="40" y="100" width="150" height="40" rx="10" fill="#3b6cff"/><text x="115" y="125" text-anchor="middle" fill="#fff">Gendarmerie</text>
+    <rect x="202" y="100" width="130" height="40" rx="10" fill="#ffffff" opacity=".06"/><text x="267" y="125" text-anchor="middle" fill="#8fa6d6">Généraux</text>
+    <rect x="344" y="100" width="130" height="40" rx="10" fill="#ffffff" opacity=".06"/><text x="409" y="125" text-anchor="middle" fill="#8fa6d6">Pompiers</text>
+  </g>
+  <g transform="translate(40 170)">
+    <rect width="560" height="260" rx="18" fill="#ffffff" opacity=".05" stroke="#5b8cff" stroke-opacity=".3"/>
+    <text x="28" y="44" font-size="14" fill="#8fa6d6">Points de service</text>
+    <text x="28" y="110" font-size="64" font-weight="800" fill="#fff">12 480</text>
+    <text x="300" y="110" font-size="18" font-weight="700" fill="#86efac">+100 / 10 min</text>
+    <text x="28" y="160" font-size="14" fill="#8fa6d6">Grade actuel : <tspan fill="#fff" font-weight="700">Maréchal des logis</tspan></text>
+    <rect x="28" y="182" width="504" height="14" rx="7" fill="#ffffff" opacity=".08"/><rect x="28" y="182" width="356" height="14" rx="7" fill="url(#bar)"/>
+    <text x="28" y="228" font-size="13" fill="#8fa6d6">71 % vers <tspan fill="#c7d6ff" font-weight="700">Adjudant</tspan></text>
+  </g>
+  <g transform="translate(630 170)">
+    <rect width="610" height="260" rx="18" fill="#ffffff" opacity=".05" stroke="#5b8cff" stroke-opacity=".3"/>
+    <text x="28" y="44" font-size="14" fill="#8fa6d6">Mode de gain</text>
+    <g font-size="15" font-weight="700">
+      <rect x="28" y="64" width="170" height="78" rx="14" fill="#3b6cff" opacity=".25" stroke="#7aa2ff"/><text x="113" y="98" text-anchor="middle" fill="#fff">Standard</text><text x="113" y="124" text-anchor="middle" font-size="13" fill="#c7d6ff">+100 pts</text>
+      <rect x="216" y="64" width="170" height="78" rx="14" fill="#ffffff" opacity=".05"/><text x="301" y="98" text-anchor="middle" fill="#e5edf7">VIP</text><text x="301" y="124" text-anchor="middle" font-size="13" fill="#8fa6d6">+110 pts</text>
+      <rect x="404" y="64" width="178" height="78" rx="14" fill="#ffffff" opacity=".05"/><text x="493" y="98" text-anchor="middle" fill="#fde68a">Premium</text><text x="493" y="124" text-anchor="middle" font-size="13" fill="#8fa6d6">+120 pts</text>
+    </g>
+    <text x="28" y="186" font-size="14" fill="#8fa6d6">Niveau de vigilance</text>
+    <g><rect x="28" y="200" width="104" height="22" rx="6" fill="#22d97f"/><rect x="140" y="200" width="104" height="22" rx="6" fill="#f5b53c"/><rect x="252" y="200" width="104" height="22" rx="6" fill="#ffffff" opacity=".08"/><rect x="364" y="200" width="104" height="22" rx="6" fill="#ffffff" opacity=".08"/><rect x="476" y="200" width="106" height="22" rx="6" fill="#ffffff" opacity=".08"/></g>
+  </g>
+  <g transform="translate(40 460)">
+    <rect width="560" height="300" rx="18" fill="#ffffff" opacity=".05" stroke="#5b8cff" stroke-opacity=".3"/>
+    <text x="28" y="44" font-size="16" font-weight="700" fill="#fff">Historique des activités</text>
+    <g font-size="14" fill="#e5edf7">
+      <text x="28" y="90"><tspan fill="#8fa6d6">21:40</tspan>   Cycle de service validé · +100</text>
+      <text x="28" y="126"><tspan fill="#8fa6d6">21:30</tspan>   Contrôle routier · note ajoutée</text>
+      <text x="28" y="162"><tspan fill="#8fa6d6">21:12</tspan>   Bonus d’intervention · +500</text>
+      <text x="28" y="198"><tspan fill="#8fa6d6">20:58</tspan>   Vigilance passée au niveau 2</text>
+      <text x="28" y="234"><tspan fill="#8fa6d6">20:00</tspan>   Prise de service</text>
+    </g>
+  </g>
+  <g transform="translate(630 460)">
+    <rect width="300" height="300" rx="18" fill="#ffffff" opacity=".05" stroke="#5b8cff" stroke-opacity=".3"/>
+    <text x="28" y="44" font-size="16" font-weight="700" fill="#fff">Notes opérationnelles</text>
+    <g fill="#ffffff" opacity=".18"><rect x="28" y="72" width="240" height="10" rx="5"/><rect x="28" y="98" width="200" height="10" rx="5"/><rect x="28" y="124" width="220" height="10" rx="5"/><rect x="28" y="150" width="150" height="10" rx="5"/></g>
+  </g>
+  <g transform="translate(950 460)">
+    <rect width="290" height="300" rx="18" fill="#ff3b4f" opacity=".14" stroke="#ff4d5a" stroke-width="2"/>
+    <circle cx="145" cy="120" r="64" fill="#ff3b4f"/><circle cx="145" cy="120" r="84" fill="none" stroke="#ff4d5a" stroke-opacity=".5" stroke-width="3"/>
+    <text x="145" y="134" text-anchor="middle" font-size="38" font-weight="900" fill="#fff">99</text>
+    <text x="145" y="240" text-anchor="middle" font-size="20" font-weight="800" fill="#fff" letter-spacing="2">ALERTE CODE 99</text>
+    <text x="145" y="266" text-anchor="middle" font-size="13" fill="#fecaca">Signal d’urgence visuel et sonore</text>
+  </g>
+  <g transform="translate(1100 82)"><rect width="166" height="26" rx="13" fill="#000" opacity=".55"/><text x="83" y="18" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" letter-spacing="1">IMAGE D’EXEMPLE</text></g>
+</svg>

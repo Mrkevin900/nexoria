@@ -22,7 +22,7 @@ Le lien Discord et l’adresse du Panel HG se règlent dans **`config.js`** (jam
 
 ## Logo NEXORIA
 
-Le logo (le chien) doit être enregistré ici : **`assets/img/nexoria-logo.png`**. Tant que ce fichier n’existe pas, le site affiche la mascotte de Black Clover à la place.
+Le logo (les lettres « NX » qui tirent la langue) est dans **`assets/img/nexoria-logo.png`** : fond transparent et contour blanc pour rester lisible sur le fond noir. L’icône d’onglet est **`assets/img/favicon.png`**.
 
 ## Voir le site sur son PC
 

@@ -80,7 +80,7 @@
     var P = DATA.projects;
     // raccourcis
     var hc = d.getElementById('hero-chips');
-    P.filter(function (p) { return p.state === 'dev'; }).forEach(function (p) {
+    P.filter(function (p) { return p.state === 'dev'; }).slice(0, 5).forEach(function (p) {
       var c = el('a', 'chip'); c.href = link(p); c.style.setProperty('--c', p.accent);
       c.appendChild(el('i')); c.appendChild(d.createTextNode(p.name)); hc.appendChild(c);
     });

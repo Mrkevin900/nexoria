@@ -318,7 +318,8 @@
       "related": [
         "panel-hg",
         "gazette",
-        "devarchive"
+        "devarchive",
+        "nexoria-dashboard"
       ],
       "note": "Black Clover RP est un projet communautaire de fans, sans affiliation officielle avec les créateurs de Black Clover."
     },
@@ -430,9 +431,142 @@
       ],
       "restricted": "L’accès se fait sur l’application indépendante, avec les comptes HG existants. Aucune connexion n’est simulée sur ce site.",
       "related": [
-        "black-clover"
+        "black-clover",
+        "nexoria-dashboard"
       ],
       "note": "Les images de cette page sont des exemples : le vrai panel est privé."
+    },
+    {
+      "id": "nexoria-dashboard",
+      "name": "Nexoria Dashboard",
+      "category": "applis",
+      "tag": "Plateforme web · Multi-espaces & Steam",
+      "accent": "#e5566a",
+      "bg": "radial-gradient(70% 60% at 75% 20%,rgba(229,86,106,.2),transparent 70%),linear-gradient(160deg,#180c12,#09080a 60%,#140b10)",
+      "logo": "assets/projects/nexoria-dashboard/logo.webp",
+      "banner": "assets/projects/nexoria-dashboard/banner.svg",
+      "state": "dev",
+      "authors": [
+        "kevin"
+      ],
+      "authorsNote": "Conçu et développé par MRkevin pour unifier la gestion de tous les espaces et serveurs de NEXORIA.",
+      "version": "0.1.0",
+      "progress": 55,
+      "progressNote": "Socle technique, Fastify, PostgreSQL, React, authentification Steam et module de demandes achevés.",
+      "short": "Le dashboard multi-espaces des serveurs Nexoria : demandes, candidatures, calendrier, joueurs et lore avec connexion Steam.",
+      "description": "Nexoria Dashboard est la plateforme centrale de l’écosystème NEXORIA. Elle unifie la gestion de chaque serveur de jeu grâce à une architecture multi-espaces, une connexion Steam sécurisée (OpenID 2.0), une API Fastify haute performance et une base de données PostgreSQL. Joueurs et staff y retrouvent les tickets, candidatures, règlements, calendrier d’événements et profils de joueurs au même endroit.",
+      "facts": [
+        {
+          "label": "Architecture",
+          "value": "Fastify + React"
+        },
+        {
+          "label": "Base de données",
+          "value": "PostgreSQL + Prisma"
+        },
+        {
+          "label": "Authentification",
+          "value": "Steam OpenID 2.0"
+        },
+        {
+          "label": "Gestion",
+          "value": "Multi-espaces"
+        }
+      ],
+      "features": [
+        {
+          "title": "Architecture multi-espaces & Sécurité",
+          "text": "Une seule plateforme pour tous les serveurs NEXORIA avec isolation stricte des rôles et des données.",
+          "items": [
+            "Connexion Steam OpenID 2.0 avec chiffrement et cookies signés",
+            "Gestion hiérarchique des rôles et permissions par espace",
+            "API Fastify 5 ultra-rapide avec validation Zod et protection Helmet",
+            "Base de données PostgreSQL sous Prisma ORM avec journal d’audit"
+          ]
+        },
+        {
+          "title": "Demandes & Tickets en temps réel",
+          "text": "Un système de support complet pour assister les joueurs sans quitter l’écosystème.",
+          "items": [
+            "Formulaires configurables : familles, clans, signalements, remboursements",
+            "Prise en charge par le staff, statut en direct et notifications",
+            "Notes internes privées entre membres de l’équipe de modération",
+            "Historique figé et traçabilité complète des réponses"
+          ]
+        },
+        {
+          "title": "Recrutement & Candidatures Staff",
+          "text": "Un parcours unifié pour recruter les membres de l’équipe.",
+          "items": [
+            "Postes configurables (Animation, Lore, Modération, Maître du Jeu, CM)",
+            "Questions sur mesure et barèmes d’évaluation",
+            "Notation collégiale et validation par la direction",
+            "Archivage et entretiens programmés"
+          ]
+        },
+        {
+          "title": "Calendrier, Règlement & Communauté",
+          "text": "Toutes les informations utiles aux joueurs centralisées au même endroit.",
+          "items": [
+            "Calendrier des événements RP, tournois, réunions et maintenances",
+            "Règlement officiel structuré et mis à jour en temps réel",
+            "Lore interactif : royaumes, clans, factions et grimoires",
+            "Annuaire des joueurs avec sanctions, grades et statistiques de jeu"
+          ]
+        }
+      ],
+      "videos": [],
+      "galleryTitle": "Aperçu de la plateforme",
+      "gallery": [
+        {
+          "src": "assets/projects/nexoria-dashboard/dashboard.svg",
+          "alt": "Vue d’ensemble du Dashboard Nexoria"
+        },
+        {
+          "src": "assets/projects/nexoria-dashboard/tickets.svg",
+          "alt": "Module de gestion des demandes et tickets"
+        },
+        {
+          "src": "assets/projects/nexoria-dashboard/candidatures.svg",
+          "alt": "Module des candidatures staff et notation"
+        }
+      ],
+      "roadmap": [
+        {
+          "name": "Phase 1 & 2 — Analyse du besoin et inventaire des fonctionnalités",
+          "status": "termine"
+        },
+        {
+          "name": "Phase 3 — Architecture, Fastify, PostgreSQL et schéma Prisma",
+          "status": "termine"
+        },
+        {
+          "name": "Phase 4 — Identité visuelle sombre, thème Nexoria et composants UI",
+          "status": "termine"
+        },
+        {
+          "name": "Phase 5 — Connexion Steam OpenID, rôles hiérarchiques et journal d’audit",
+          "status": "termine"
+        },
+        {
+          "name": "Phase 6 — Modules demandes, candidatures, calendrier, joueurs et lore",
+          "status": "en-cours"
+        },
+        {
+          "name": "Phase 7 & 8 — Addon de liaison Garry’s Mod et optimisations",
+          "status": "a-venir"
+        },
+        {
+          "name": "Phase 9 — Déploiement en production avec reverse proxy Caddy",
+          "status": "a-venir"
+        }
+      ],
+      "related": [
+        "black-clover",
+        "panel-hg",
+        "solo-leveling"
+      ],
+      "monogram": "ND"
     },
     {
       "id": "dino-app",

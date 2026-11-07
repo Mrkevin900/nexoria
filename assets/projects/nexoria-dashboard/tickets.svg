@@ -1,0 +1,163 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Rubik,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140d12"/>
+      <stop offset="1" stop-color="#09080a"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#190e15"/>
+      <stop offset="1" stop-color="#0d090c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7387"/>
+      <stop offset="1" stop-color="#e5566a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+
+  <!-- Barre latérale -->
+  <rect x="0" y="0" width="260" height="800" fill="url(#side)"/>
+  <rect x="259" y="0" width="1" height="800" fill="#ffffff" opacity=".08"/>
+
+  <g transform="translate(28 32)">
+    <rect width="44" height="44" rx="12" fill="url(#accent)"/>
+    <text x="22" y="28" text-anchor="middle" font-size="20" font-weight="900" fill="#ffffff">NX</text>
+    <text x="56" y="24" font-size="20" font-weight="800" fill="#ffffff" letter-spacing="1">NEXORIA</text>
+    <text x="56" y="42" font-size="12" font-weight="600" fill="#ff7387" letter-spacing="1">DASHBOARD</text>
+  </g>
+
+  <!-- Navigation items -->
+  <g font-size="14" fill="#c7c7d1">
+    <text x="62" y="136">Vue d’ensemble</text>
+
+    <!-- Active Tickets -->
+    <g transform="translate(0 48)">
+      <rect x="18" y="110" width="224" height="42" rx="10" fill="#e5566a" fill-opacity=".15" stroke="#e5566a" stroke-opacity=".3"/>
+      <rect x="18" y="110" width="4" height="42" rx="2" fill="url(#accent)"/>
+      <path d="M41 127 H53 V137 H41 Z M45 127 V123 H49 V127" fill="none" stroke="#ff7387" stroke-width="2"/>
+      <text x="62" y="136" fill="#ffffff" font-weight="700">Demandes &amp; Tickets</text>
+      <rect x="202" y="122" width="28" height="18" rx="9" fill="#e5566a"/><text x="216" y="135" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">8</text>
+    </g>
+
+    <g transform="translate(0 96)"><text x="62" y="136">Candidatures staff</text></g>
+    <g transform="translate(0 144)"><text x="62" y="136">Calendrier &amp; Events</text></g>
+    <g transform="translate(0 192)"><text x="62" y="136">Joueurs &amp; Sanctions</text></g>
+    <g transform="translate(0 240)"><text x="62" y="136">Règlement officiel</text></g>
+    <g transform="translate(0 288)"><text x="62" y="136">Lore &amp; Royaumes</text></g>
+  </g>
+
+  <!-- User Card (Steam) -->
+  <g transform="translate(18 715)">
+    <rect width="224" height="66" rx="14" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".1"/>
+    <rect x="12" y="13" width="40" height="40" rx="10" fill="url(#accent)"/>
+    <text x="32" y="38" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">K</text>
+    <text x="62" y="32" font-size="14" font-weight="700" fill="#ffffff">MRkevin</text>
+    <rect x="62" y="38" width="80" height="16" rx="8" fill="#e5566a" fill-opacity=".2"/>
+    <text x="102" y="50" text-anchor="middle" font-size="9" font-weight="800" fill="#ff7387">SUPERADMIN</text>
+  </g>
+
+  <!-- Contenu Principal -->
+  <!-- Top bar -->
+  <g transform="translate(295 32)">
+    <rect width="260" height="42" rx="12" fill="#ffffff" opacity=".06" stroke="#ffffff" stroke-opacity=".12"/>
+    <text x="18" y="26" font-size="13" fill="#a1a1ac">🔍 Rechercher par joueur, #ID...</text>
+  </g>
+  <g transform="translate(1100 32)">
+    <rect width="145" height="42" rx="12" fill="url(#accent)"/>
+    <text x="72" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">+ Créer une demande</text>
+  </g>
+
+  <text x="295" y="125" font-size="28" font-weight="800" fill="#ffffff">Demande #1042 — Création de famille Silva</text>
+  <g transform="translate(295 142)">
+    <rect width="88" height="22" rx="11" fill="#f0b43c" fill-opacity=".2"/>
+    <text x="44" y="15" text-anchor="middle" font-size="11" font-weight="700" fill="#f0b43c">EN ATTENTE</text>
+    <text x="105" y="16" font-size="13" fill="#a1a1ac">Créé le 07/11/2026 à 14:20 par Nozel_RP (STEAM_0:1:48291048)</text>
+  </g>
+
+  <!-- Vue deux colonnes -->
+  <!-- Colonne gauche : conversation et réponses -->
+  <g transform="translate(295 190)">
+    <rect width="615" height="570" rx="18" fill="#ffffff" opacity=".03" stroke="#ffffff" stroke-opacity=".08"/>
+
+    <!-- Message initial joueur -->
+    <g transform="translate(24 24)">
+      <rect width="567" height="140" rx="14" fill="#ffffff" opacity=".04"/>
+      <circle cx="28" cy="28" r="14" fill="#3b82f6"/>
+      <text x="28" y="33" text-anchor="middle" font-size="12" font-weight="800" fill="#fff">N</text>
+      <text x="52" y="24" font-size="14" font-weight="700" fill="#ffffff">Nozel_RP</text>
+      <text x="52" y="40" font-size="11" fill="#6f6f7b">Joueur · 07/11 à 14:20</text>
+      <text x="24" y="74" font-size="13" fill="#e5e5ea">Bonjour au staff Nexoria,</text>
+      <text x="24" y="96" font-size="13" fill="#e5e5ea">Nous souhaitons formaliser la famille Silva sur le serveur Black Clover RP.</text>
+      <text x="24" y="116" font-size="13" fill="#a1a1ac">Membres : Nozel, Nebra, Solid + 5 recrues. Histoire et armoiries prêtes.</text>
+    </g>
+
+    <!-- Note interne Staff (privée) -->
+    <g transform="translate(24 180)">
+      <rect width="567" height="90" rx="14" fill="#f0b43c" fill-opacity=".08" stroke="#f0b43c" stroke-opacity=".3"/>
+      <text x="20" y="26" font-size="12" font-weight="800" fill="#f0b43c">🔒 NOTE INTERNE STAFF (invisible pour le joueur)</text>
+      <text x="20" y="50" font-size="13" fill="#ffffff">Joueurs sérieux, aucun warn sur le serveur. Pré-requis de 6 membres validé.</text>
+      <text x="20" y="70" font-size="11" fill="#f0b43c">Ajouté par MRkevin à 15:10</text>
+    </g>
+
+    <!-- Zone de rédaction réponse -->
+    <g transform="translate(24 290)">
+      <rect width="567" height="250" rx="14" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".1"/>
+      <text x="20" y="30" font-size="13" font-weight="700" fill="#ffffff">Répondre à la demande</text>
+
+      <rect x="20" y="48" width="527" height="120" rx="10" fill="#09080a" stroke="#ffffff" stroke-opacity=".1"/>
+      <text x="36" y="78" font-size="13" fill="#6f6f7b">Écrire un message ou choisir un message prédéfini...</text>
+
+      <rect x="20" y="185" width="130" height="34" rx="8" fill="url(#accent)"/>
+      <text x="85" y="206" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Envoyer la réponse</text>
+
+      <rect x="160" y="185" width="120" height="34" rx="8" fill="#3ecf8e" fill-opacity=".2"/>
+      <text x="220" y="206" text-anchor="middle" font-size="12" font-weight="700" fill="#3ecf8e">Valider le ticket</text>
+
+      <rect x="290" y="185" width="130" height="34" rx="8" fill="#ffffff" opacity=".08"/>
+      <text x="355" y="206" text-anchor="middle" font-size="12" font-weight="600" fill="#a1a1ac">+ Note interne</text>
+    </g>
+  </g>
+
+  <!-- Colonne droite : Métadonnées ticket -->
+  <g transform="translate(930 190)">
+    <rect width="315" height="570" rx="18" fill="#ffffff" opacity=".03" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="22" y="36" font-size="16" font-weight="800" fill="#ffffff">Détails de la demande</text>
+
+    <g transform="translate(22 60)">
+      <text x="0" y="14" font-size="12" fill="#6f6f7b">Statut actuel</text>
+      <rect x="0" y="24" width="271" height="36" rx="8" fill="#ffffff" opacity=".05"/>
+      <text x="14" y="47" font-size="13" font-weight="700" fill="#f0b43c">En attente de réponse</text>
+    </g>
+
+    <g transform="translate(22 135)">
+      <text x="0" y="14" font-size="12" fill="#6f6f7b">Prise en charge par</text>
+      <rect x="0" y="24" width="271" height="36" rx="8" fill="#ffffff" opacity=".05"/>
+      <text x="14" y="47" font-size="13" font-weight="700" fill="#ffffff">MRkevin (Fondateur)</text>
+    </g>
+
+    <g transform="translate(22 210)">
+      <text x="0" y="14" font-size="12" fill="#6f6f7b">Espace rattaché</text>
+      <rect x="0" y="24" width="271" height="36" rx="8" fill="#ffffff" opacity=".05"/>
+      <text x="14" y="47" font-size="13" font-weight="700" fill="#ff7387">Black Clover RP</text>
+    </g>
+
+    <g transform="translate(22 285)">
+      <text x="0" y="14" font-size="12" fill="#6f6f7b">SteamID du demandeur</text>
+      <rect x="0" y="24" width="271" height="36" rx="8" fill="#ffffff" opacity=".05"/>
+      <text x="14" y="47" font-size="12" font-family="monospace" fill="#c7c7d1">76561198028472910</text>
+    </g>
+
+    <g transform="translate(22 360)">
+      <rect width="271" height="90" rx="12" fill="#ffffff" opacity=".04"/>
+      <text x="16" y="26" font-size="13" font-weight="700" fill="#ffffff">Actions rapides</text>
+      <text x="16" y="48" font-size="12" fill="#a1a1ac">• Clôturer avec message</text>
+      <text x="16" y="68" font-size="12" fill="#a1a1ac">• Transférer au Staff Lore</text>
+    </g>
+  </g>
+
+  <g transform="translate(1100 12)">
+    <rect width="166" height="26" rx="13" fill="#000000" opacity=".6"/>
+    <text x="83" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#ff7387" letter-spacing="1">GESTION DEMANDES</text>
+  </g>
+</svg>

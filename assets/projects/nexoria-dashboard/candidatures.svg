@@ -1,0 +1,173 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" font-family="Segoe UI,Rubik,Arial,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#140d12"/>
+      <stop offset="1" stop-color="#09080a"/>
+    </linearGradient>
+    <linearGradient id="side" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#190e15"/>
+      <stop offset="1" stop-color="#0d090c"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7387"/>
+      <stop offset="1" stop-color="#e5566a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg)"/>
+
+  <!-- Barre latérale -->
+  <rect x="0" y="0" width="260" height="800" fill="url(#side)"/>
+  <rect x="259" y="0" width="1" height="800" fill="#ffffff" opacity=".08"/>
+
+  <g transform="translate(28 32)">
+    <rect width="44" height="44" rx="12" fill="url(#accent)"/>
+    <text x="22" y="28" text-anchor="middle" font-size="20" font-weight="900" fill="#ffffff">NX</text>
+    <text x="56" y="24" font-size="20" font-weight="800" fill="#ffffff" letter-spacing="1">NEXORIA</text>
+    <text x="56" y="42" font-size="12" font-weight="600" fill="#ff7387" letter-spacing="1">DASHBOARD</text>
+  </g>
+
+  <!-- Navigation items -->
+  <g font-size="14" fill="#c7c7d1">
+    <text x="62" y="136">Vue d’ensemble</text>
+    <g transform="translate(0 48)"><text x="62" y="136">Demandes &amp; Tickets</text></g>
+
+    <!-- Active Candidatures -->
+    <g transform="translate(0 96)">
+      <rect x="18" y="110" width="224" height="42" rx="10" fill="#e5566a" fill-opacity=".15" stroke="#e5566a" stroke-opacity=".3"/>
+      <rect x="18" y="110" width="4" height="42" rx="2" fill="url(#accent)"/>
+      <path d="M42 125 H52 M42 130 H52 M42 135 H48" stroke="#ff7387" stroke-width="2" stroke-linecap="round"/>
+      <text x="62" y="136" fill="#ffffff" font-weight="700">Candidatures staff</text>
+      <rect x="202" y="122" width="28" height="18" rx="9" fill="#f0b43c"/><text x="216" y="135" text-anchor="middle" font-size="11" font-weight="700" fill="#111">4</text>
+    </g>
+
+    <g transform="translate(0 144)"><text x="62" y="136">Calendrier &amp; Events</text></g>
+    <g transform="translate(0 192)"><text x="62" y="136">Joueurs &amp; Sanctions</text></g>
+    <g transform="translate(0 240)"><text x="62" y="136">Règlement officiel</text></g>
+    <g transform="translate(0 288)"><text x="62" y="136">Lore &amp; Royaumes</text></g>
+  </g>
+
+  <!-- User Card (Steam) -->
+  <g transform="translate(18 715)">
+    <rect width="224" height="66" rx="14" fill="#ffffff" opacity=".05" stroke="#ffffff" stroke-opacity=".1"/>
+    <rect x="12" y="13" width="40" height="40" rx="10" fill="url(#accent)"/>
+    <text x="32" y="38" text-anchor="middle" font-size="16" font-weight="800" fill="#fff">K</text>
+    <text x="62" y="32" font-size="14" font-weight="700" fill="#ffffff">MRkevin</text>
+    <rect x="62" y="38" width="80" height="16" rx="8" fill="#e5566a" fill-opacity=".2"/>
+    <text x="102" y="50" text-anchor="middle" font-size="9" font-weight="800" fill="#ff7387">SUPERADMIN</text>
+  </g>
+
+  <!-- En-tête -->
+  <text x="295" y="70" font-size="28" font-weight="800" fill="#ffffff">Candidatures Staff &amp; Postes RP</text>
+  <text x="295" y="96" font-size="14" fill="#a1a1ac">Processus de recrutement unifié, formulaires personnalisés et notation collégiale.</text>
+
+  <!-- Cartes de postes ouverts -->
+  <g transform="translate(295 125)">
+    <!-- Poste 1 : Animation -->
+    <rect width="225" height="110" rx="14" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".1"/>
+    <rect x="16" y="16" width="34" height="34" rx="8" fill="#e5566a" fill-opacity=".2"/>
+    <text x="33" y="38" text-anchor="middle" font-size="18">🎭</text>
+    <text x="60" y="32" font-size="15" font-weight="700" fill="#ffffff">Animation</text>
+    <rect x="60" y="40" width="55" height="18" rx="9" fill="#3ecf8e" fill-opacity=".2"/>
+    <text x="87" y="53" text-anchor="middle" font-size="10" font-weight="700" fill="#3ecf8e">OUVERT</text>
+    <text x="16" y="88" font-size="12" fill="#a1a1ac">2 candidatures reçues</text>
+
+    <!-- Poste 2 : Lore -->
+    <g transform="translate(245 0)">
+      <rect width="225" height="110" rx="14" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".1"/>
+      <rect x="16" y="16" width="34" height="34" rx="8" fill="#f0b43c" fill-opacity=".2"/>
+      <text x="33" y="38" text-anchor="middle" font-size="18">📜</text>
+      <text x="60" y="32" font-size="15" font-weight="700" fill="#ffffff">Staff Lore</text>
+      <rect x="60" y="40" width="55" height="18" rx="9" fill="#3ecf8e" fill-opacity=".2"/>
+      <text x="87" y="53" text-anchor="middle" font-size="10" font-weight="700" fill="#3ecf8e">OUVERT</text>
+      <text x="16" y="88" font-size="12" fill="#a1a1ac">1 candidature reçue</text>
+    </g>
+
+    <!-- Poste 3 : Maître du Jeu -->
+    <g transform="translate(490 0)">
+      <rect width="225" height="110" rx="14" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".1"/>
+      <rect x="16" y="16" width="34" height="34" rx="8" fill="#5aa8ef" fill-opacity=".2"/>
+      <text x="33" y="38" text-anchor="middle" font-size="18">🎲</text>
+      <text x="60" y="32" font-size="15" font-weight="700" fill="#ffffff">Maître du Jeu</text>
+      <rect x="60" y="40" width="55" height="18" rx="9" fill="#3ecf8e" fill-opacity=".2"/>
+      <text x="87" y="53" text-anchor="middle" font-size="10" font-weight="700" fill="#3ecf8e">OUVERT</text>
+      <text x="16" y="88" font-size="12" fill="#a1a1ac">1 candidature reçue</text>
+    </g>
+
+    <!-- Poste 4 : Modérateur -->
+    <g transform="translate(735 0)">
+      <rect width="215" height="110" rx="14" fill="#ffffff" opacity=".04" stroke="#ffffff" stroke-opacity=".1"/>
+      <rect x="16" y="16" width="34" height="34" rx="8" fill="#ffffff" opacity=".1"/>
+      <text x="33" y="38" text-anchor="middle" font-size="18">🛡️</text>
+      <text x="60" y="32" font-size="15" font-weight="700" fill="#ffffff">Modération</text>
+      <rect x="60" y="40" width="55" height="18" rx="9" fill="#ef5a5a" fill-opacity=".2"/>
+      <text x="87" y="53" text-anchor="middle" font-size="10" font-weight="700" fill="#ef5a5a">FERMÉ</text>
+      <text x="16" y="88" font-size="12" fill="#a1a1ac">Prochaine vague en déc.</text>
+    </g>
+  </g>
+
+  <!-- Détail candidature à examiner -->
+  <g transform="translate(295 260)">
+    <rect width="950" height="500" rx="18" fill="#ffffff" opacity=".03" stroke="#ffffff" stroke-opacity=".08"/>
+
+    <!-- Header candidature -->
+    <g transform="translate(28 24)">
+      <text x="0" y="24" font-size="20" font-weight="800" fill="#ffffff">Candidature #208 — Maître du Jeu RP</text>
+      <text x="0" y="44" font-size="13" fill="#a1a1ac">Postulé le 06/11/2026 par Zeldris (STEAM_0:0:98234120) · Âge : 21 ans · 600h de Garry's Mod</text>
+
+      <rect x="740" y="6" width="150" height="36" rx="10" fill="url(#accent)"/>
+      <text x="815" y="29" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff">Programmer entretien</text>
+    </g>
+
+    <!-- Questions / Réponses -->
+    <g transform="translate(28 90)">
+      <!-- Q1 -->
+      <rect width="894" height="90" rx="12" fill="#ffffff" opacity=".04"/>
+      <text x="20" y="28" font-size="12" font-weight="700" fill="#ff7387">QUESTION 1 · EXPÉRIENCE EN JEU DE RÔLE &amp; SCÉNARISATION</text>
+      <text x="20" y="52" font-size="14" fill="#ffffff">« J'ai été animateur sur deux serveurs médiéval-fantastique pendant plus d'un an.</text>
+      <text x="20" y="72" font-size="14" fill="#c7c7d1">J'aime concevoir des arcs narratifs qui impliquent toutes les factions sans déséquilibre. »</text>
+
+      <!-- Q2 -->
+      <g transform="translate(0 106)">
+        <rect width="894" height="110" rx="12" fill="#ffffff" opacity=".04"/>
+        <text x="20" y="28" font-size="12" font-weight="700" fill="#ff7387">QUESTION 2 · PROPOSITION DE SCÉNARIO D'EVENT POUR NEXORIA</text>
+        <text x="20" y="52" font-size="14" fill="#ffffff">« Une faille de l'Abysse s'ouvre près du village de Hage : des bêtes de rang C attaquent les récoltes.</text>
+        <text x="20" y="72" font-size="14" fill="#c7c7d1">Les Chevaliers-Mages doivent escorter les civils pendant qu'un groupe de mages scelle l'orbe.</text>
+        <text x="20" y="92" font-size="14" fill="#c7c7d1">Durée estimée : 1h30, avec intervention d'un boss secondaire incarné par un MJ. »</text>
+      </g>
+    </g>
+
+    <!-- Avis du Staff & Vote -->
+    <g transform="translate(28 335)">
+      <rect width="894" height="135" rx="12" fill="#ffffff" opacity=".02" stroke="#ffffff" stroke-opacity=".08"/>
+      <text x="20" y="28" font-size="13" font-weight="700" fill="#ffffff">Évaluation collégiale de l’équipe Staff</text>
+
+      <!-- Votes -->
+      <g transform="translate(20 45)">
+        <rect width="180" height="60" rx="10" fill="#3ecf8e" fill-opacity=".15" stroke="#3ecf8e" stroke-opacity=".3"/>
+        <text x="16" y="24" font-size="11" font-weight="700" fill="#3ecf8e">AVIS FAVORABLE</text>
+        <text x="16" y="44" font-size="13" font-weight="700" fill="#ffffff">MRkevin · Fondateur</text>
+
+        <g transform="translate(195 0)">
+          <rect width="180" height="60" rx="10" fill="#3ecf8e" fill-opacity=".15" stroke="#3ecf8e" stroke-opacity=".3"/>
+          <text x="16" y="24" font-size="11" font-weight="700" fill="#3ecf8e">AVIS FAVORABLE</text>
+          <text x="16" y="44" font-size="13" font-weight="700" fill="#ffffff">Junior · Cofondateur</text>
+        </g>
+
+        <!-- Actions de validation -->
+        <g transform="translate(540 10)">
+          <rect width="150" height="40" rx="10" fill="#3ecf8e"/>
+          <text x="75" y="25" text-anchor="middle" font-size="13" font-weight="800" fill="#09080a">ACCEPTER LE CANDIDAT</text>
+
+          <rect x="165" y="0" width="130" height="40" rx="10" fill="#ef5a5a" fill-opacity=".2" stroke="#ef5a5a" stroke-opacity=".4"/>
+          <text x="230" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#ef5a5a">REFUSER</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(1100 12)">
+    <rect width="166" height="26" rx="13" fill="#000000" opacity=".6"/>
+    <text x="83" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#ff7387" letter-spacing="1">CANDIDATURES STAFF</text>
+  </g>
+</svg>

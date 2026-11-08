@@ -231,30 +231,76 @@
 
   /* ---------- FAQ ---------- */
   var FAQ = [
-    ['NEXORIA', 'Qu’est-ce que NEXORIA ?', 'Une structure indépendante qui rassemble des projets numériques : serveurs Garry’s Mod, applications Windows, bots Discord, sites et outils.'],
-    ['NEXORIA', 'Qui a fondé NEXORIA ?', 'MRkevin est le fondateur de NEXORIA. Junior est le cofondateur. MRkevin développe la plupart des projets ; Junior a créé le Panel HG et travaille avec MRkevin sur Black Clover RP et Solo Leveling RP.'],
-    ['Projets', 'Quels projets sont en développement ?', '__DEV__'],
-    ['Projets', 'Pourquoi Solo Leveling RP est-il en pause ?', 'C’était le premier serveur de NEXORIA. Il est mis en pause pour que l’équipe se concentre sur Black Clover RP ; il reviendra plus tard.'],
-    ['Black Clover', 'Qu’est-ce que Black Clover RP ?', 'Le grand serveur roleplay de mages de NEXORIA sur Garry’s Mod, pensé pour plus de 100 joueurs. C’est un projet de fans, sans affiliation officielle avec les ayants droit de Black Clover.'],
-    ['Panel HG', 'À quoi sert le Panel HG ?', 'À gérer et coordonner les hauts gradés du serveur Black Clover : effectifs, grades, compagnies, candidatures, combats, événements, décisions, planning et promotions.'],
-    ['Panel HG', 'Qui peut accéder au Panel HG ?', 'Les hauts gradés autorisés : Grand Chevalier-Mage, Vice-Capitaine, Capitaine, Responsable serveur et Fondateur. Les permissions sont vérifiées par le panel lui-même, pas par ce site.'],
-    ['Dino App', 'Où télécharger Dino App ?', 'Dino App est en test restreint. Aucun lien de téléchargement n’est publié tant que le lien officiel n’a pas été vérifié.'],
-    ['Communauté', 'Comment rejoindre la communauté ?', 'Rejoins le Discord NEXORIA avec le bouton en bas de la page : annonces, avant-premières et tests des projets s’y passent.']
+    ['NEXORIA', 'Qu’est-ce que NEXORIA ?', 'Une structure indépendante qui rassemble des projets numériques et créatifs : serveurs Garry’s Mod, applications Windows, bots Discord, sites web et outils communautaires.'],
+    ['NEXORIA', 'Qui a fondé et dirige NEXORIA ?', 'MRkevin est le fondateur de NEXORIA et pilote la majorité des développements techniques. Junior en est le cofondateur : il a développé le Panel HG et co-développe Black Clover RP et Solo Leveling RP.'],
+    ['NEXORIA', 'Quelle est la philosophie de la structure ?', '« Plusieurs projets. Plusieurs univers. Une seule vision. » Chaque projet possède son identité visuelle et son univers propre, avec une exigence de finition et de performance poussée au maximum.'],
+    ['Projets', 'Quels projets sont actuellement actifs ?', '__DEV__'],
+    ['Black Clover', 'Qu’est-ce que Black Clover RP ?', 'Le serveur roleplay Garry’s Mod phare de NEXORIA, pensé pour accueillir plus de 100 joueurs simultanés. Les joueurs incarnent des mages, reçoivent leur grimoire d’affinité, rejoignent une compagnie et affrontent 8 boss majeurs.'],
+    ['Black Clover', 'Comment fonctionne le système de grimoires et de magie ?', 'Chaque joueur débloque des sorts uniques selon son affinité (Vent, Feu, Espace, Ténèbres...), progresse dans les rangs de sa compagnie et peut participer aux raids épiques de guildes.'],
+    ['Serveurs', 'Pourquoi Solo Leveling RP est-il en pause ?', 'Solo Leveling RP a été le premier serveur fondateur de NEXORIA. Il est actuellement mis en pause avec ses acquis sécurisés afin que l’équipe concentre toutes ses forces sur Black Clover RP. Il sera réactivé ultérieurement.'],
+    ['Nexus Studio', 'Qu’est-ce que Nexus Studio ?', 'Nexus Studio est le centre de pilotage privé de NEXORIA. Il permet à MRkevin et Junior de suivre l’état des projets en temps réel, échanger des notes de conception, gérer les images et déployer les mises à jour en un clic.'],
+    ['Nexus Studio', 'Qui a accès à Nexus Studio ?', 'L’accès est strictement réservé au fondateur MRkevin et au cofondateur Junior par code d’accès sécurisé (PIN). Les changements validés dans le Studio sont ensuite synchronisés pour toute la communauté.'],
+    ['Académie', 'Qu’est-ce que l’Académie Nexoria ?', 'L’Académie Nexoria est une plateforme complète d’apprentissage dédiée à la création sur Source Engine : Mapping (Hammer & Blender), Programmation (GLua / Luau) et Effets visuels (VFX).'],
+    ['Académie', 'Quand l’Académie Nexoria sera-t-elle disponible ?', 'Le projet est actuellement confidentiel et en cours d’élaboration par MRkevin et Junior. Un teaser interactif ainsi que le guide complet de mapping débutant sont déjà consultables en avant-première sur le site.'],
+    ['Panel HG', 'À quoi sert le Panel HG ?', 'Développé par Junior, le Panel HG sert à coordonner les hauts gradés du serveur Black Clover : gestion des effectifs, compagnies, candidatures, combats d’arène, planning d’événements et promotions.'],
+    ['Panel HG', 'Qui peut accéder au Panel HG ?', 'Seuls les hauts gradés autorisés : Grand Chevalier-Mage, Vice-Capitaine, Capitaine, Responsable serveur et Fondateurs. Les permissions sont directement contrôlées et chiffrées par le panel.'],
+    ['Applications', 'Où télécharger Dino App et AddonForge ?', 'Dino App et AddonForge sont actuellement en phases de test restreint et d’optimisation. Les installateurs officiels vérifiés seront mis à disposition sur le Discord NEXORIA lors de leur sortie publique.'],
+    ['Communauté', 'Comment rejoindre la communauté ou proposer son aide ?', 'Rejoins le Discord officiel NEXORIA grâce aux boutons présents sur la page. C’est le lieu d’échange central pour tester les projets en avant-première, voter les fonctionnalités et discuter avec MRkevin et Junior.']
   ];
   function renderFaq() {
     var dev = DATA.projects.filter(function (p) { return p.state === 'dev'; }).map(function (p) { return p.name; });
-    var box = d.getElementById('faq-list'), items = [];
+    var done = DATA.projects.filter(function (p) { return p.state === 'done'; }).map(function (p) { return p.name; });
+    var pause = DATA.projects.filter(function (p) { return p.state === 'pause'; }).map(function (p) { return p.name; });
+
+    var box = d.getElementById('faq-list');
+    var searchInput = d.getElementById('faq-search');
+    var activeCategory = 'Tout';
+    var activeQuery = '';
+
+    box.innerHTML = '';
+    var items = [];
+
     FAQ.forEach(function (q) {
-      var det = el('details', 'faq'); det.dataset.c = q[0];
-      var s = el('summary'); var sp = el('span'); sp.appendChild(el('em', 'fc', q[0])); sp.appendChild(d.createTextNode(q[1])); s.appendChild(sp); det.appendChild(s);
-      var done = DATA.projects.filter(function (p) { return p.state === 'done'; }).map(function (p) { return p.name; });
-      var pause = DATA.projects.filter(function (p) { return p.state === 'pause'; }).map(function (p) { return p.name; });
-      det.appendChild(el('p', '', q[2] === '__DEV__' ? 'Presque tout : ' + dev.join(', ') + '. Terminé : ' + (done.join(', ') || 'aucun') + '. En pause : ' + (pause.join(', ') || 'aucun') + '.' : q[2]));
-      box.appendChild(det); items.push(det);
+      var det = el('details', 'faq');
+      det.dataset.c = q[0];
+      det.dataset.q = q[1].toLowerCase();
+      det.dataset.a = q[2].toLowerCase();
+
+      var s = el('summary');
+      var sp = el('span');
+      sp.appendChild(el('em', 'fc', q[0]));
+      sp.appendChild(d.createTextNode(q[1]));
+      s.appendChild(sp);
+      det.appendChild(s);
+
+      var ans = q[2];
+      if (ans === '__DEV__') {
+        ans = 'En cours : ' + dev.join(', ') + '. Terminé : ' + (done.join(', ') || 'aucun') + '. En pause : ' + (pause.join(', ') || 'aucun') + '.';
+      }
+      det.appendChild(el('p', '', ans));
+      box.appendChild(det);
+      items.push(det);
     });
+
+    function applyFilter() {
+      items.forEach(function (x) {
+        var matchCat = activeCategory === 'Tout' || x.dataset.c === activeCategory;
+        var matchQuery = !activeQuery || x.dataset.q.indexOf(activeQuery) !== -1 || x.dataset.a.indexOf(activeQuery) !== -1;
+        x.hidden = !(matchCat && matchQuery);
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', function () {
+        activeQuery = this.value.trim().toLowerCase();
+        applyFilter();
+      });
+    }
+
     var cats = ['Tout'].concat(FAQ.map(function (q) { return q[0]; }).filter(function (c, i, a) { return a.indexOf(c) === i; }));
     chips(d.getElementById('faq-filters'), cats.map(function (c) { return [c, c]; }), function (c) {
-      items.forEach(function (x) { x.hidden = !(c === 'Tout' || x.dataset.c === c); });
+      activeCategory = c;
+      applyFilter();
     });
   }
 
@@ -313,6 +359,23 @@
       rt.appendChild(rb); rs.appendChild(rt); top.appendChild(rs);
     }
     VP.appendChild(top);
+
+    if (p.id === 'academie-nexoria') {
+      var actA = el('div', 'wrap');
+      var btnA = el('a', 'btn main', 'Consulter le Teaser & le Guide Mapping →');
+      btnA.href = 'academie/index.html'; btnA.target = '_blank';
+      actA.appendChild(btnA);
+      actA.style.margin = '1.2rem 0 2rem';
+      VP.appendChild(actA);
+    }
+    if (p.id === 'nexoria-studio') {
+      var actS = el('div', 'wrap');
+      var btnS = el('a', 'btn main', 'Accéder à Nexus Studio (🔒 Espace Direction) →');
+      btnS.href = 'studio.html';
+      actS.appendChild(btnS);
+      actS.style.margin = '1.2rem 0 2rem';
+      VP.appendChild(actS);
+    }
 
     // fonctionnalités
     if (p.features && p.features.length) {
@@ -407,16 +470,32 @@
   d.querySelectorAll('[data-discord]').forEach(function (a) {
     if (okUrl(CFG.discordInvite)) { a.href = CFG.discordInvite; a.target = '_blank'; a.rel = 'noopener'; }
   });
+
+  var localOverride = null;
+  try {
+    var raw = localStorage.getItem('nexoria_published_data');
+    if (raw) localOverride = JSON.parse(raw);
+  } catch (e) {}
+
   fetch('data/projects.json', { cache: 'no-cache' }).then(function (res) {
     if (!res.ok) throw new Error(res.status); return res.json();
   }).then(function (json) {
-    DATA = json;
+    DATA = localOverride || json;
     DATA.team.forEach(function (t) { TEAM[t.id] = t; });
     DATA.projects.forEach(function (p) { BY[p.id] = p; });
     renderHome();
     window.addEventListener('hashchange', route);
     route();
   }).catch(function (e) {
-    d.getElementById('posters').innerHTML = '<p class="note">Impossible de charger les projets (' + e.message + '). Ouvre le site via un serveur web, pas en double-cliquant sur le fichier.</p>';
+    if (localOverride) {
+      DATA = localOverride;
+      DATA.team.forEach(function (t) { TEAM[t.id] = t; });
+      DATA.projects.forEach(function (p) { BY[p.id] = p; });
+      renderHome();
+      window.addEventListener('hashchange', route);
+      route();
+    } else {
+      d.getElementById('posters').innerHTML = '<p class="note">Impossible de charger les projets (' + e.message + '). Ouvre le site via un serveur web, pas en double-cliquant sur le fichier.</p>';
+    }
   });
 })();

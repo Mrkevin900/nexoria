@@ -405,3 +405,77 @@ html.perf .phero .ph-ban{animation:none}
 html.noanim *,html.noanim *::before,html.noanim *::after{animation:none!important;transition:none!important}
 html.noanim .loader{display:none}html.noanim .js .rv,html.noanim .rv{opacity:1!important;transform:none!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.loader,.cur,.cdot,.rip{display:none}.js .rv{opacity:1;transform:none}}
+
+/* ---------- NEXUS STUDIO & AMÉLIORATIONS SITE ---------- */
+.nav-studio-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 12px;
+  background:rgba(229,82,95,.12);
+  border:1px solid rgba(229,82,95,.35);
+  border-radius:999px;
+  color:#ff96a1!important;
+  font-weight:700;
+  font-size:.82rem;
+  transition:all .2s ease;
+}
+.nav-studio-link:hover{
+  background:rgba(229,82,95,.24);
+  border-color:#e5525f;
+  transform:translateY(-1px);
+  box-shadow:0 0 14px rgba(229,82,95,.4);
+  color:#fff!important;
+}
+
+.faq-search-wrap{
+  margin:1.4rem 0 1.2rem;
+  max-width:540px;
+}
+.faq-search-input{
+  width:100%;
+  padding:.8rem 1.2rem;
+  background:var(--surf);
+  border:1px solid var(--line);
+  border-radius:14px;
+  color:var(--fg);
+  font:inherit;
+  font-size:.95rem;
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.faq-search-input:focus{
+  border-color:var(--cyan);
+  box-shadow:0 0 18px var(--glow);
+}
+.faq mark{
+  background:rgba(56,189,248,.3);
+  color:inherit;
+  padding:0 2px;
+  border-radius:3px;
+}
+
+.state.dev{
+  color:#38bdf8;
+  background:rgba(10,25,45,.65);
+  border-color:rgba(56,189,248,.4);
+}
+.state.dev::before{
+  background:#38bdf8;
+  box-shadow:0 0 12px #38bdf8;
+  animation:pl 1.4s infinite;
+}
+.state.pause{
+  color:#fbbf24;
+  background:rgba(40,30,10,.65);
+  border-color:rgba(251,191,36,.4);
+}
+.state.done{
+  color:#10b981;
+  background:rgba(10,35,25,.65);
+  border-color:rgba(16,185,129,.4);
+}
+.state.done::before{
+  background:#10b981;
+  box-shadow:0 0 10px #10b981;
+}

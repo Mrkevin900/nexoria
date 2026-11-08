@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14090b"/>
+      <stop offset=".5" stop-color="#0a0a0d"/>
+      <stop offset="1" stop-color="#110d12"/>
+    </linearGradient>
+    <radialGradient id="sg1" cx=".8" cy=".3" r=".65">
+      <stop offset="0" stop-color="#e5525f" stop-opacity=".35"/>
+      <stop offset=".6" stop-color="#e5525f" stop-opacity=".06"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="sg2" cx=".15" cy=".8" r=".55">
+      <stop offset="0" stop-color="#f43f5e" stop-opacity=".15"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="sgrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#e5525f" stroke-opacity=".05"/>
+    </pattern>
+    <linearGradient id="spanel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f1115" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#100b0e" stop-opacity=".98"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#sbg)"/>
+  <rect width="1600" height="700" fill="url(#sgrid)"/>
+  <rect width="1600" height="700" fill="url(#sg1)"/>
+  <rect width="1600" height="700" fill="url(#sg2)"/>
+
+  <!-- Left: Studio Branding -->
+  <g transform="translate(100 210)">
+    <rect width="210" height="34" rx="17" fill="#e5525f" fill-opacity=".14" stroke="#e5525f" stroke-opacity=".4" stroke-width="1.5"/>
+    <text x="105" y="22" text-anchor="middle" font-family="Sora,Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#fca5a5" letter-spacing="2">ESPACE DIRECTION &amp; QG</text>
+    <text x="0" y="95" font-family="Sora,Segoe UI,sans-serif" font-size="56" font-weight="800" fill="#ffffff" letter-spacing="-1">NEXUS STUDIO</text>
+    <text x="0" y="145" font-family="Figtree,Segoe UI,sans-serif" font-size="22" font-weight="400" fill="#94a3b8">Le centre de commande de MRkevin &amp; Junior.</text>
+    <text x="0" y="180" font-family="Figtree,Segoe UI,sans-serif" font-size="16" font-weight="500" fill="#e5525f">■ Pilotage 3D &nbsp;■ Notes de conception &nbsp;■ Dashboard médias &nbsp;■ Sync GitHub</text>
+  </g>
+
+  <!-- Right: 3D Geometric Nexus & Kanban Board View -->
+  <g transform="translate(860 110) skewY(-4)">
+    <rect width="660" height="460" rx="20" fill="url(#spanel)" stroke="#e5525f" stroke-opacity=".4" stroke-width="1.5"/>
+    <rect width="660" height="42" rx="20" fill="#ffffff" opacity=".03"/>
+    <circle cx="28" cy="21" r="5" fill="#ef4444" opacity=".8"/>
+    <circle cx="44" cy="21" r="5" fill="#f59e0b" opacity=".8"/>
+    <circle cx="60" cy="21" r="5" fill="#10b981" opacity=".8"/>
+    <text x="330" y="26" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="12" fill="#71717a">nexus-studio://command-center/kevin+junior</text>
+
+    <!-- Kanban columns simulation -->
+    <g transform="translate(30 70)">
+      <!-- Col 1: En cours -->
+      <rect width="180" height="340" rx="10" fill="#180e12" stroke="#27151b"/>
+      <text x="15" y="30" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#e5525f">EN COURS (8)</text>
+      <rect x="12" y="48" width="156" height="75" rx="8" fill="#241319" stroke="#e5525f" stroke-opacity=".4"/>
+      <text x="22" y="72" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#ffffff">Black Clover RP</text>
+      <text x="22" y="92" font-family="Figtree,sans-serif" font-size="10" fill="#a1a1aa">19% · Kevin &amp; Junior</text>
+      <rect x="22" y="103" width="136" height="5" rx="2.5" fill="#3a1c25"/>
+      <rect x="22" y="103" width="26" height="5" rx="2.5" fill="#e5525f"/>
+
+      <rect x="12" y="135" width="156" height="70" rx="8" fill="#241319"/>
+      <text x="22" y="159" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#ffffff">Académie Nexoria</text>
+      <text x="22" y="179" font-family="Figtree,sans-serif" font-size="10" fill="#a1a1aa">Teaser mapping · 35%</text>
+
+      <!-- Col 2: En pause -->
+      <g transform="translate(200 0)">
+        <rect width="180" height="340" rx="10" fill="#180e12" stroke="#27151b"/>
+        <text x="15" y="30" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#f59e0b">EN PAUSE (1)</text>
+        <rect x="12" y="48" width="156" height="70" rx="8" fill="#241319" stroke="#f59e0b" stroke-opacity=".3"/>
+        <text x="22" y="72" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#ffffff">Solo Leveling RP</text>
+        <text x="22" y="92" font-family="Figtree,sans-serif" font-size="10" fill="#a1a1aa">🔒 Priorité Black Clover</text>
+      </g>
+
+      <!-- Col 3: Terminés -->
+      <g transform="translate(400 0)">
+        <rect width="180" height="340" rx="10" fill="#180e12" stroke="#27151b"/>
+        <text x="15" y="30" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#10b981">TERMINÉS (2)</text>
+        <rect x="12" y="48" width="156" height="70" rx="8" fill="#241319" stroke="#10b981" stroke-opacity=".3"/>
+        <text x="22" y="72" font-family="Sora,sans-serif" font-size="12" font-weight="700" fill="#ffffff">MDT Police V2</text>
+        <text x="22" y="92" font-family="Figtree,sans-serif" font-size="10" fill="#a1a1aa">✓ Déployé &amp; Stable</text>
+      </g>
+    </g>
+  </g>
+</svg>

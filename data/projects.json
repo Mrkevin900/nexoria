@@ -34,6 +34,10 @@
     {
       "id": "bots",
       "name": "Bots & sites"
+    },
+    {
+      "id": "formation",
+      "name": "Formation & Studio"
     }
   ],
   "projects": [
@@ -435,6 +439,195 @@
         "nexoria-dashboard"
       ],
       "note": "Les images de cette page sont des exemples : le vrai panel est privé."
+    },
+    {
+      "id": "academie-nexoria",
+      "name": "Académie Nexoria",
+      "category": "formation",
+      "tag": "Plateforme d’apprentissage · Mapping, Code & VFX",
+      "accent": "#38bdf8",
+      "bg": "linear-gradient(160deg,#09131f,#080c14 55%,#0d1824)",
+      "logo": "assets/projects/academie/logo.png",
+      "banner": "assets/projects/academie/banner.svg",
+      "state": "dev",
+      "authors": [
+        "kevin",
+        "junior"
+      ],
+      "authorsNote": "Projet privé conçu par MRkevin et Junior pour former et outiller les créateurs de l’écosystème NEXORIA.",
+      "version": "0.4.0 Alpha",
+      "progress": 35,
+      "progressNote": "Parcours Mapping débutant terminé, guide complet intégré, modules GLua et VFX en cours d’élaboration.",
+      "short": "La plateforme privée de formation pour maîtriser le Mapping Hammer/Blender, le Code GLua et les VFX immersifs.",
+      "description": "Académie Nexoria est un projet confidentiel et exclusif pensé pour transmettre le savoir-faire technique de l’équipe : concevoir des maps complètes de A à Z avec Valve Hammer Editor et Blender, coder des systèmes de jeu performants en GLua/Luau, et créer des effets visuels (VFX) saisissants. Un teaser et le guide de mapping complet sont consultables en avant-première.",
+      "facts": [
+        {
+          "label": "Parcours",
+          "value": "Mapping, Code & VFX"
+        },
+        {
+          "label": "Moteurs & Outils",
+          "value": "Hammer, Blender, GLua"
+        },
+        {
+          "label": "Accès",
+          "value": "Privé / Teaser public"
+        },
+        {
+          "label": "Statut",
+          "value": "Bientôt disponible"
+        }
+      ],
+      "features": [
+        {
+          "title": "Mapping 3D immersif",
+          "desc": "De l’ébauche sous Blender à la compilation finale sous Hammer Editor : textures, portails de visibilité, éclairages réalistes et navigation NPC."
+        },
+        {
+          "title": "Programmation GLua & Systèmes",
+          "desc": "Concevoir des sorts, des entités interactives, des interfaces fluides et des bases de données optimisées pour accueillir plus de 100 joueurs."
+        },
+        {
+          "title": "Effets visuels (VFX) & Shaders",
+          "desc": "Création d’auras magiques, particules, portails et effets sonores percutants synchronisés avec les actions de jeu."
+        },
+        {
+          "title": "Mapping Guide interactif",
+          "desc": "Documentation technique étape par étape déjà intégrée, avec astuces d’optimisation et fiches réflexes pour éviter les erreurs de compilation."
+        }
+      ],
+      "galleryTitle": "Aperçu de l’Académie",
+      "gallery": [
+        {
+          "src": "assets/projects/academie/banner.svg",
+          "caption": "Interface d’apprentissage et vue 3D Hammer de l’Académie Nexoria"
+        }
+      ],
+      "roadmap": [
+        {
+          "title": "Architecture et guide de mapping",
+          "state": "termine",
+          "desc": "Guide interactif complet pour débutants et modélisateurs 3D."
+        },
+        {
+          "title": "Scène 3D et interface d’apprentissage",
+          "state": "termine",
+          "desc": "Navigation moderne par chapitres et suivi de progression locale."
+        },
+        {
+          "title": "Module de code GLua avancé",
+          "state": "en-cours",
+          "desc": "Exercices pratiques et snippets réutilisables pour Garry’s Mod."
+        },
+        {
+          "title": "Module VFX et particules",
+          "state": "a-venir",
+          "desc": "Tutoriels pas-à-pas pour la création d’auras et d’effets visuels."
+        },
+        {
+          "title": "Ouverture privée aux membres",
+          "state": "a-venir",
+          "desc": "Déploiement exclusif pour la communauté Nexoria."
+        }
+      ],
+      "related": [
+        "black-clover",
+        "addonforge",
+        "nexoria-studio"
+      ],
+      "note": "Projet actuellement en accès restreint. Le teaser et le guide complet sont consultables sur le site."
+    },
+    {
+      "id": "nexoria-studio",
+      "name": "Nexus Studio",
+      "category": "formation",
+      "tag": "Centre de commande & Gestion interne",
+      "accent": "#e5525f",
+      "bg": "linear-gradient(160deg,#14090b,#0a0a0d 55%,#110d12)",
+      "logo": "assets/projects/nexus-studio/logo.svg",
+      "banner": "assets/projects/nexus-studio/banner.svg",
+      "state": "done",
+      "authors": [
+        "kevin",
+        "junior"
+      ],
+      "authorsNote": "Réservé exclusivement à MRkevin et Junior pour piloter l’ensemble des projets NEXORIA.",
+      "version": "2.0 Pro",
+      "progress": 100,
+      "progressNote": "Opérationnel : gestion de projets, notes privées synchronisées, dashboard médias et publication en 1 clic.",
+      "short": "Le quartier général numérique de NEXORIA : notes privées, tableau de bord 3D, gestion des médias et des statuts.",
+      "description": "Nexus Studio est la plateforme privée de pilotage réservée à MRkevin et Junior. Elle offre un tableau de bord 3D temps réel, un fil de discussion et de notes pour chaque projet, un gestionnaire d’images avec sauvegarde automatique, et permet de synchroniser les états d’avancement directement vers le site public github.io.",
+      "facts": [
+        {
+          "label": "Accès",
+          "value": "MRkevin & Junior (PIN)"
+        },
+        {
+          "label": "Moteur 3D",
+          "value": "Three.js temps réel"
+        },
+        {
+          "label": "Sauvegarde",
+          "value": "Automatique & Instantanée"
+        },
+        {
+          "label": "Déploiement",
+          "value": "Export direct github.io"
+        }
+      ],
+      "features": [
+        {
+          "title": "Authentification sécurisée",
+          "desc": "Accès protégé par code secret pour MRkevin et Junior, garantissant la confidentialité absolue des notes de conception."
+        },
+        {
+          "title": "Gestion dynamique des statuts",
+          "desc": "Basculez n’importe quel projet en un clic entre En développement, En pause (avec cadenas) et Terminé."
+        },
+        {
+          "title": "Dashboard Médias & Images",
+          "desc": "Glissez-déposez de nouvelles images, prévisualisez-les, supprimez les visuels obsolètes et définissez la bannière ou le logo."
+        },
+        {
+          "title": "Notes de conception partagées",
+          "desc": "Espace d’échanges privés entre Kevin et Junior pour valider les étapes, planifier les réunions et lister les tâches."
+        }
+      ],
+      "galleryTitle": "Aperçu de Nexus Studio",
+      "gallery": [
+        {
+          "src": "assets/projects/nexus-studio/banner.svg",
+          "caption": "Tableau de bord 3D et colonnes d’avancement de Nexus Studio"
+        }
+      ],
+      "roadmap": [
+        {
+          "title": "Scène 3D Three.js et portail d’accès",
+          "state": "termine",
+          "desc": "Animation géométrique fluide et sélection de profil par PIN."
+        },
+        {
+          "title": "Dashboard médias et glisser-déposer",
+          "state": "termine",
+          "desc": "Ajout, prévisualisation et suppression d’images avec compression."
+        },
+        {
+          "title": "Discussions et notes par projet",
+          "state": "termine",
+          "desc": "Fils d’échanges privés entre MRkevin et Junior."
+        },
+        {
+          "title": "Publication automatique pour le site public",
+          "state": "termine",
+          "desc": "Mise à jour en temps réel et export du fichier projects.json."
+        }
+      ],
+      "related": [
+        "black-clover",
+        "panel-hg",
+        "academie-nexoria"
+      ],
+      "note": "Accédez au studio via studio.html avec votre code d’accès personnel."
     },
     {
       "id": "nexoria-dashboard",

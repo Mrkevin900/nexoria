@@ -1,9 +1,152 @@
 {
   "_info": "Contenu du site NEXORIA. Pour ajouter ou modifier un projet, change ce fichier. state = dev (en développement), done (terminé) ou pause (en pause, affiché avec un cadenas). authors = kevin et/ou junior. Une image avec \"example\": true est une image d'exemple, à remplacer par une vraie capture.",
+  "site": {
+    "hero": {
+      "kicker": "Structure indépendante · Fondateur Mrkevin · Cofondateur Junior",
+      "title": "NEXORIA",
+      "slogan": "Plusieurs projets. Plusieurs univers. Une seule vision.",
+      "lead": "Un écosystème qui réunit des serveurs de jeu, des applications, des bots Discord et des outils — fondé par **Mrkevin**, cofondé par **Junior**.",
+      "btn1": "Explorer les projets",
+      "btn2": "Découvrir NEXORIA",
+      "btn3": "Rejoindre le Discord"
+    },
+    "sections": [
+      {
+        "id": "projets",
+        "title": "Nos projets",
+        "lead": "Chaque projet a sa propre identité, sa couleur et son univers. Clique sur une affiche pour tout voir : vidéos, images, boss, avancement."
+      },
+      {
+        "id": "vision",
+        "title": "Notre vision",
+        "lead": "NEXORIA développe des projets variés sous une marque commune, chacun avec son identité propre — et pousse chaque contenu à fond."
+      },
+      {
+        "id": "direction",
+        "title": "La direction de NEXORIA",
+        "lead": "NEXORIA a été fondée par MRkevin, à l’origine de la structure. Junior en est le cofondateur et participe à sa direction et à son développement."
+      },
+      {
+        "id": "avancement",
+        "title": "Où en est chaque projet",
+        "lead": "En développement, terminés ou en pause : l’état réel de tous les projets NEXORIA."
+      },
+      {
+        "id": "galerie",
+        "title": "Galerie",
+        "lead": "Vidéos, captures et illustrations des projets. Les images marquées « Exemple » montrent à quoi ressemble l’outil en attendant les vraies captures."
+      },
+      {
+        "id": "faq",
+        "title": "Foire Aux Questions",
+        "lead": "Tout ce que tu dois savoir sur la structure NEXORIA, nos serveurs de jeu, Nexus Studio et nos futurs projets."
+      },
+      {
+        "id": "contact",
+        "title": "Rejoins la communauté",
+        "lead": "Annonces, avant-premières, tests des projets et échanges avec l’équipe : tout se passe sur le Discord NEXORIA."
+      }
+    ],
+    "vision": [
+      {
+        "icon": "◆",
+        "title": "Qui sommes-nous ?",
+        "text": "Une structure indépendante qui rassemble des projets numériques, communautaires et créatifs, du serveur de jeu à l’application Windows."
+      },
+      {
+        "icon": "◇",
+        "title": "Notre organisation",
+        "text": "Fondateur : MRkevin. Cofondateur : Junior. MRkevin développe la plupart des projets ; Junior a créé le Panel HG et travaille avec lui sur Black Clover RP et Solo Leveling RP."
+      },
+      {
+        "icon": "✦",
+        "title": "Nos domaines",
+        "text": "Serveurs Garry’s Mod, applications Windows, bots Discord, sites web, outils de développement et interfaces RP."
+      }
+    ],
+    "faq": [
+      {
+        "cat": "NEXORIA",
+        "q": "Qu’est-ce que NEXORIA ?",
+        "a": "Une structure indépendante qui rassemble des projets numériques et créatifs : serveurs Garry’s Mod, applications Windows, bots Discord, sites web et outils communautaires."
+      },
+      {
+        "cat": "NEXORIA",
+        "q": "Qui a fondé et dirige NEXORIA ?",
+        "a": "MRkevin est le fondateur de NEXORIA et pilote la majorité des développements techniques. Junior en est le cofondateur : il a développé le Panel HG et co-développe Black Clover RP et Solo Leveling RP."
+      },
+      {
+        "cat": "NEXORIA",
+        "q": "Quelle est la philosophie de la structure ?",
+        "a": "« Plusieurs projets. Plusieurs univers. Une seule vision. » Chaque projet possède son identité visuelle et son univers propre, avec une exigence de finition et de performance poussée au maximum."
+      },
+      {
+        "cat": "Projets",
+        "q": "Quels projets sont actuellement actifs ?",
+        "auto": true
+      },
+      {
+        "cat": "Black Clover",
+        "q": "Qu’est-ce que Black Clover RP ?",
+        "a": "Le serveur roleplay Garry’s Mod phare de NEXORIA, pensé pour accueillir plus de 100 joueurs simultanés. Les joueurs incarnent des mages, reçoivent leur grimoire d’affinité, rejoignent une compagnie et affrontent 8 boss majeurs."
+      },
+      {
+        "cat": "Black Clover",
+        "q": "Comment fonctionne le système de grimoires et de magie ?",
+        "a": "Chaque joueur débloque des sorts uniques selon son affinité (Vent, Feu, Espace, Ténèbres...), progresse dans les rangs de sa compagnie et peut participer aux raids épiques de guildes."
+      },
+      {
+        "cat": "Serveurs",
+        "q": "Pourquoi Solo Leveling RP est-il en pause ?",
+        "a": "Solo Leveling RP a été le premier serveur fondateur de NEXORIA. Il est actuellement mis en pause avec ses acquis sécurisés afin que l’équipe concentre toutes ses forces sur Black Clover RP. Il sera réactivé ultérieurement."
+      },
+      {
+        "cat": "Nexus Studio",
+        "q": "Qu’est-ce que Nexus Studio ?",
+        "a": "Nexus Studio est le centre de pilotage privé de NEXORIA. Il permet à MRkevin et Junior de suivre l’état des projets en temps réel, échanger des notes de conception, gérer les images et déployer les mises à jour en un clic."
+      },
+      {
+        "cat": "Nexus Studio",
+        "q": "Qui a accès à Nexus Studio ?",
+        "a": "L’accès est strictement réservé au fondateur MRkevin et au cofondateur Junior, chacun avec son propre code d’accès. Les changements validés dans le Studio sont ensuite publiés pour toute la communauté."
+      },
+      {
+        "cat": "Académie",
+        "q": "Qu’est-ce que l’Académie Nexoria ?",
+        "a": "L’Académie Nexoria est une plateforme complète d’apprentissage dédiée à la création sur Source Engine : Mapping (Hammer & Blender), Programmation (GLua / Luau) et Effets visuels (VFX)."
+      },
+      {
+        "cat": "Académie",
+        "q": "Quand l’Académie Nexoria sera-t-elle disponible ?",
+        "a": "Le projet est actuellement confidentiel et en cours d’élaboration par MRkevin et Junior. Un teaser interactif ainsi que le guide complet de mapping débutant sont déjà consultables en avant-première sur le site."
+      },
+      {
+        "cat": "Panel HG",
+        "q": "À quoi sert le Panel HG ?",
+        "a": "Développé par Junior, le Panel HG sert à coordonner les hauts gradés du serveur Black Clover : gestion des effectifs, compagnies, candidatures, combats d’arène, planning d’événements et promotions."
+      },
+      {
+        "cat": "Panel HG",
+        "q": "Qui peut accéder au Panel HG ?",
+        "a": "Seuls les hauts gradés autorisés : Grand Chevalier-Mage, Vice-Capitaine, Capitaine, Responsable serveur et Fondateurs. Les permissions sont directement contrôlées et chiffrées par le panel."
+      },
+      {
+        "cat": "Applications",
+        "q": "Où télécharger Dino App et AddonForge ?",
+        "a": "Dino App et AddonForge sont actuellement en phases de test restreint et d’optimisation. Les installateurs officiels vérifiés seront mis à disposition sur le Discord NEXORIA lors de leur sortie publique."
+      },
+      {
+        "cat": "Communauté",
+        "q": "Comment rejoindre la communauté ou proposer son aide ?",
+        "a": "Rejoins le Discord officiel NEXORIA grâce aux boutons présents sur la page. C’est le lieu d’échange central pour tester les projets en avant-première, voter les fonctionnalités et discuter avec MRkevin et Junior."
+      }
+    ],
+    "footer": "**NEXORIA** — structure indépendante. Fondateur : Mrkevin · Cofondateur : Junior."
+  },
   "team": [
     {
       "id": "kevin",
-      "name": "MRkevin",
+      "name": "Mrkevin",
       "alias": "Kevin · Rudeus",
       "role": "Fondateur",
       "bio": "À l’origine de NEXORIA. Il conçoit et développe la grande majorité des projets : serveurs Garry’s Mod, applications Windows, bots Discord et outils.",
@@ -12,7 +155,6 @@
     {
       "id": "junior",
       "name": "Junior",
-      "alias": "",
       "role": "Cofondateur",
       "bio": "Cofondateur de NEXORIA. Il a créé le Panel HG et travaille avec MRkevin sur Black Clover RP et Solo Leveling RP.",
       "photo": "assets/img/junior.svg"
@@ -56,7 +198,6 @@
         "junior"
       ],
       "authorsNote": "MRkevin porte la plus grande partie du développement, Junior travaille avec lui sur le projet.",
-      "version": "",
       "progress": 19,
       "progressNote": "Calculé sur les 115 étapes de la feuille de route officielle du serveur.",
       "short": "Le grand serveur RP de mages de NEXORIA, pensé pour plus de 100 joueurs.",
@@ -174,7 +315,6 @@
           "difficulty": 2
         }
       ],
-      "videos": [],
       "galleryTitle": "Magies, grimoires et objets",
       "gallery": [
         {
@@ -334,7 +474,6 @@
       "tag": "Application web · Accès restreint",
       "accent": "#e5e7eb",
       "bg": "radial-gradient(70% 60% at 75% 20%,rgba(255,255,255,.16),transparent 70%),linear-gradient(160deg,#16161b,#07070a)",
-      "logo": "",
       "monogram": "HG",
       "banner": "assets/projects/panel-hg/banner.svg",
       "holo": true,
@@ -342,7 +481,6 @@
       "authors": [
         "junior"
       ],
-      "version": "",
       "short": "L’espace de gestion et de coordination des hauts gradés de Black Clover RP.",
       "description": "Le Panel HG est l’outil interne des hauts gradés du serveur Black Clover RP. Il centralise la gestion des effectifs, des compagnies, des candidatures et des promotions, dans le respect des permissions existantes du serveur.",
       "facts": [
@@ -366,8 +504,7 @@
       "features": [
         {
           "title": "Objectif",
-          "text": "Centraliser la gestion et la coordination des hauts gradés du serveur Black Clover, dans le respect des permissions existantes.",
-          "items": []
+          "text": "Centraliser la gestion et la coordination des hauts gradés du serveur Black Clover, dans le respect des permissions existantes."
         },
         {
           "title": "Fonctions",
@@ -405,7 +542,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu du panel",
       "gallery": [
         {
@@ -447,7 +583,6 @@
       "tag": "Plateforme d’apprentissage · Mapping, Code & VFX",
       "accent": "#38bdf8",
       "bg": "linear-gradient(160deg,#09131f,#080c14 55%,#0d1824)",
-      "logo": "assets/projects/academie/logo.png",
       "banner": "assets/projects/academie/banner.svg",
       "state": "dev",
       "authors": [
@@ -535,7 +670,8 @@
         "addonforge",
         "nexoria-studio"
       ],
-      "note": "Projet actuellement en accès restreint. Le teaser et le guide complet sont consultables sur le site."
+      "note": "Projet actuellement en accès restreint. Le teaser et le guide complet sont consultables sur le site.",
+      "monogram": "a  nX"
     },
     {
       "id": "nexoria-studio",
@@ -544,90 +680,19 @@
       "tag": "Centre de commande & Gestion interne",
       "accent": "#e5525f",
       "bg": "linear-gradient(160deg,#14090b,#0a0a0d 55%,#110d12)",
-      "logo": "assets/projects/nexus-studio/logo.svg",
       "banner": "assets/projects/nexus-studio/banner.svg",
-      "state": "done",
+      "state": "dev",
       "authors": [
         "kevin",
         "junior"
       ],
-      "authorsNote": "Réservé exclusivement à MRkevin et Junior pour piloter l’ensemble des projets NEXORIA.",
       "version": "2.0 Pro",
       "progress": 100,
       "progressNote": "Opérationnel : gestion de projets, notes privées synchronisées, dashboard médias et publication en 1 clic.",
       "short": "Le quartier général numérique de NEXORIA : notes privées, tableau de bord 3D, gestion des médias et des statuts.",
       "description": "Nexus Studio est la plateforme privée de pilotage réservée à MRkevin et Junior. Elle offre un tableau de bord 3D temps réel, un fil de discussion et de notes pour chaque projet, un gestionnaire d’images avec sauvegarde automatique, et permet de synchroniser les états d’avancement directement vers le site public github.io.",
-      "facts": [
-        {
-          "label": "Accès",
-          "value": "MRkevin & Junior (PIN)"
-        },
-        {
-          "label": "Moteur 3D",
-          "value": "Three.js temps réel"
-        },
-        {
-          "label": "Sauvegarde",
-          "value": "Automatique & Instantanée"
-        },
-        {
-          "label": "Déploiement",
-          "value": "Export direct github.io"
-        }
-      ],
-      "features": [
-        {
-          "title": "Authentification sécurisée",
-          "desc": "Accès protégé par code secret pour MRkevin et Junior, garantissant la confidentialité absolue des notes de conception."
-        },
-        {
-          "title": "Gestion dynamique des statuts",
-          "desc": "Basculez n’importe quel projet en un clic entre En développement, En pause (avec cadenas) et Terminé."
-        },
-        {
-          "title": "Dashboard Médias & Images",
-          "desc": "Glissez-déposez de nouvelles images, prévisualisez-les, supprimez les visuels obsolètes et définissez la bannière ou le logo."
-        },
-        {
-          "title": "Notes de conception partagées",
-          "desc": "Espace d’échanges privés entre Kevin et Junior pour valider les étapes, planifier les réunions et lister les tâches."
-        }
-      ],
-      "galleryTitle": "Aperçu de Nexus Studio",
-      "gallery": [
-        {
-          "src": "assets/projects/nexus-studio/banner.svg",
-          "caption": "Tableau de bord 3D et colonnes d’avancement de Nexus Studio"
-        }
-      ],
-      "roadmap": [
-        {
-          "title": "Scène 3D Three.js et portail d’accès",
-          "state": "termine",
-          "desc": "Animation géométrique fluide et sélection de profil par PIN."
-        },
-        {
-          "title": "Dashboard médias et glisser-déposer",
-          "state": "termine",
-          "desc": "Ajout, prévisualisation et suppression d’images avec compression."
-        },
-        {
-          "title": "Discussions et notes par projet",
-          "state": "termine",
-          "desc": "Fils d’échanges privés entre MRkevin et Junior."
-        },
-        {
-          "title": "Publication automatique pour le site public",
-          "state": "termine",
-          "desc": "Mise à jour en temps réel et export du fichier projects.json."
-        }
-      ],
-      "related": [
-        "black-clover",
-        "panel-hg",
-        "academie-nexoria"
-      ],
-      "note": "Accédez au studio via studio.html avec votre code d’accès personnel."
+      "monogram": "ns",
+      "secret": true
     },
     {
       "id": "nexoria-dashboard",
@@ -708,7 +773,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu de la plateforme",
       "gallery": [
         {
@@ -757,7 +821,7 @@
       "related": [
         "black-clover",
         "panel-hg",
-        "solo-leveling"
+        "confidentiel-1w57lv"
       ],
       "monogram": "ND"
     },
@@ -924,14 +988,11 @@
       "tag": "Bot Discord · Créateurs de contenu",
       "accent": "#f43f5e",
       "bg": "radial-gradient(60% 50% at 75% 25%,#f43f5e44,transparent 70%),linear-gradient(160deg,#2a0610,#0d0507 60%,#1f0a1a)",
-      "logo": "",
-      "monogram": "F",
-      "banner": "",
+      "monogram": "FIDO",
       "state": "dev",
       "authors": [
         "kevin"
       ],
-      "version": "",
       "short": "Le bot Discord des YouTubers et TikTokers : tickets, niveaux, alertes.",
       "description": "Fido est un bot Discord complet pour les communautés de créateurs de contenu : accueil des membres, tickets, niveaux et classements, alertes YouTube et TikTok, modération et économie. Avec des bannières soignées pour chaque situation.",
       "facts": [
@@ -993,7 +1054,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu des commandes",
       "gallery": [
         {
@@ -1066,7 +1126,6 @@
       "tag": "Site web · Journal RP",
       "accent": "#4caf6a",
       "bg": "radial-gradient(60% 50% at 75% 25%,#4caf6a3a,transparent 70%),linear-gradient(160deg,#0f2416,#0a120c 60%,#2a2414)",
-      "logo": "",
       "banner": "assets/projects/gazette/une.webp",
       "state": "dev",
       "authors": [
@@ -1133,7 +1192,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Le nouveau site",
       "gallery": [
         {
@@ -1197,7 +1255,6 @@
       "tag": "Application · Windows",
       "accent": "#8b5cf6",
       "bg": "radial-gradient(60% 50% at 75% 25%,#8b5cf644,transparent 70%),linear-gradient(160deg,#160d33,#070a13 60%,#2b0f2a)",
-      "logo": "",
       "banner": "assets/projects/gh-publish/accueil.webp",
       "state": "dev",
       "authors": [
@@ -1264,7 +1321,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Captures de la V2",
       "gallery": [
         {
@@ -1327,8 +1383,7 @@
       "tag": "Bot Discord · Outil web",
       "accent": "#f59e0b",
       "bg": "radial-gradient(60% 50% at 75% 25%,#f59e0b40,transparent 70%),linear-gradient(160deg,#2a1a05,#0d0905 60%,#1d1405)",
-      "logo": "",
-      "monogram": "K",
+      "monogram": "KB",
       "banner": "assets/projects/kobrabot/banner.svg",
       "state": "dev",
       "authors": [
@@ -1386,7 +1441,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu",
       "gallery": [
         {
@@ -1424,10 +1478,8 @@
       "tag": "Outil de développement · Garry’s Mod",
       "accent": "#3b82f6",
       "bg": "radial-gradient(60% 50% at 75% 25%,#3b82f640,transparent 70%),linear-gradient(160deg,#0a1a3a,#050914 60%,#0a2440)",
-      "logo": "",
-      "monogram": "DA",
-      "banner": "assets/projects/devarchive/banner.webp",
-      "state": "dev",
+      "monogram": "DEV  ",
+      "state": "pause",
       "authors": [
         "kevin"
       ],
@@ -1483,7 +1535,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu",
       "gallery": [
         {
@@ -1513,14 +1564,12 @@
       "tag": "Atelier de développement · Garry’s Mod",
       "accent": "#f97316",
       "bg": "radial-gradient(60% 50% at 75% 70%,#f9731655,transparent 70%),linear-gradient(160deg,#1f0f05,#0a0605 60%,#1a0c04)",
-      "logo": "",
       "monogram": "AF",
       "banner": "assets/projects/addonforge/banner.svg",
-      "state": "dev",
+      "state": "pause",
       "authors": [
         "kevin"
       ],
-      "version": "",
       "short": "L’atelier où naissent les addons NEXORIA : coder, tester en vrai, exporter.",
       "description": "AddonForge est l’atelier de développement Garry’s Mod de NEXORIA. Il lance un serveur de test en un clic, lie automatiquement les addons et scripts au jeu, recharge le code à chaud et envoie un rapport complet sur Discord à chaque démarrage. Une fois prêts, les addons partent vers les serveurs de production.",
       "facts": [
@@ -1583,7 +1632,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu",
       "gallery": [
         {
@@ -1631,14 +1679,12 @@
       "tag": "Interface RP · Réseau Tactique Central",
       "accent": "#5b8cff",
       "bg": "radial-gradient(60% 50% at 75% 25%,#3b6cff55,transparent 70%),radial-gradient(40% 40% at 95% 90%,#ff3b4f33,transparent 70%),linear-gradient(160deg,#06122e,#040814 60%,#140612)",
-      "logo": "",
       "monogram": "MDT",
       "banner": "assets/projects/mdt-police/banner.svg",
       "state": "done",
       "authors": [
         "kevin"
       ],
-      "version": "",
       "short": "Le terminal des forces de l’ordre RP : service, points, grades et Code 99.",
       "description": "Le Réseau Tactique Central est un MDT (Mobile Data Terminal) pour serveur RP. Il gère la prise de service, compte les points automatiquement, affiche le grade et la progression, et s’adapte à la branche choisie : Gendarmerie, Généraux ou Pompiers.",
       "facts": [
@@ -1701,7 +1747,6 @@
           ]
         }
       ],
-      "videos": [],
       "galleryTitle": "Aperçu",
       "gallery": [
         {
@@ -1729,193 +1774,22 @@
       ]
     },
     {
-      "id": "solo-leveling",
-      "name": "NEXORIA Solo Leveling RP",
+      "id": "confidentiel-1w57lv",
+      "name": "NEXORIA RP ????",
       "category": "jeux",
       "tag": "Serveur Garry’s Mod · Roleplay",
       "accent": "#22d3ee",
       "bg": "radial-gradient(60% 50% at 75% 25%,#22d3ee33,transparent 70%),linear-gradient(160deg,#071a2e,#050914 60%,#140a2e)",
-      "logo": "",
-      "banner": "assets/projects/solo-leveling/banner.webp",
       "state": "pause",
       "authors": [
         "kevin",
         "junior"
       ],
       "version": "5.0",
-      "pauseNote": "Le premier serveur NEXORIA est mis en pause pour concentrer l’équipe sur Black Clover RP. Il reviendra plus tard.",
       "short": "Le premier serveur NEXORIA : chasseurs, portails, donjons et armée de l’ombre.",
       "description": "Le premier serveur Garry’s Mod de NEXORIA, inspiré de l’univers de Solo Leveling. Les joueurs deviennent des chasseurs, franchissent des portails de rang E à S, affrontent les monstres des donjons et lèvent leur armée de l’ombre.",
-      "facts": [
-        {
-          "label": "Jeu",
-          "value": "Garry’s Mod"
-        },
-        {
-          "label": "Dernière version",
-          "value": "5.0"
-        },
-        {
-          "label": "Rangs",
-          "value": "E à S"
-        },
-        {
-          "label": "Statut",
-          "value": "En pause"
-        }
-      ],
-      "features": [
-        {
-          "title": "Chasseurs et rangs",
-          "text": "Chaque joueur est un chasseur classé de E à S.",
-          "items": [
-            "Personnage sur 3 emplacements",
-            "Personnalisation 3D",
-            "Héros de l’Association ou chasseur renégat",
-            "Classes, compétences et licence de chasseur"
-          ]
-        },
-        {
-          "title": "Portails et donjons",
-          "text": "Des brèches apparaissent : à vous d’y entrer.",
-          "items": [
-            "Portails de rang E à S",
-            "Monstres avec IA tactique",
-            "Butin physique à ramasser",
-            "Extraction d’ombres : « ARISE »"
-          ]
-        },
-        {
-          "title": "Économie des donjons",
-          "text": "Quatre devises et un vrai marché entre joueurs.",
-          "items": [
-            "Dollars, Jetons de chasse, Nexoria Coins, Essence d’ombre",
-            "Hôtel des ventes avec taxe de 5 %",
-            "Boîte aux lettres hors ligne"
-          ]
-        },
-        {
-          "title": "Interface Système",
-          "text": "Des menus inspirés des manhwas.",
-          "items": [
-            "HUD tactique : niveau, rang, Combat Power",
-            "Touche C : actions RP et support",
-            "F4 : hub du Monarque",
-            "F5 : quêtes et inventaire · F8 : staff"
-          ]
-        }
-      ],
-      "bossesTitle": "Bestiaire",
-      "bossesIntro": "Les monstres des donjons, du gobelin de rang E jusqu’au boss de rang S.",
-      "bosses": [
-        {
-          "name": "Igris",
-          "title": "Commandant rouge · Boss mondial",
-          "description": "Dash d’éclair rouge et onde de choc sismique. Barre de boss sur tout l’écran.",
-          "rank": "S",
-          "difficulty": 5
-        },
-        {
-          "name": "Chevalier d’Élite Sanglant",
-          "title": "Rang B",
-          "description": "Blocage et estoc.",
-          "rank": "B",
-          "difficulty": 4
-        },
-        {
-          "name": "Guerrier Orc Sanguinaire",
-          "title": "Rang C",
-          "description": "Balayage lourd et grande résistance.",
-          "rank": "C",
-          "difficulty": 3
-        },
-        {
-          "name": "Loup des Ténèbres",
-          "title": "Rang D",
-          "description": "Bonds et ralentissement.",
-          "rank": "D",
-          "difficulty": 2
-        },
-        {
-          "name": "Gobelin des Grottes",
-          "title": "Rang E",
-          "description": "Rapide et agressif.",
-          "rank": "E",
-          "difficulty": 1
-        }
-      ],
-      "videos": [],
-      "galleryTitle": "Quêtes, objets et interfaces",
-      "gallery": [
-        {
-          "src": "assets/projects/solo-leveling/quest_boss.webp",
-          "alt": "Quête : vaincre le seigneur de guerre abyssal"
-        },
-        {
-          "src": "assets/projects/solo-leveling/quest_redgate.webp",
-          "alt": "Quête : le portail rouge"
-        },
-        {
-          "src": "assets/projects/solo-leveling/quest_goblin.webp",
-          "alt": "Quête : les gobelins"
-        },
-        {
-          "src": "assets/projects/solo-leveling/quest_workout.webp",
-          "alt": "Quête quotidienne : entraînement"
-        },
-        {
-          "src": "assets/projects/solo-leveling/shadow_soldier.webp",
-          "alt": "Soldat de l’ombre"
-        },
-        {
-          "src": "assets/projects/solo-leveling/rasaka_dagger.webp",
-          "alt": "Dague de Rasaka"
-        },
-        {
-          "src": "assets/projects/solo-leveling/mana_orb.webp",
-          "alt": "Orbe de mana"
-        },
-        {
-          "src": "assets/projects/solo-leveling/awakening_stone.webp",
-          "alt": "Pierre d’éveil"
-        },
-        {
-          "src": "assets/projects/solo-leveling/dungeon_key.webp",
-          "alt": "Clé de donjon"
-        },
-        {
-          "src": "assets/projects/solo-leveling/mana_potion.webp",
-          "alt": "Potion de mana"
-        }
-      ],
-      "roadmap": [
-        {
-          "name": "2.0 — Refonte du Monarque et staff unifié",
-          "status": "termine"
-        },
-        {
-          "name": "3.0 — Refonte graphique et interface complète",
-          "status": "termine"
-        },
-        {
-          "name": "4.0 — Cœur NEXORIA, base de données, 3 emplacements",
-          "status": "termine"
-        },
-        {
-          "name": "5.0 — Armée des monstres et économie des donjons",
-          "status": "termine"
-        },
-        {
-          "name": "Reprise du projet",
-          "status": "pause"
-        }
-      ],
-      "related": [
-        "black-clover",
-        "devarchive"
-      ],
-      "note": "Projet communautaire de fans inspiré de Solo Leveling, sans affiliation officielle avec ses auteurs.",
-      "monogram": "SL"
+      "monogram": "?",
+      "secret": true
     }
   ]
 }

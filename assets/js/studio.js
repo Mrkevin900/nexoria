@@ -229,7 +229,7 @@
     var headers = { Accept: o.raw ? 'application/vnd.github.raw+json' : 'application/vnd.github+json', Authorization: 'Bearer ' + (tok || token()), 'X-GitHub-Api-Version': '2022-11-28' };
     if (o.body) headers['Content-Type'] = 'application/json';
     return fetch('https://api.github.com' + path, { method: o.method || 'GET', headers: headers, body: o.body ? JSON.stringify(o.body) : undefined, cache: 'no-store' }).then(function (r) {
-      if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) { throw GhErr(r.status, j.message); });
+      if (!r.ok) return r.json().catch(function () { return {}; }).then(function (j) { var e = GhErr(r.status, j.message); e.path = path; throw e; });
       if (o.raw) return r.text();
       return r.status === 204 ? null : r.json();
     });
@@ -237,9 +237,11 @@
   function ghRaw(path) { return gh('/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH + '&t=' + Date.now(), { raw: true }); }
   function ghMsg(e) {
     if (!e) return 'Erreur inconnue';
+    if (e.status === 404 && /\/git\//.test(e.path || '')) e.write = true;
     if (e.status === 401) return 'Jeton GitHub refusé (invalide ou expiré). Remets-en un dans Réglages.';
-    if (e.status === 403) return 'Le jeton n’a pas le droit d’écrire. Il faut la permission « Contents : Read and write ».';
-    if (e.status === 404) return 'Dépôt introuvable : le jeton doit avoir accès à ' + REPO + '.';
+    var gm = e.message && !/^GitHub \d+$/.test(e.message) ? ' (GitHub : « ' + e.message + ' »)' : '';
+    if (e.status === 403 || (e.status === 404 && e.write)) return 'Le jeton peut lire le dépôt mais pas écrire dedans' + gm + '. Sur GitHub, dans le jeton : « Repository access » doit être « Only select repositories » → ' + REPO + ' (et PAS « Public repositories (read-only) »), puis « Repository permissions » → « Contents » sur « Read and write ». Enregistre, puis colle à nouveau le jeton dans Réglages.';
+    if (e.status === 404) return 'Dépôt introuvable : le jeton doit avoir accès à ' + REPO + gm + '.';
     if (e.status === 409 || e.status === 422) return 'Conflit avec une autre publication. Réessaie.';
     if (e.name === 'TypeError') return 'Pas de connexion internet ou GitHub injoignable.';
     return e.message || String(e);
@@ -1914,9 +1916,11 @@
     void m;
   }
   function testToken(tok) {
+    /* lecture, puis vrai test d'écriture : un petit « blob » Git sans effet sur le site (jamais rattaché à un commit) */
     return gh('/repos/' + REPO, {}, tok).then(function (r) {
       if (r.permissions && r.permissions.push === false) throw GhErr(403);
-      return 'Connexion OK : accès à ' + r.full_name + '.';
+      return gh('/repos/' + REPO + '/git/blobs', { method: 'POST', body: { content: 'nexus-studio-test', encoding: 'utf-8' } }, tok).catch(function (e) { e.write = true; throw e; })
+        .then(function () { return 'Connexion OK : le studio peut publier sur ' + r.full_name + '.'; });
     });
   }
   function askToken(thenPublish) {
@@ -1926,7 +1930,7 @@
       h('ol.steps',
         h('li', 'Ouvre ', h('a', { href: 'https://github.com/settings/personal-access-tokens/new', target: '_blank', rel: 'noopener' }, 'github.com → Nouveau jeton (fine-grained)'), ' (connecté au compte ', h('b', REPO.split('/')[0]), ').'),
         h('li', 'Nom : ', h('code', 'Nexus Studio'), ' · Expiration : ', h('b', '1 an'), '.'),
-        h('li', 'Repository access : ', h('b', 'Only select repositories'), ' → ', h('code', REPO), '.'),
+        h('li', 'Repository access : ', h('b', 'Only select repositories'), ' → ', h('code', REPO), '. ⚠️ Pas « Public repositories (read-only) » : avec ce choix le jeton ne peut que lire, même si toutes les permissions sont cochées.'),
         h('li', 'Permissions → Repository → ', h('b', 'Contents : Read and write'), '.'),
         h('li', 'Clique ', h('b', 'Generate token'), ', copie-le et colle-le ici.')),
       fld('Jeton GitHub', inp), msg);

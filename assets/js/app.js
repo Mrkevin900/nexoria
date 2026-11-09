@@ -18,69 +18,21 @@
   function okUrl(u) { return typeof u === 'string' && /^https:\/\//.test(u); }
   function paint(n, p) { n.style.setProperty('--acc', p.accent); n.style.setProperty('--pbg', p.bg); }
 
-  /* cadenas : identifiants uniques par instance (sinon les dégradés disparaissent quand une copie est masquée) */
-  var lockN = 0;
-  function lockSvg() {
-    var k = 'lk' + (++lockN);
-    return '<svg class="lock" viewBox="0 0 84 100" aria-hidden="true"><defs>' +
-      '<linearGradient id="' + k + 'b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f6ff"/><stop offset=".45" stop-color="#b9c2ea"/><stop offset="1" stop-color="#5b648f"/></linearGradient>' +
-      '<linearGradient id="' + k + 's" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8e97c2"/><stop offset=".5" stop-color="#f4f6ff"/><stop offset="1" stop-color="#7a83ad"/></linearGradient>' +
-      '<clipPath id="' + k + 'c"><rect x="6" y="42" width="72" height="54" rx="14"/></clipPath></defs>' +
-      '<path class="shackle" d="M22 46V30a20 20 0 0 1 40 0v16" fill="none" stroke="url(#' + k + 's)" stroke-width="9" stroke-linecap="round"/>' +
-      '<rect x="6" y="42" width="72" height="54" rx="14" fill="url(#' + k + 'b)"/>' +
-      '<rect x="6" y="42" width="72" height="54" rx="14" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>' +
-      '<g clip-path="url(#' + k + 'c)"><rect class="glint" x="20" y="36" width="14" height="70" fill="#fff" opacity="0" transform="skewX(-20)"/></g>' +
-      '<circle cx="42" cy="64" r="7" fill="#1e2340"/><path d="M39 66h6l-1 14h-4z" fill="#1e2340"/></svg>';
-  }
-  var MINI_LOCK = '<svg class="r-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
-
-  function stateBadge(p) {
-    var s = el('span', 'state ' + p.state);
-    if (p.state === 'pause') s.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="3"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
-    s.appendChild(d.createTextNode(STATE[p.state].label));
-    return s;
-  }
-  function byLine(p) {
-    var w = el('div', 'by');
-    (p.authors || []).forEach(function (a) { var t = TEAM[a]; if (t) w.appendChild(img(t.photo, '')); });
-    var names = (p.authors || []).map(function (a) { return TEAM[a] ? TEAM[a].name : a; });
-    w.appendChild(el('span', '', 'Par ' + names.join(' & ')));
-    return w;
-  }
-  function art(p, cls) {
-    if (p.holo) { var h = el('div', 'holo ' + (cls || '')); h.setAttribute('aria-hidden', 'true'); h.innerHTML = '<i></i><i></i><i></i><i></i>'; return h; }
-    if (p.logo) return img(p.logo, 'Logo ' + p.name, (cls || 'p-art') + (p.logoRounded ? ' round' : ''));
-    var m = el('div', 'mono ' + (cls || ''), p.monogram || p.name.charAt(0)); m.setAttribute('aria-hidden', 'true'); return m;
-  }
+  /* rendu partagé avec Nexus Studio : assets/js/nx-render.js */
+  var NX = window.NX;
+  var lockSvg = NX.lockSvg, MINI_LOCK = NX.MINI_LOCK, stateBadge = NX.stateBadge;
+  function byLine(p) { return NX.byLine(p, TEAM); }
+  function art(p, cls) { return NX.art(p, cls); }
 
   /* ---------- affiche projet ---------- */
-  function poster(p, big) {
-    var a = el('a', 'poster' + (big ? ' big' : '') + (p.state === 'pause' ? ' locked' : ''));
-    a.href = link(p); paint(a, p);
-    a.setAttribute('aria-label', p.name + ' — ' + STATE[p.state].label);
-    if (p.banner) a.appendChild(img(p.banner, '', 'p-ban'));
-    var ar = art(p, p.logo ? 'p-art' : ''); a.appendChild(ar);
-    var top = el('div', 'p-top'); top.appendChild(stateBadge(p)); a.appendChild(top);
-    if (p.state === 'pause') {
-      var lb = el('div', 'lockbox'); lb.innerHTML = '<span style="position:relative;display:block"><i class="lock-ring"></i>' + lockSvg() + '</span>';
-      lb.appendChild(el('small', '', 'Bientôt de retour')); a.appendChild(lb);
-    }
-    a.appendChild(el('span', 'tag', p.tag));
-    a.appendChild(el('h3', '', p.name));
-    a.appendChild(el('p', '', p.short));
-    var f = el('div', 'p-foot');
-    f.appendChild(el('span', 'go', p.state === 'pause' ? 'Voir le projet' : 'Découvrir →'));
-    f.appendChild(byLine(p));
-    a.appendChild(f);
-    return a;
-  }
+  function poster(p, big) { return NX.poster(p, { big: big, href: link(p), team: TEAM }); }
 
   /* ---------- accueil ---------- */
   function renderHome() {
     var P = DATA.projects;
     // raccourcis
     var hc = d.getElementById('hero-chips');
-    P.filter(function (p) { return p.state === 'dev'; }).slice(0, 5).forEach(function (p) {
+    P.filter(function (p) { return p.state === 'dev' && !p.secret; }).slice(0, 5).forEach(function (p) {
       var c = el('a', 'chip'); c.href = link(p); c.style.setProperty('--c', p.accent);
       c.appendChild(el('i')); c.appendChild(d.createTextNode(p.name)); hc.appendChild(c);
     });
@@ -150,11 +102,9 @@
       col.appendChild(h);
       L.forEach(function (p) {
         var a = el('a', 'row'); a.href = link(p); paint(a, p);
-        var ic = el('span', 'r-ico');
-        if (p.logo) ic.appendChild(img(p.logo, '')); else ic.textContent = p.monogram || p.name.charAt(0);
-        a.appendChild(ic);
+        a.appendChild(NX.icon(p));
         var t = el('span', 'r-txt'); t.appendChild(el('b', '', p.name));
-        var sub = p.statusNote || p.tag; if (p.version) sub = 'v' + p.version.replace(/^v/i, '') + ' · ' + sub;
+        var sub = p.statusNote || p.tag; if (p.secret) sub = 'Confidentiel' + (p.tag ? ' · ' + p.tag : ''); if (p.version) sub = 'v' + p.version.replace(/^v/i, '') + ' · ' + sub;
         t.appendChild(el('small', '', sub));
         if (typeof p.progress === 'number') { var bar = el('div', 'bar'); var i = el('i'); i.dataset.w = p.progress; bar.appendChild(i); t.appendChild(bar); }
         a.appendChild(t);
@@ -169,7 +119,7 @@
   /* ---------- galerie ---------- */
   var MEDIA = [];
   function renderGallery() {
-    DATA.projects.forEach(function (p) {
+    DATA.projects.filter(function (p) { return !p.secret; }).forEach(function (p) {
       (p.videos || []).forEach(function (v) { MEDIA.push({ p: p, k: 'vid', src: v.src, poster: v.poster, t: v.title }); });
       (p.gallery || []).forEach(function (g) { MEDIA.push({ p: p, k: 'img', src: g.src, t: g.alt, icon: g.icon, ex: g.example }); });
     });
@@ -187,7 +137,7 @@
       d.dispatchEvent(new Event('nx:rendered'));
     }
     more.onclick = page;
-    var list = [['all', 'Tout', null]].concat(DATA.projects.filter(function (p) { return (p.gallery || []).length || (p.videos || []).length; })
+    var list = [['all', 'Tout', null]].concat(DATA.projects.filter(function (p) { return !p.secret && (p.gallery || []).length || (p.videos || []).length; })
       .map(function (p) { return [p.id, p.name, null, p.accent]; }));
     chips(d.getElementById('gal-filters'), list, draw);
     draw('all');
@@ -252,6 +202,7 @@
     var done = DATA.projects.filter(function (p) { return p.state === 'done'; }).map(function (p) { return p.name; });
     var pause = DATA.projects.filter(function (p) { return p.state === 'pause'; }).map(function (p) { return p.name; });
 
+    if (DATA.site && Array.isArray(DATA.site.faq) && DATA.site.faq.length) FAQ = DATA.site.faq.map(function (x) { return [x.cat || 'NEXORIA', x.q || '', x.auto ? '__DEV__' : (x.a || '')]; });
     var box = d.getElementById('faq-list');
     var searchInput = d.getElementById('faq-search');
     var activeCategory = 'Tout';
@@ -321,6 +272,7 @@
     var w = el('div', 'wrap'), L = el('div');
     var bk = el('a', 'back', '← Tous les projets'); bk.href = '#projets'; L.appendChild(bk);
     var bd = el('div', 'ph-badges'); bd.appendChild(stateBadge(p)); bd.appendChild(el('span', 'badge-solid', p.tag));
+    if (p.secret) bd.appendChild(NX.secretBadge());
     if (p.version) bd.appendChild(el('span', 'badge-solid', 'Version ' + p.version)); L.appendChild(bd);
     L.appendChild(el('h1', '', p.name));
     L.appendChild(el('p', 'lead', p.description));
@@ -358,7 +310,14 @@
       if (okUrl(CFG.panelHgUrl)) rb.onclick = function () { window.open(CFG.panelHgUrl, '_blank', 'noopener'); }; else rb.disabled = true;
       rt.appendChild(rb); rs.appendChild(rt); top.appendChild(rs);
     }
+    if (p.secret) {
+      var sp = el('div', 'secretpanel');
+      sp.innerHTML = '<div class="sp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9.9 4.2A10 10 0 0 1 12 4c6.4 0 10 8 10 8a17 17 0 0 1-2.2 3.2M6.6 6.6A17 17 0 0 0 2 12s3.6 8 10 8a9.7 9.7 0 0 0 5.4-1.6"/><path d="M2 2l20 20M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg></div>';
+      var spt = el('div'); spt.appendChild(el('h3', '', 'Projet confidentiel')); spt.appendChild(el('p', '', p.secretNote || 'On travaille dessus en secret. Plus d’infos bientôt — garde un œil sur le Discord NEXORIA !'));
+      sp.appendChild(spt); top.appendChild(sp);
+    }
     VP.appendChild(top);
+    if (p.secret) { d.title = p.name + ' — NEXORIA'; return; }
 
     if (p.id === 'academie-nexoria') {
       var actA = el('div', 'wrap');
@@ -467,35 +426,88 @@
   }
 
   /* ---------- démarrage ---------- */
-  d.querySelectorAll('[data-discord]').forEach(function (a) {
-    if (okUrl(CFG.discordInvite)) { a.href = CFG.discordInvite; a.target = '_blank'; a.rel = 'noopener'; }
-  });
+  function bindDiscord(url) {
+    d.querySelectorAll('[data-discord]').forEach(function (a) {
+      if (okUrl(url)) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+    });
+  }
+  bindDiscord(CFG.discordInvite);
 
-  var localOverride = null;
-  try {
-    var raw = localStorage.getItem('nexoria_published_data');
-    if (raw) localOverride = JSON.parse(raw);
-  } catch (e) {}
+  /* ---------- textes du site modifiables depuis Nexus Studio (DATA.site) ---------- */
+  function rich(n, txt) { // **gras** autorisé, tout le reste est échappé
+    n.textContent = '';
+    String(txt).split(/\*\*(.+?)\*\*/).forEach(function (part, i) { n.appendChild(i % 2 ? el('b', '', part) : d.createTextNode(part)); });
+  }
+  function applySite(S) {
+    if (!S) return;
+    var H = S.hero || {}, hero = d.querySelector('.hero');
+    if (H.kicker) hero.querySelector('.kicker').textContent = H.kicker;
+    if (H.title) hero.querySelector('h1').textContent = H.title;
+    if (H.slogan) hero.querySelector('.slogan').textContent = H.slogan;
+    if (H.lead) rich(hero.querySelector('.hero-txt > .lead'), H.lead);
+    var hb = hero.querySelectorAll('.btns a');
+    ['btn1', 'btn2', 'btn3'].forEach(function (k, i) { if (H[k] && hb[i]) hb[i].textContent = H[k]; });
+    if (Array.isArray(S.sections)) {
+      S.sections.forEach(function (x) {
+        var sec = d.getElementById(x.id); if (!sec || sec.parentNode !== VH) return;
+        var h2 = sec.querySelector('h2'), ld = sec.querySelector('.wrap > .lead, .cta .lead');
+        if (x.title && h2) h2.textContent = x.title;
+        if (x.lead && ld) rich(ld, x.lead);
+        sec.hidden = !!x.hidden;
+        var nl = d.querySelector('#menu a[href="#' + x.id + '"]'); if (nl) nl.parentNode.hidden = !!x.hidden;
+        VH.appendChild(sec);
+      });
+    }
+    if (Array.isArray(S.vision) && S.vision.length) {
+      var cols = d.querySelector('#vision .cols'); cols.innerHTML = '';
+      S.vision.forEach(function (v) {
+        var b = el('div', 'box'); var ic = el('span', 'ico', v.icon || '◆'); ic.setAttribute('aria-hidden', 'true');
+        b.appendChild(ic); b.appendChild(el('h3', '', v.title || '')); var p = el('p'); rich(p, v.text || ''); b.appendChild(p); cols.appendChild(b);
+      });
+    }
+    if (S.footer) { var fs = d.querySelector('footer .wrap > span'); if (fs) rich(fs, S.footer); }
+    if (S.discord) bindDiscord(S.discord);
+  }
 
-  fetch('data/projects.json', { cache: 'no-cache' }).then(function (res) {
-    if (!res.ok) throw new Error(res.status); return res.json();
-  }).then(function (json) {
-    DATA = localOverride || json;
+  /* Aperçu privé (?apercu) : Nexus Studio dépose le brouillon dans IndexedDB, visible seulement sur cet appareil. */
+  function previewData() {
+    return new Promise(function (ok) {
+      if (!/[?&]apercu\b/.test(location.search) || !window.indexedDB) return ok(null);
+      try {
+        var q = indexedDB.open('nx-studio', 1);
+        q.onupgradeneeded = function () { q.result.createObjectStore('kv'); };
+        q.onerror = function () { ok(null); };
+        q.onsuccess = function () {
+          try {
+            var g = q.result.transaction('kv').objectStore('kv').get('preview');
+            g.onsuccess = function () { ok(g.result || null); }; g.onerror = function () { ok(null); };
+          } catch (e) { ok(null); }
+        };
+      } catch (e) { ok(null); }
+    });
+  }
+  function start(json, preview) {
+    DATA = json;
     DATA.team.forEach(function (t) { TEAM[t.id] = t; });
     DATA.projects.forEach(function (p) { BY[p.id] = p; });
+    if (preview) {
+      var b = el('div', 'preview-bar');
+      b.innerHTML = '<b>Aperçu privé</b><span>Brouillon de Nexus Studio — pas encore publié, visible uniquement sur cet appareil.</span>';
+      var x = el('a', 'btn sm', 'Retour au studio'); x.href = 'studio.html'; b.appendChild(x);
+      d.body.insertBefore(b, d.body.firstChild);
+    }
+    try { applySite(DATA.site); } catch (e) { console.warn('Textes du site', e); }
     renderHome();
     window.addEventListener('hashchange', route);
     route();
+    NX.watchEyes();
+  }
+  previewData().then(function (pv) {
+    if (pv && pv.projects && pv.team) return start(pv, true);
+    return fetch('data/projects.json', { cache: 'no-cache' }).then(function (res) {
+      if (!res.ok) throw new Error(res.status); return res.json();
+    }).then(function (json) { start(json, false); });
   }).catch(function (e) {
-    if (localOverride) {
-      DATA = localOverride;
-      DATA.team.forEach(function (t) { TEAM[t.id] = t; });
-      DATA.projects.forEach(function (p) { BY[p.id] = p; });
-      renderHome();
-      window.addEventListener('hashchange', route);
-      route();
-    } else {
-      d.getElementById('posters').innerHTML = '<p class="note">Impossible de charger les projets (' + e.message + '). Ouvre le site via un serveur web, pas en double-cliquant sur le fichier.</p>';
-    }
+    d.getElementById('posters').innerHTML = '<p class="note">Impossible de charger les projets (' + e.message + '). Ouvre le site via un serveur web, pas en double-cliquant sur le fichier.</p>';
   });
 })();

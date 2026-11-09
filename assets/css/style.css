@@ -78,17 +78,17 @@ html.tta,html.tta *,html.tta *::before,html.tta *::after{transition:background-c
 .hero-txt{position:relative;z-index:3}
 .layer{position:absolute;pointer-events:none;will-change:transform}
 .grid{inset:-10% -5%;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%);mask-image:radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)}
-.orb{display:block;width:46vmax;height:46vmax;border-radius:50%;filter:blur(60px);background:radial-gradient(circle,rgba(255,255,255,.12),transparent 65%);animation:drift 14s ease-in-out infinite alternate}
+.orb{display:block;width:46vmax;height:46vmax;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.085),rgba(255,255,255,.03) 35%,transparent 62%);animation:drift 14s ease-in-out infinite alternate;will-change:transform}
 [data-theme="light"] .orb{background:radial-gradient(circle,rgba(0,0,0,.07),transparent 65%)}
 .o2{opacity:.55;animation-duration:19s}
-.fog{inset:auto -10% -10% -10%;height:50%;background:radial-gradient(60% 100% at 30% 100%,rgba(255,255,255,.1),transparent 70%),radial-gradient(50% 90% at 75% 100%,rgba(255,255,255,.05),transparent 70%);filter:blur(18px);animation:fogm 12s ease-in-out infinite alternate}
+.fog{inset:auto -10% -10% -10%;height:50%;background:radial-gradient(60% 100% at 30% 100%,rgba(255,255,255,.1),transparent 70%),radial-gradient(50% 90% at 75% 100%,rgba(255,255,255,.05),transparent 70%);animation:fogm 12s ease-in-out infinite alternate;will-change:transform}
 .emblem-wrap{right:2%;top:50%;width:min(62vmin,560px);aspect-ratio:1;margin-top:calc(min(62vmin,560px) / -2);display:grid;place-items:center;z-index:1}
 .tech{position:absolute;inset:0;width:100%;height:100%;color:var(--blue);opacity:.4}
-.tech g{transform-origin:200px 200px;animation:spin 50s linear infinite}.tech g+g{animation-duration:35s;animation-direction:reverse}
+.tech.t1{animation:spin 50s linear infinite}.tech.t2{animation:spin 35s linear infinite reverse}
 .emblem-wrap::before{content:"";position:absolute;inset:14%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 68%);filter:blur(10px)}
 .emblem{position:relative;width:84%;object-fit:contain;filter:drop-shadow(0 24px 40px rgba(0,0,0,.55)) drop-shadow(0 0 30px rgba(255,255,255,.18));animation:float 7s ease-in-out infinite;transform-origin:50% 60%}#pc{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
 .kicker{display:inline-block;font:600 .8rem var(--bf);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:.3rem .9rem;margin-bottom:1.2rem;background:color-mix(in srgb,var(--surf) 60%,transparent);animation:rise .9s .8s both}
-.hero h1{display:inline-block;font-size:clamp(3.2rem,14vw,8.5rem);font-weight:800;letter-spacing:.06em;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.85) 50%,transparent 58%) 130% 0/250% 100% no-repeat,linear-gradient(100deg,var(--text) 10%,var(--cyan) 60%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;transform:perspective(900px) rotateX(calc(var(--hy,0)*-7deg)) rotateY(calc(var(--hx,0)*9deg));filter:drop-shadow(1px 1px 0 #8d8d98) drop-shadow(2px 2px 0 #6b6b76) drop-shadow(3px 3px 0 #4a4a54) drop-shadow(4px 4px 0 #2c2c33) drop-shadow(0 0 28px var(--glow));animation:hin 1.4s .5s cubic-bezier(.2,.7,.2,1) both,sweep 6s 2.4s ease-in-out infinite}
+.hero h1{display:inline-block;font-size:clamp(3.2rem,14vw,8.5rem);font-weight:800;letter-spacing:.06em;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.85) 50%,transparent 58%) 130% 0/250% 100% no-repeat,linear-gradient(100deg,var(--text) 10%,var(--cyan) 60%,var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;transform:perspective(900px) rotateX(calc(var(--hy,0)*-7deg)) rotateY(calc(var(--hx,0)*9deg));filter:drop-shadow(1px 1px 0 #8d8d98) drop-shadow(2px 2px 0 #6b6b76) drop-shadow(3px 3px 0 #4a4a54) drop-shadow(4px 4px 0 #2c2c33) drop-shadow(0 0 28px var(--glow));animation:hin 1.4s .5s cubic-bezier(.2,.7,.2,1) both,sweep 6s 2.4s ease-in-out 3}
 [data-theme="light"] .hero h1{filter:drop-shadow(2px 2px 0 #c7c7d1) drop-shadow(0 0 20px var(--glow))}
 .slogan{font:700 clamp(1.15rem,3.4vw,1.7rem)/1.3 var(--hf);margin:1rem 0 1.1rem;animation:rise .9s 1s both}
 .hero .lead{animation:rise .9s 1.2s both}.hero .btns{animation:rise .9s 1.4s both}.hero-chips{animation:rise .9s 1.6s both;margin-bottom:0}
@@ -125,7 +125,7 @@ html.tta,html.tta *,html.tta *::before,html.tta *::after{transition:background-c
 .poster:hover{--z:1.07;border-color:var(--acc);box-shadow:0 0 0 1px color-mix(in srgb,var(--acc) 60%,transparent),0 24px 60px color-mix(in srgb,var(--acc) 22%,transparent)}
 .poster h3{font-size:1.9rem;margin-bottom:.4rem;transform:translate(calc(var(--ry,0)*1.5px),calc(var(--rx,0)*-1.5px))}
 .poster p{max-width:34ch;margin-bottom:1rem;opacity:.9;transform:translate(calc(var(--ry,0)*1.5px),calc(var(--rx,0)*-1.5px))}
-.poster .tag{align-self:flex-start;font-size:.78rem;font-weight:600;padding:.25rem .7rem;border-radius:99px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);margin-bottom:.7rem}
+.poster .tag{align-self:flex-start;font-size:.78rem;font-weight:600;padding:.25rem .7rem;border-radius:99px;background:rgba(10,10,14,.55);border:1px solid rgba(255,255,255,.14);margin-bottom:.7rem}
 .poster .p-foot{display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap}
 .poster .go{display:inline-flex;align-items:center;gap:.4rem;font-weight:700;background:var(--acc);color:#0b0b0e;padding:.6rem 1.1rem;border-radius:12px;transition:gap .25s}
 .poster:hover .go{gap:.8rem}
@@ -141,8 +141,47 @@ html.tta,html.tta *,html.tta *::before,html.tta *::after{transition:background-c
 .holo::after{content:"";position:absolute;left:0;right:0;height:30%;top:-30%;background:linear-gradient(transparent,rgba(255,255,255,.35),transparent);animation:scan 3.5s linear infinite}
 @keyframes scan{to{top:100%}}
 
+/* logo auto façon NX (projets sans logo) */
+.nxl{display:block;pointer-events:none}
+.nxl svg{display:block;width:100%;height:auto;overflow:visible}
+.poster .nxl.p-art{position:absolute;z-index:-2;right:-3%;top:9%;width:72%;max-width:300px;filter:drop-shadow(0 22px 30px rgba(0,0,0,.5)) drop-shadow(0 0 26px color-mix(in srgb,var(--acc) 30%,transparent));transform:translate(calc(var(--ry,0)*-3px),calc(var(--rx,0)*3px)) scale(var(--z,1)) rotate(-4deg);transition:transform .3s;animation:float 7s ease-in-out infinite}
+.poster.big .nxl.p-art{max-width:360px;right:2%}
+.ph-art.nxl{width:min(100%,340px);filter:drop-shadow(0 24px 40px rgba(0,0,0,.55)) drop-shadow(0 0 30px color-mix(in srgb,var(--acc) 35%,transparent))}
+.r-ico .nxl{width:118%;margin:0 -9%}
+.nxl-p{transform:translate(calc(var(--ex,0)*3.2px),calc(var(--ey,0)*2.4px));transition:transform .18s ease-out}
+/* animations du visage : seulement au survol (sinon elles repeignent les SVG en continu) */
+.nxl-blink{transform-box:fill-box;transform-origin:center;animation:nxblink 3s infinite paused}
+.nxl-t{transform-box:fill-box;transform-origin:50% 0;animation:nxtongue 1.4s ease-in-out infinite paused}
+.nxl-zap{animation:nxzap 1.2s ease-in-out infinite paused}
+:is(.poster,.row,.chg,.nitem,.ph-art,.ed-h,.nxl.live):hover :is(.nxl-blink,.nxl-t,.nxl-zap){animation-play-state:running}
+.poster .nxl.p-art,.ph-art.nxl{contain:layout paint}
+@keyframes nxblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes nxtongue{50%{transform:rotate(9deg) scaleY(1.06)}}
+@keyframes nxzap{50%{opacity:.55}}
+.preview-bar{position:sticky;top:0;z-index:80;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.4rem 1rem;padding:.55rem 1rem;background:linear-gradient(90deg,#2a1206,#3a1a06);border-bottom:1px solid #f5b53c;color:#ffe2b0;font-size:.9rem}
+.preview-bar b{color:#f5b53c;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem}
+.preview-bar+.loader+.prog+header.nav{top:44px}
+
+/* projet confidentiel : publié, mais en mode teaser */
+.p-badges{display:flex;flex-wrap:wrap;gap:.4rem}
+.state.secret{color:#e9d5ff;background:rgba(40,16,60,.75);border-color:rgba(192,132,252,.5)}
+.state.secret::before{display:none}
+.state.secret svg{width:13px;height:13px}
+.poster.secret{border-color:rgba(192,132,252,.45)}
+.poster.secret .p-art,.poster.secret .p-ban{filter:blur(9px) grayscale(.35) brightness(.75)}
+.poster.secret::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 5px)}
+.secret-stamp{position:absolute;left:50%;top:30%;z-index:1;translate:-50% -50%;rotate:-12deg;padding:.35rem 1rem;border:3px solid rgba(233,213,255,.85);border-radius:10px;font:800 1.25rem var(--hf);letter-spacing:.22em;text-transform:uppercase;color:#f3e8ff;text-shadow:0 0 18px rgba(192,132,252,.8);box-shadow:0 0 30px rgba(192,132,252,.35),inset 0 0 20px rgba(192,132,252,.25);pointer-events:none;transition:rotate .4s,scale .4s}
+.poster.secret:hover .secret-stamp{rotate:-6deg;scale:1.06}
+.poster.secret .go{background:linear-gradient(90deg,#e9d5ff,#c084fc);color:#1a0b2e}
+.secretpanel{position:relative;display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:center;margin-top:1.2rem;border:1px dashed rgba(192,132,252,.6);border-radius:22px;padding:1.5rem;background:repeating-linear-gradient(135deg,rgba(192,132,252,.07) 0 14px,transparent 14px 28px),var(--surf)}
+.secretpanel .sp-ico{display:grid;place-items:center;width:70px;height:70px;border-radius:20px;border:1px solid rgba(192,132,252,.6);color:#e9d5ff;box-shadow:0 0 30px rgba(192,132,252,.3)}
+.secretpanel .sp-ico svg{width:34px;height:34px}
+.secretpanel h3{font-size:1.3rem;margin-bottom:.35rem}
+.secretpanel p{margin:0;color:var(--muted)}
+@media(max-width:560px){.secretpanel{grid-template-columns:1fr;justify-items:center;text-align:center}}
+
 /* statut */
-.state{display:inline-flex;align-items:center;gap:.45rem;font:700 .76rem var(--bf);letter-spacing:.02em;padding:.3rem .75rem;border-radius:99px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);color:#fff;white-space:nowrap}
+.state{display:inline-flex;align-items:center;gap:.45rem;font:700 .76rem var(--bf);letter-spacing:.02em;padding:.3rem .75rem;border-radius:99px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.18);color:#fff;white-space:nowrap}
 .state::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 10px currentColor}
 .state.dev{color:#ffd27a}.state.dev::before{animation:pl 1.6s infinite}
 .state.done{color:#5ff0a8}
@@ -283,7 +322,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-bet
 @keyframes kb{to{transform:scale(1.14) translate(-2%,-2%)}}
 .phero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:2rem;align-items:end}
 @media(max-width:860px){.phero .wrap{grid-template-columns:1fr}.phero .ph-art{display:none}}
-.back{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.6rem;font-weight:600;text-decoration:none;color:#fff;opacity:.85;padding:.4rem .8rem;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.3);backdrop-filter:blur(6px)}
+.back{display:inline-flex;align-items:center;gap:.4rem;margin-bottom:1.6rem;font-weight:600;text-decoration:none;color:#fff;opacity:.85;padding:.4rem .8rem;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.5)}
 .back:hover{opacity:1;border-color:var(--acc)}
 .ph-badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .phero h1{font-size:clamp(2.4rem,8vw,5rem);font-weight:800;text-shadow:0 4px 30px rgba(0,0,0,.6);background:linear-gradient(100deg,#fff 30%,var(--acc));-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise .8s both}
@@ -438,7 +477,7 @@ html.noanim .loader{display:none}html.noanim .js .rv,html.noanim .rv{opacity:1!i
   background:var(--surf);
   border:1px solid var(--line);
   border-radius:14px;
-  color:var(--fg);
+  color:var(--text);
   font:inherit;
   font-size:.95rem;
   outline:none;

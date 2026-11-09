@@ -1,0 +1,25 @@
+{
+ "_info": "Coffre privé chiffré de Nexus Studio (AES-256-GCM). Illisible sans le code d’un administrateur.",
+ "v": 1,
+ "kdf": {
+  "name": "PBKDF2-SHA256",
+  "iter": 600000
+ },
+ "rev": 1794217660074,
+ "keys": {
+  "kevin": {
+   "salt": "XYgpe5TnDC/fepdfZag+pw==",
+   "iv": "L1UEacgvQmWRIpHm",
+   "ct": "d0+uTIUDYQzle9vgmQhrF6Ygr2ZwDmr4l0aKv7gG+CueKulNdcHZgXblRc5a0a0H"
+  },
+  "junior": {
+   "salt": "7F1rTNVtDrE/ynsulbnHlg==",
+   "iv": "Ft/AdaSJmqs8ibo0",
+   "ct": "g3KTIHaS3paJqRNthzvyAKb0pTikfNC7mlS/KRM/JIPaxq3mYGNJVIedwaMBm3nP"
+  }
+ },
+ "data": {
+  "iv": "G5BSTtUzuSl/Osyh",
+  "ct": "7l2I0mMvZI1p5BwgerO4G/lJjZE80pU4WgyOzUrqUzhePHuMABicmOEoH5hS4KWpgfIOG6mk831d2f0CD8xCEWGTHf5cbI8oab0WRE9NCvVCTabITAbC9WD1twJSjFQfkfb6XkRun7JRvM9Sr6B6Qu7P+yhDxuIY9ZSWhqT9T3VK8x/ZcvQ6HekIB57siRNuhJuvUzm/NW9fjCYEES2K3KxmlSqHm5kIOgnh9XELkHGegFHRSaX0e3lX1bstJ6Ib9/jWH2+YgFGP0kOCaYWXqqr016NhxfgjmiFifKJ9wloBg2wsl7876WODNHMORA9QocdTp0ltcrrbcm8JR/JU4H8hgPdnB0ytQ9w4Iv2USw=="
+ }
+}

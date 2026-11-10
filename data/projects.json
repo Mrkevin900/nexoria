@@ -1450,9 +1450,48 @@
       "galleryTitle": "Aperçu",
       "gallery": [
         {
-          "src": "assets/projects/kobrabot/familles.svg",
-          "alt": "Fiche d’une famille dans Discord",
-          "example": true
+          "src": "assets/projects/kobrabot/mwb4iblftsv81m.webp",
+          "alt": "Capture d'écran 2026 11 10 202241   Copie (3)"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ibmvccmjhv.webp",
+          "alt": "Capture d'écran 2026 11 10 202241   Copie"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ibo2g17jd9.webp",
+          "alt": "Capture d'écran 2026 11 10 202116"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ibqdhhedbm.webp",
+          "alt": "Capture d'écran 2026 11 10 200559"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ibsi0i05ec.webp",
+          "alt": "Capture d'écran 2026 11 10 195636"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ibv2artuku.webp",
+          "alt": "Capture d'écran 2026 11 10 195043"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ic0wegyyz8.webp",
+          "alt": "Capture d'écran 2026 11 10 001127"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ic2pyhezoj.webp",
+          "alt": "Capture d'écran 2026 11 09 232321"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ic50ia59gw.webp",
+          "alt": "Capture d'écran 2026 11 09 232115"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ic72tqble9.webp",
+          "alt": "Capture d'écran 2026 11 09 230639"
+        },
+        {
+          "src": "assets/projects/kobrabot/mwb4ic8vtwt52g.webp",
+          "alt": "Capture d'écran 2026 11 09 230158"
         }
       ],
       "roadmap": [

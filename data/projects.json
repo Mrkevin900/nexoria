@@ -147,7 +147,6 @@
     {
       "id": "kevin",
       "name": "Mrkevin",
-      "alias": "Kevin · Rudeus",
       "role": "Fondateur",
       "bio": "À l’origine de NEXORIA. Il conçoit et développe la grande majorité des projets : serveurs Garry’s Mod, applications Windows, bots Discord et outils.",
       "photo": "assets/img/team/mw9g2opkqfwhur.webp"
@@ -162,6 +161,7 @@
     {
       "id": "membre-ld3h0",
       "role": "Équipe",
+      "bio": "dev de NEXUS STUDIO ",
       "photo": "assets/img/team/mw9frm76zarncs.gif",
       "name": "Shadow"
     }
@@ -198,10 +198,11 @@
       "bg": "linear-gradient(160deg,#2a0a0a,#120606 55%,#2d1a0c)",
       "logo": "assets/img/clover-mascot.webp",
       "banner": "assets/projects/black-clover/banner.webp",
-      "state": "dev",
+      "state": "pause",
       "authors": [
         "kevin",
-        "junior"
+        "junior",
+        "membre-ld3h0"
       ],
       "authorsNote": "MRkevin porte la plus grande partie du développement, Junior travaille avec lui sur le projet.",
       "progress": 19,
@@ -483,7 +484,7 @@
       "monogram": "HG",
       "banner": "assets/projects/panel-hg/banner.svg",
       "holo": true,
-      "state": "dev",
+      "state": "done",
       "authors": [
         "junior"
       ],
@@ -589,95 +590,18 @@
       "tag": "Plateforme d’apprentissage · Mapping, Code & VFX",
       "accent": "#38bdf8",
       "bg": "linear-gradient(160deg,#09131f,#080c14 55%,#0d1824)",
-      "banner": "assets/projects/academie/banner.svg",
       "state": "dev",
       "authors": [
         "kevin",
         "junior"
       ],
-      "authorsNote": "Projet privé conçu par MRkevin et Junior pour former et outiller les créateurs de l’écosystème NEXORIA.",
       "version": "0.4.0 Alpha",
       "progress": 35,
       "progressNote": "Parcours Mapping débutant terminé, guide complet intégré, modules GLua et VFX en cours d’élaboration.",
       "short": "La plateforme privée de formation pour maîtriser le Mapping Hammer/Blender, le Code GLua et les VFX immersifs.",
       "description": "Académie Nexoria est un projet confidentiel et exclusif pensé pour transmettre le savoir-faire technique de l’équipe : concevoir des maps complètes de A à Z avec Valve Hammer Editor et Blender, coder des systèmes de jeu performants en GLua/Luau, et créer des effets visuels (VFX) saisissants. Un teaser et le guide de mapping complet sont consultables en avant-première.",
-      "facts": [
-        {
-          "label": "Parcours",
-          "value": "Mapping, Code & VFX"
-        },
-        {
-          "label": "Moteurs & Outils",
-          "value": "Hammer, Blender, GLua"
-        },
-        {
-          "label": "Accès",
-          "value": "Privé / Teaser public"
-        },
-        {
-          "label": "Statut",
-          "value": "Bientôt disponible"
-        }
-      ],
-      "features": [
-        {
-          "title": "Mapping 3D immersif",
-          "desc": "De l’ébauche sous Blender à la compilation finale sous Hammer Editor : textures, portails de visibilité, éclairages réalistes et navigation NPC."
-        },
-        {
-          "title": "Programmation GLua & Systèmes",
-          "desc": "Concevoir des sorts, des entités interactives, des interfaces fluides et des bases de données optimisées pour accueillir plus de 100 joueurs."
-        },
-        {
-          "title": "Effets visuels (VFX) & Shaders",
-          "desc": "Création d’auras magiques, particules, portails et effets sonores percutants synchronisés avec les actions de jeu."
-        },
-        {
-          "title": "Mapping Guide interactif",
-          "desc": "Documentation technique étape par étape déjà intégrée, avec astuces d’optimisation et fiches réflexes pour éviter les erreurs de compilation."
-        }
-      ],
-      "galleryTitle": "Aperçu de l’Académie",
-      "gallery": [
-        {
-          "src": "assets/projects/academie/banner.svg",
-          "caption": "Interface d’apprentissage et vue 3D Hammer de l’Académie Nexoria"
-        }
-      ],
-      "roadmap": [
-        {
-          "title": "Architecture et guide de mapping",
-          "state": "termine",
-          "desc": "Guide interactif complet pour débutants et modélisateurs 3D."
-        },
-        {
-          "title": "Scène 3D et interface d’apprentissage",
-          "state": "termine",
-          "desc": "Navigation moderne par chapitres et suivi de progression locale."
-        },
-        {
-          "title": "Module de code GLua avancé",
-          "state": "en-cours",
-          "desc": "Exercices pratiques et snippets réutilisables pour Garry’s Mod."
-        },
-        {
-          "title": "Module VFX et particules",
-          "state": "a-venir",
-          "desc": "Tutoriels pas-à-pas pour la création d’auras et d’effets visuels."
-        },
-        {
-          "title": "Ouverture privée aux membres",
-          "state": "a-venir",
-          "desc": "Déploiement exclusif pour la communauté Nexoria."
-        }
-      ],
-      "related": [
-        "black-clover",
-        "addonforge",
-        "nexoria-studio"
-      ],
-      "note": "Projet actuellement en accès restreint. Le teaser et le guide complet sont consultables sur le site.",
-      "monogram": "a  nX"
+      "monogram": "?",
+      "secret": true
     },
     {
       "id": "nexoria-studio",
@@ -687,18 +611,90 @@
       "accent": "#e5525f",
       "bg": "linear-gradient(160deg,#14090b,#0a0a0d 55%,#110d12)",
       "banner": "assets/projects/nexus-studio/banner.svg",
-      "state": "dev",
+      "state": "pause",
       "authors": [
         "kevin",
-        "junior"
+        "junior",
+        "membre-ld3h0"
       ],
+      "authorsNote": "Réservé exclusivement à MRkevin et Junior pour piloter l’ensemble des projets NEXORIA.",
       "version": "2.0 Pro",
       "progress": 100,
       "progressNote": "Opérationnel : gestion de projets, notes privées synchronisées, dashboard médias et publication en 1 clic.",
       "short": "Le quartier général numérique de NEXORIA : notes privées, tableau de bord 3D, gestion des médias et des statuts.",
       "description": "Nexus Studio est la plateforme privée de pilotage réservée à MRkevin et Junior. Elle offre un tableau de bord 3D temps réel, un fil de discussion et de notes pour chaque projet, un gestionnaire d’images avec sauvegarde automatique, et permet de synchroniser les états d’avancement directement vers le site public github.io.",
-      "monogram": "ns",
-      "secret": true
+      "facts": [
+        {
+          "label": "Accès",
+          "value": "MRkevin & Junior (PIN)"
+        },
+        {
+          "label": "Moteur 3D",
+          "value": "Three.js temps réel"
+        },
+        {
+          "label": "Sauvegarde",
+          "value": "Automatique & Instantanée"
+        },
+        {
+          "label": "Déploiement",
+          "value": "Export direct github.io"
+        }
+      ],
+      "features": [
+        {
+          "title": "Authentification sécurisée",
+          "desc": "Accès protégé par code secret pour MRkevin et Junior, garantissant la confidentialité absolue des notes de conception."
+        },
+        {
+          "title": "Gestion dynamique des statuts",
+          "desc": "Basculez n’importe quel projet en un clic entre En développement, En pause (avec cadenas) et Terminé."
+        },
+        {
+          "title": "Dashboard Médias & Images",
+          "desc": "Glissez-déposez de nouvelles images, prévisualisez-les, supprimez les visuels obsolètes et définissez la bannière ou le logo."
+        },
+        {
+          "title": "Notes de conception partagées",
+          "desc": "Espace d’échanges privés entre Kevin et Junior pour valider les étapes, planifier les réunions et lister les tâches."
+        }
+      ],
+      "galleryTitle": "Aperçu de Nexus Studio",
+      "gallery": [
+        {
+          "src": "assets/projects/nexus-studio/banner.svg",
+          "caption": "Tableau de bord 3D et colonnes d’avancement de Nexus Studio"
+        }
+      ],
+      "roadmap": [
+        {
+          "title": "Scène 3D Three.js et portail d’accès",
+          "state": "termine",
+          "desc": "Animation géométrique fluide et sélection de profil par PIN."
+        },
+        {
+          "title": "Dashboard médias et glisser-déposer",
+          "state": "termine",
+          "desc": "Ajout, prévisualisation et suppression d’images avec compression."
+        },
+        {
+          "title": "Discussions et notes par projet",
+          "state": "termine",
+          "desc": "Fils d’échanges privés entre MRkevin et Junior."
+        },
+        {
+          "title": "Publication automatique pour le site public",
+          "state": "termine",
+          "desc": "Mise à jour en temps réel et export du fichier projects.json."
+        }
+      ],
+      "related": [
+        "black-clover",
+        "panel-hg",
+        "academie-nexoria"
+      ],
+      "note": "Accédez au studio via studio.html avec votre code d’accès personnel.",
+      "monogram": "ns"
     },
     {
       "id": "nexoria-dashboard",
@@ -709,7 +705,7 @@
       "bg": "radial-gradient(70% 60% at 75% 20%,rgba(229,86,106,.2),transparent 70%),linear-gradient(160deg,#180c12,#09080a 60%,#140b10)",
       "logo": "assets/projects/nexoria-dashboard/logo.webp",
       "banner": "assets/projects/nexoria-dashboard/banner.svg",
-      "state": "dev",
+      "state": "pause",
       "authors": [
         "kevin"
       ],
@@ -995,7 +991,7 @@
       "accent": "#f43f5e",
       "bg": "radial-gradient(60% 50% at 75% 25%,#f43f5e44,transparent 70%),linear-gradient(160deg,#2a0610,#0d0507 60%,#1f0a1a)",
       "monogram": "FIDO",
-      "state": "dev",
+      "state": "pause",
       "authors": [
         "kevin"
       ],
@@ -1133,7 +1129,7 @@
       "accent": "#4caf6a",
       "bg": "radial-gradient(60% 50% at 75% 25%,#4caf6a3a,transparent 70%),linear-gradient(160deg,#0f2416,#0a120c 60%,#2a2414)",
       "banner": "assets/projects/gazette/une.webp",
-      "state": "dev",
+      "state": "done",
       "authors": [
         "kevin"
       ],
@@ -1262,7 +1258,7 @@
       "accent": "#8b5cf6",
       "bg": "radial-gradient(60% 50% at 75% 25%,#8b5cf644,transparent 70%),linear-gradient(160deg,#160d33,#070a13 60%,#2b0f2a)",
       "banner": "assets/projects/gh-publish/accueil.webp",
-      "state": "dev",
+      "state": "done",
       "authors": [
         "kevin"
       ],
@@ -1391,7 +1387,7 @@
       "bg": "radial-gradient(60% 50% at 75% 25%,#f59e0b40,transparent 70%),linear-gradient(160deg,#2a1a05,#0d0905 60%,#1d1405)",
       "monogram": "KB",
       "banner": "assets/projects/kobrabot/banner.svg",
-      "state": "dev",
+      "state": "done",
       "authors": [
         "kevin"
       ],

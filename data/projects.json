@@ -190,6 +190,67 @@
   ],
   "projects": [
     {
+      "id": "nouveau-projet",
+      "category": "bots",
+      "tag": " Bot Discord • Administration & sécurité communautaire",
+      "accent": "#8b5cf6",
+      "bg": "radial-gradient(60% 50% at 75% 25%,#8b5cf644,transparent 70%),linear-gradient(160deg,#130d22,#07070a 60%,#0b0714)",
+      "state": "dev",
+      "authors": [
+        "junior",
+        "kevin"
+      ],
+      "version": "0.1",
+      "short": "NOVA BOT — La nouvelle génération de gestion, sécurité et animation Discord.",
+      "description": "NOVA BOT est un projet de bot Discord ambitieux qui vise à offrir une solution complète pour la gestion des communautés.\n\nSon objectif est de réunir dans un seul écosystème tous les outils essentiels à un serveur Discord : modération avancée, sécurité anti-raid et anti-spam, système de logs NOVA AUDIT, gestion du staff, tickets, suggestions, événements et bien plus encore.\n\nLe projet intégrera également un dashboard web moderne permettant de configurer et de superviser les fonctionnalités du bot depuis une interface centralisée.\n\nDéveloppé avec une architecture moderne et évolutive, NOVA BOT est pensé pour être performant, personnalisable et sécurisé.\n\nNotre ambition : créer un véritable outil de référence pour les communautés Discord.",
+      "galleryTitle": "Galerie",
+      "features": [
+        {
+          "title": "🛡️ Modération avancée",
+          "text": "Gestion des sanctions, avertissements, bannissements et exclusions."
+        },
+        {
+          "title": "📋 NOVA AUDIT",
+          "text": "Journalisation des événements : messages, membres, rôles, salons et actions du staff."
+        },
+        {
+          "title": "🚨 Protection anti-raid",
+          "text": "Protection contre le spam, les raids et les comportements suspects."
+        },
+        {
+          "title": "🎫 Système de tickets",
+          "text": "Gestion des demandes et assistance aux membres."
+        },
+        {
+          "title": "💡 Suggestions",
+          "text": "Permettre aux membres de proposer et de voter pour des idées."
+        },
+        {
+          "title": "🎉 Événements et giveaways",
+          "text": "Organisation d'animations et de concours communautaires."
+        },
+        {
+          "title": "⭐ Expérience et niveaux",
+          "text": "Système XP, niveaux et récompenses communautaires."
+        }
+      ],
+      "roadmap": [
+        {
+          "name": "**Étape 1 — Fondations** Mise en place de l'architecture, de la base de données et du système Discord.  **Étape 2 — Modération et sécurité** Développement des commandes de modération, de l'anti-raid et de NOVA AUDIT.  **Étape 3 — Modules communautaires** Développement des tickets, suggestions, événements, giveaways et système XP.  **Étape 4 — Dashboard NOVA** Création de l'interface web et connexion avec le bot.  **Étape 5 — Tests et optimisation** Vérifications, corrections de bugs, sécurité et optimisation des performances.  **Étape 6 — Version officielle** Préparation du lancement public et publication de NOVA BOT.",
+          "status": "en-cours"
+        }
+      ],
+      "name": "Nova Bot",
+      "authorsNote": "Développement de NOVA BOT : un écosystème Discord complet regroupant modération, sécurité, système de logs, gestion communautaire et dashboard web. L'équipe travaille sur la conception, le développement des fonctionnalités, les tests et les améliorations du projet.",
+      "monogram": "Nv",
+      "logo": "assets/projects/nouveau-projet/mwgm5pbz0ldc53.webp",
+      "holo": true,
+      "banner": "assets/projects/nouveau-projet/mwgm81m3vfi6cv.webp",
+      "statusNote": "🚧 Version 0.1 — Développement en cours",
+      "bossesTitle": "L'équipe NOVA",
+      "bossesIntro": "Derrière NOVA BOT se trouve une équipe qui travaille sur la conception, le développement et l'évolution du projet."
+    },
+    {
       "id": "black-clover",
       "name": "Black Clover RP",
       "category": "jeux",

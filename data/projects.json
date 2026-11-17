@@ -164,6 +164,12 @@
       "bio": "dev de NEXUS STUDIO ",
       "photo": "assets/img/team/mw9frm76zarncs.gif",
       "name": "Shadow"
+    },
+    {
+      "id": "membre-qgfh0",
+      "role": "Équipe",
+      "photo": "assets/img/favicon.png",
+      "name": "Hakuri"
     }
   ],
   "categories": [
@@ -613,14 +619,36 @@
       "galleryTitle": "Aperçu du panel",
       "gallery": [
         {
-          "src": "assets/projects/panel-hg/dashboard.svg",
-          "alt": "Tableau de bord du Panel HG",
-          "example": true
+          "src": "assets/projects/panel-hg/mwl6u9cshfttln.webp",
+          "alt": "8"
         },
         {
-          "src": "assets/projects/panel-hg/candidatures.svg",
-          "alt": "Suivi des candidatures",
-          "example": true
+          "src": "assets/projects/panel-hg/mwl6u9fgbwf40f.webp",
+          "alt": "image"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9iptnfpl0.webp",
+          "alt": "2"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9lauas725.webp",
+          "alt": "3"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9odxhzt4y.webp",
+          "alt": "4"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9rmxvd578.webp",
+          "alt": "5"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9t2ue8fi0.webp",
+          "alt": "6"
+        },
+        {
+          "src": "assets/projects/panel-hg/mwl6u9w1lupqy2.webp",
+          "alt": "7"
         }
       ],
       "roadmap": [

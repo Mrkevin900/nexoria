@@ -196,6 +196,62 @@
   ],
   "projects": [
     {
+      "id": "so-peche",
+      "name": "s-o-peche",
+      "category": "bots",
+      "accent": "#38bdf8",
+      "bg": "radial-gradient(60% 50% at 75% 70%,#38bdf866,transparent 70%),linear-gradient(160deg,#0b0b10,#050507 60%,#081a23)",
+      "state": "dev",
+      "authors": [
+        "junior"
+      ],
+      "version": "0.1",
+      "short": "S-O-PÊCHE — La passion de la pêche, du matériel de qualité et un univers dédié aux passionnés.",
+      "description": "S-O-PÊCHE est un projet de boutique en ligne spécialisé dans l'univers de la pêche. L'objectif est de proposer une plateforme moderne, élégante et facile à utiliser, destinée aux passionnés comme aux pêcheurs débutants.\n\nLe site réunira une sélection de matériel, plusieurs univers de pêche, des conseils et des présentations de produits.\n\nL'identité visuelle reposera sur un design bleu nuit et noir, accompagné de photographies réalistes et immersives.\n\nL'ambition est de créer une véritable expérience de boutique en ligne, avec une navigation simple, des produits bien présentés et une interface adaptée à tous les appareils.",
+      "galleryTitle": "L'univers S-O-PÊCHE",
+      "features": [
+        {
+          "title": "Boutique en ligne",
+          "text": "Catalogue de matériel de pêche avec fiches produits, prix, photographies et catégories."
+        },
+        {
+          "title": "Navigation simplifiée",
+          "text": "Interface moderne avec cinq rubriques principales pour faciliter l'accès aux différentes pages."
+        },
+        {
+          "title": "Univers de pêche",
+          "text": "Trois grandes catégories : carnassiers, carpe et pêche en mer."
+        },
+        {
+          "title": "Panier intelligent",
+          "text": "Ajout de produits, modification des quantités, suppression et calcul automatique du total."
+        },
+        {
+          "title": "Recherche et filtres",
+          "text": "Recherche de produits et filtres par catégorie, marque et prix."
+        },
+        {
+          "title": "Espace administration",
+          "text": "Gestion des produits, des catégories, des prix, des images et des articles."
+        }
+      ],
+      "roadmap": [
+        {
+          "name": "**Étape 1 — Analyse du site existant** Étudier les fichiers, les pages, les fonctionnalités et les éléments à conserver.  **Étape 2 — Nouvelle identité visuelle** Refaire entièrement les couleurs, le design, la typographie et les différents composants avec une palette bleu nuit et noir.  **Étape 3 — Simplification du site** Réduire les menus, réorganiser les catégories et alléger les pages pour obtenir une navigation claire.  **Étape 4 — Refonte de la boutique** Moderniser les produits, les fiches détaillées, le panier et intégrer de véritables photographies de pêche.  **Étape 5 — Tests et finalisation** Tester toutes les pages, les fonctionnalités, les images et l'affichage sur ordinateur et mobile avant la mise en ligne.",
+          "status": "a-venir",
+          "progress": 0
+        }
+      ],
+      "videos": [
+        {
+          "title": "S-O-PÊCHE"
+        }
+      ],
+      "banner": "assets/projects/so-peche/mwulmuaqu18efy.webp",
+      "statusNote": "Refonte en cours — Nouvelle identité visuelle et modernisation de la boutique.",
+      "note": "S-O-PÊCHE est un projet indépendant dédié à l'univers de la pêche. Site en cours de développement et de modernisation. Les informations commerciales et les fonctionnalités seront précisées lors de la mise en ligne."
+    },
+    {
       "id": "nouveau-projet",
       "category": "bots",
       "tag": " Bot Discord • Administration & sécurité communautaire",

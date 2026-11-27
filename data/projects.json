@@ -257,7 +257,7 @@
       "tag": " Bot Discord • Administration & sécurité communautaire",
       "accent": "#8b5cf6",
       "bg": "radial-gradient(60% 50% at 75% 25%,#8b5cf644,transparent 70%),linear-gradient(160deg,#130d22,#07070a 60%,#0b0714)",
-      "state": "dev",
+      "state": "done",
       "authors": [
         "junior",
         "kevin"
